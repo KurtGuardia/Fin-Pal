@@ -3,12 +3,28 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Dashboard, Balance, Debts, Stock, NotFound } from './views';
 import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleModal } from './store/actions/settingsActions';
+import Settingsform from './components/SettingsForm/Settingsform';
 
 function App() {
+  const isModalOpen = useSelector((state) => state.settings.isModalOpen);
+  const dispatch = useDispatch();
+
   return (
     <BrowserRouter>
       <div className='app'>
         <Sidebar />
+
+        {isModalOpen && (
+          <div
+            className='backdrop'
+            onClick={() => dispatch(toggleModal())}
+          ></div>
+        )}
+
+        <Settingsform />
+
         <div className='page'>
           <Header />
           <Switch>
