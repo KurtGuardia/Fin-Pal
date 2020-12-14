@@ -5,16 +5,20 @@ import { Link } from 'react-router-dom';
 import { Settings, Arrow } from '../../assets/icons';
 import { FinpalLight } from '../../assets/images';
 import SidebarLink from './components/SidebarLink/SidebarLink';
-import { toggleSidebar } from '../../store/actions/settingsActions';
+import {
+  toggleModal,
+  toggleSidebar,
+} from '../../store/actions/settingsActions';
 import { useDispatch, useSelector } from 'react-redux';
+import Modal from '../UI/Modal/Modal';
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
   const dispatch = useDispatch();
-  console.log(isSidebarOpen);
 
   return (
     <nav className={isSidebarOpen ? 'sidebar open' : 'sidebar'}>
+      <Modal />
       <div className='sidebar__logo'>
         <Link to='/'>
           <FinpalLight />
@@ -26,7 +30,7 @@ const Sidebar = () => {
         {sidebarLinks.map((link) => (
           <SidebarLink key={link.id} {...link} isSidebarOpen={isSidebarOpen} />
         ))}
-        <li>
+        <li onClick={() => dispatch(toggleModal())}>
           <div className='sidebar-link btn'>
             <Settings />
             {isSidebarOpen && <p>Settings</p>}
