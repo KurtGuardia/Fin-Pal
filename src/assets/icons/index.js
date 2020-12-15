@@ -6,3 +6,6 @@ export { ReactComponent as Search } from './search.svg';
 export { ReactComponent as Settings } from './settings.svg';
 export { ReactComponent as User } from './user.svg';
 export { ReactComponent as Stock } from './stock.svg';
+export { ReactComponent as Debts2 } from './debts2.svg';
+export { ReactComponent as Expenses } from './expenses.svg';
+export { ReactComponent as MoneyBag } from './money-bag.svg';
