@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { sidebarLinks } from './components/data/data';
 import './Sidebar.scss';
 import { Link } from 'react-router-dom';
@@ -11,10 +11,22 @@ import {
 } from '../../store/actions/settingsActions';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from '../UI/Modal/Modal';
+import { english, spanish } from '../../languages';
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
+  const language = useSelector((state) => state.settings.language);
+  const [content, setContent] = useState({});
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (language === 'english') {
+      setContent({ ...english.sidebar });
+    } else if (language === 'spanish') {
+      setContent({ ...spanish.sidebar });
+    }
+    console.log(content);
+  }, [language]);
 
   return (
     <nav className={isSidebarOpen ? 'sidebar open' : 'sidebar'}>
@@ -27,13 +39,20 @@ const Sidebar = () => {
       </div>
 
       <ul className='sidebar__menu'>
-        {sidebarLinks.map((link) => (
-          <SidebarLink key={link.id} {...link} isSidebarOpen={isSidebarOpen} />
+        {sidebarLinks.map((link, i) => (
+          <SidebarLink
+            key={link.id}
+            {...link}
+            text={content && content[i]}
+            isSidebarOpen={isSidebarOpen}
+          />
         ))}
         <li onClick={() => dispatch(toggleModal())}>
           <div className='sidebar-link btn'>
             <Settings />
-            {isSidebarOpen && <p>Settings</p>}
+            {isSidebarOpen && (
+              <p>{language === 'english' ? 'Settings' : 'Ajustes'}</p>
+            )}
           </div>
         </li>
       </ul>

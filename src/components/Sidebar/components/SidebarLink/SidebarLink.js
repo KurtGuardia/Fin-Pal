@@ -8,7 +8,9 @@ const SidebarLink = ({ id, url, text, icon, isSidebarOpen }) => {
         exact
         to={url}
         className={
-          text === 'Home' ? 'sidebar-link dashboard-icon' : 'sidebar-link'
+          text === 'Home' || 'Inicio'
+            ? 'sidebar-link dashboard-icon'
+            : 'sidebar-link'
         }
       >
         <div className='sidebar-link__icon'>{icon}</div>
