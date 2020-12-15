@@ -15,7 +15,7 @@
       background-color: transparent;
       transition: transform 250ms ease-in-out;
       font-size: 18px;
-      color: #333;
+      color: inherit;
       border: 2px solid #107360;
       border-top-left-radius: 30px;
       border-bottom-left-radius: 30px;
@@ -30,9 +30,10 @@
         border-radius: 0;
 
         & + svg {
-          background-color: white;
+          background-color: transparent;
           border-bottom: 2px solid #107360;
           border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
           stroke: #107360;
           fill: #107360;
           transform: scale(-1, 1);

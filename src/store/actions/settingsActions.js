@@ -10,6 +10,12 @@ export const toggleModal = () => {
   };
 };
 
+export const toggleDarkMode = () => {
+  return {
+    type: 'TOGGLE_DARKMODE',
+  };
+};
+
 export const changeLanguaje = (language) => {
   return {
     type: 'CHANGE_LANGUAGE',

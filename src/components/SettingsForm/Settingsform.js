@@ -4,14 +4,16 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   changeLanguaje,
+  toggleDarkMode,
   toggleModal,
 } from '../../store/actions/settingsActions';
 import { english, spanish } from '../../languages';
 
 const Settingsform = () => {
   const isModalOpen = useSelector((state) => state.settings.isModalOpen);
-  const dispatch = useDispatch();
   const language = useSelector((state) => state.settings.language);
+  const isDarkMode = useSelector((state) => state.settings.isDarkMode);
+  const dispatch = useDispatch();
   const [content, setContent] = useState({});
 
   useEffect(() => {
@@ -31,6 +33,10 @@ const Settingsform = () => {
     dispatch(changeLanguaje(e.target.value));
   };
 
+  const darkModeHandler = () => {
+    dispatch(toggleDarkMode());
+  };
+
   return (
     <Modal show={isModalOpen}>
       <div className='modal__title'>
@@ -47,7 +53,7 @@ const Settingsform = () => {
         </div>
         <div className='modal__info--setting'>
           <label>{content.darkMode}</label>
-          <ToggleBtn />
+          <ToggleBtn isToggleOn={isDarkMode} changeToggle={darkModeHandler} />
         </div>
         <div className='modal__info--setting'>
           <p>{content.contact}:</p>

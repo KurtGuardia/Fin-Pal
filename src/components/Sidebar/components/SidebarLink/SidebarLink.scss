@@ -7,6 +7,7 @@
   border-bottom-left-radius: 30px;
   display: flex;
   align-items: center;
+  // transition: all 0.3s;
 
   &:hover {
     background-color: rgba($color: #fff, $alpha: 0.2);
@@ -78,6 +79,41 @@
       svg path {
         fill: transparent;
         stroke: #107360;
+      }
+    }
+
+    &.dark {
+      background-color: #000;
+
+      p {
+        color: #16a085;
+      }
+
+      &::before {
+        background: radial-gradient(
+          circle at bottom left,
+          #16a085 10px,
+          #000 11px
+        );
+      }
+
+      &::after {
+        background: radial-gradient(
+          circle at top left,
+          #16a085 10px,
+          #000 11px
+        );
+      }
+
+      svg path {
+        fill: #16a085;
+      }
+
+      &.dashboard-icon {
+        svg path {
+          stroke: #16a085;
+          fill: transparent;
+        }
       }
     }
   }

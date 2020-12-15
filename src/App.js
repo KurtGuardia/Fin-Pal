@@ -9,11 +9,12 @@ import Settingsform from './components/SettingsForm/Settingsform';
 
 function App() {
   const isModalOpen = useSelector((state) => state.settings.isModalOpen);
+  const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
 
   return (
     <BrowserRouter>
-      <div className='app'>
+      <div className={isDarkMode ? 'app dark' : 'app'}>
         <Sidebar />
 
         {isModalOpen && (
