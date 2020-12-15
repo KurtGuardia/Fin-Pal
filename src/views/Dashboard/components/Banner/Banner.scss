@@ -1,0 +1,27 @@
+.banner {
+  display: flex;
+  justify-content: space-between;
+  background-color: #cccccc;
+  border-radius: 15px;
+  max-height: 15rem;
+
+  & > * {
+    margin: 3rem;
+  }
+
+  &__text {
+    color: #107360;
+    display: flex;
+    flex-direction: column;
+
+    &--date {
+      font-style: italic;
+      margin: 0.3rem 0 0 2rem;
+    }
+  }
+
+  svg {
+    transform: translateY(-5.5rem);
+    margin-right: 5rem;
+  }
+}

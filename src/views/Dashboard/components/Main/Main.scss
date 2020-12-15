@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  //   align-items: center;
+  flex: 1;
+  background-color: #ccc;
+  border-radius: 15px;
+  margin-top: 2rem;
+
+  &__card {
+    align-self: center;
+  }
+
+  &__summary {
+    display: flex;
+    justify-content: space-evenly;
+
+    &--item {
+      width: 20%;
+      height: auto;
+      background-color: #aaa;
+    }
+  }
+}
