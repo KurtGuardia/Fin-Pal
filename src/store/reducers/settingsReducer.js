@@ -1,6 +1,7 @@
 const initState = {
   isSidebarOpen: false,
   isModalOpen: false,
+  language: 'english',
 };
 
 export const settingsReducer = (state = initState, action) => {
@@ -14,6 +15,11 @@ export const settingsReducer = (state = initState, action) => {
       return {
         ...state,
         isModalOpen: !state.isModalOpen,
+      };
+    case 'CHANGE_LANGUAGE':
+      return {
+        ...state,
+        language: action.payload,
       };
     default:
       return state;

@@ -1,43 +1,59 @@
 import Modal from '../UI/Modal/Modal';
 import ToggleBtn from '../UI/ToggleBtn/ToggleBtn';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleModal } from '../../store/actions/settingsActions';
+import {
+  changeLanguaje,
+  toggleModal,
+} from '../../store/actions/settingsActions';
+import { english, spanish } from '../../languages';
 
 const Settingsform = () => {
   const isModalOpen = useSelector((state) => state.settings.isModalOpen);
   const dispatch = useDispatch();
+  const language = useSelector((state) => state.settings.language);
+  const [content, setContent] = useState({});
+
+  useEffect(() => {
+    if (language === 'english') {
+      setContent({ ...english.settings });
+    } else if (language === 'spanish') {
+      setContent({ ...spanish.settings });
+    }
+  }, [language]);
 
   const saveSettingsHandler = (e) => {
     e.preventDefault();
     dispatch(toggleModal());
   };
 
-  const handleLanguage = () => {};
+  const handleLanguage = (e) => {
+    dispatch(changeLanguaje(e.target.value));
+  };
 
   return (
     <Modal show={isModalOpen}>
       <div className='modal__title'>
-        <h2>Settings</h2>
+        <h2>{content.title}</h2>
         <span onClick={() => dispatch(toggleModal())}>X</span>
       </div>
       <form onSubmit={saveSettingsHandler} className='modal__info'>
         <div className='modal__info--setting'>
-          <label>Language</label>
+          <label>{content.language}</label>
           <select onChange={handleLanguage}>
             <option value='english'>English</option>
             <option value='spanish'>Español</option>
           </select>
         </div>
         <div className='modal__info--setting'>
-          <label>Dark Mode</label>
+          <label>{content.darkMode}</label>
           <ToggleBtn />
         </div>
         <div className='modal__info--setting'>
-          <p>Contact:</p>
+          <p>{content.contact}:</p>
           <span>kurtguardia@gmail.com</span>
         </div>
-        <button className='modal__info--btn'>Save</button>
+        <button className='modal__info--btn'>{content.saveBtn}</button>
       </form>
     </Modal>
   );

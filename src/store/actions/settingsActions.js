@@ -9,3 +9,10 @@ export const toggleModal = () => {
     type: 'TOGGLE_MODAL',
   };
 };
+
+export const changeLanguaje = (language) => {
+  return {
+    type: 'CHANGE_LANGUAGE',
+    payload: language,
+  };
+};
