@@ -3,7 +3,7 @@ import { sidebarLinks } from './components/data/data';
 import './Sidebar.scss';
 import { Link } from 'react-router-dom';
 import { Settings, Arrow } from '../../assets/icons';
-import { FinpalLight } from '../../assets/images';
+import { FinpalDark, FinpalLight } from '../../assets/images';
 import SidebarLink from './components/SidebarLink/SidebarLink';
 import {
   toggleModal,
@@ -16,6 +16,7 @@ import { english, spanish } from '../../languages';
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
   const language = useSelector((state) => state.settings.language);
+  const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const [content, setContent] = useState({});
   const dispatch = useDispatch();
 
@@ -25,15 +26,24 @@ const Sidebar = () => {
     } else if (language === 'spanish') {
       setContent({ ...spanish.sidebar });
     }
-    console.log(content);
   }, [language]);
 
   return (
-    <nav className={isSidebarOpen ? 'sidebar open' : 'sidebar'}>
+    <nav
+      className={
+        isSidebarOpen
+          ? isDarkMode
+            ? 'sidebar open dark'
+            : 'sidebar open'
+          : isDarkMode
+          ? 'sidebar dark'
+          : 'sidebar'
+      }
+    >
       <Modal />
       <div className='sidebar__logo'>
         <Link to='/'>
-          <FinpalLight />
+          {isDarkMode ? <FinpalDark /> : <FinpalLight />}
           {isSidebarOpen && <h1>FinPal</h1>}
         </Link>
       </div>

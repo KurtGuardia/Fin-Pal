@@ -1,6 +1,7 @@
 const initState = {
   isSidebarOpen: false,
   isModalOpen: false,
+  isDarkMode: false,
   language: 'english',
 };
 
@@ -15,6 +16,11 @@ export const settingsReducer = (state = initState, action) => {
       return {
         ...state,
         isModalOpen: !state.isModalOpen,
+      };
+    case 'TOGGLE_DARKMODE':
+      return {
+        ...state,
+        isDarkMode: !state.isDarkMode,
       };
     case 'CHANGE_LANGUAGE':
       return {

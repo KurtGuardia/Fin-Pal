@@ -4,6 +4,12 @@
   display: flex;
   color: #333;
   position: relative;
+  transition: all 0.3s;
+
+  &.dark {
+    background-color: #000;
+    color: #eee;
+  }
 
   .page {
     display: flex;
