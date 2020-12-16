@@ -11,6 +11,7 @@ function App() {
   const isModalOpen = useSelector((state) => state.settings.isModalOpen);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
+  const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
 
   return (
     <BrowserRouter>
@@ -26,7 +27,7 @@ function App() {
 
         <Settingsform />
 
-        <div className='page'>
+        <div className={isSidebarOpen ? 'page sidebarOpen' : 'page'}>
           <Header />
           <Switch>
             <Route exact path='/' component={Dashboard} />
