@@ -4,11 +4,13 @@ import { Dashboard, Balance, Debts, Stock, NotFound } from './views';
 import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleModal } from './store/actions/settingsActions';
+import { toggleSettingsModal } from './store/actions/settingsActions';
 import Settingsform from './components/SettingsForm/Settingsform';
 
 function App() {
-  const isModalOpen = useSelector((state) => state.settings.isModalOpen);
+  const isSettingsOpen = useSelector(
+    (state) => state.settings.modals.isSettingsOpen
+  );
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
@@ -18,10 +20,10 @@ function App() {
       <div className={isDarkMode ? 'app dark' : 'app'}>
         <Sidebar />
 
-        {isModalOpen && (
+        {isSettingsOpen && (
           <div
             className='backdrop'
-            onClick={() => dispatch(toggleModal())}
+            onClick={() => dispatch(toggleSettingsModal())}
           ></div>
         )}
 

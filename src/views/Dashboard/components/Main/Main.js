@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import FinPalCard from '../../../../components/FinPalCard/FinPalCard';
 import './Main.scss';
 import { english, spanish } from '../../../../languages';
-import { Debts2, MoneyBag, Expenses, Debts } from '../../../../assets/icons';
+import { Debts2, MoneyBag, Expenses } from '../../../../assets/icons';
 
 const Main = () => {
   const language = useSelector((state) => state.settings.language);

@@ -6,7 +6,7 @@ import { Settings, Arrow } from '../../assets/icons';
 import { FinpalDark, FinpalLight } from '../../assets/images';
 import SidebarLink from './components/SidebarLink/SidebarLink';
 import {
-  toggleModal,
+  toggleSettingsModal,
   toggleSidebar,
 } from '../../store/actions/settingsActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -57,7 +57,7 @@ const Sidebar = () => {
             isSidebarOpen={isSidebarOpen}
           />
         ))}
-        <li onClick={() => dispatch(toggleModal())}>
+        <li onClick={() => dispatch(toggleSettingsModal())}>
           <div className='sidebar-link btn'>
             <Settings />
             {isSidebarOpen && (

@@ -1,0 +1,93 @@
+.expense {
+  cursor: pointer;
+  padding: 1rem;
+  font-size: large;
+  background-color: #ddd;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  text-transform: none;
+  transition: all 0.3s;
+
+  &:last-child {
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+
+  &__face {
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    &--name {
+      flex: 1;
+      text-transform: none;
+      transition: all 0.3s; //Not working
+
+      &::before {
+        content: '➤';
+        margin-right: 1rem;
+        color: #731010;
+      }
+    }
+
+    &--amount {
+      transform: scale(1);
+      margin-right: 1rem;
+      transition: all 0.3s;
+    }
+
+    &--icons {
+      margin: 0.3rem;
+      width: 5rem;
+      & > * {
+        cursor: pointer;
+        margin: 0.5rem;
+        transition: all 0.3s;
+      }
+    }
+  }
+
+  &__data {
+    display: none;
+    align-self: flex-start;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    &.show {
+      display: flex;
+    }
+
+    &--note {
+      margin-left: 2rem;
+    }
+
+    &--date {
+      margin-right: 1rem;
+      padding-left: 1rem;
+      border-left: 1px dotted #731010;
+    }
+  }
+
+  &:hover {
+    background-color: #bbb;
+    transform: translateY(-0.5rem);
+
+    .expense__face--name {
+      text-transform: uppercase;
+    }
+
+    .expense__face--amount {
+      transform: scale(1.3);
+    }
+
+    .expense__face--icons {
+      & > * {
+        fill: #731010;
+      }
+    }
+  }
+}

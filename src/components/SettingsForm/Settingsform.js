@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   changeLanguaje,
   toggleDarkMode,
-  toggleModal,
+  toggleSettingsModal,
 } from '../../store/actions/settingsActions';
 import { english, spanish } from '../../languages';
 
 const Settingsform = () => {
-  const isModalOpen = useSelector((state) => state.settings.isModalOpen);
+  const isSettingsOpen = useSelector(
+    (state) => state.settings.modals.isSettingsOpen
+  );
   const language = useSelector((state) => state.settings.language);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
@@ -26,7 +28,7 @@ const Settingsform = () => {
 
   const saveSettingsHandler = (e) => {
     e.preventDefault();
-    dispatch(toggleModal());
+    dispatch(toggleSettingsModal());
   };
 
   const handleLanguage = (e) => {
@@ -38,10 +40,10 @@ const Settingsform = () => {
   };
 
   return (
-    <Modal show={isModalOpen}>
+    <Modal show={isSettingsOpen}>
       <div className='modal__title'>
         <h2>{content.title}</h2>
-        <span onClick={() => dispatch(toggleModal())}>X</span>
+        <span onClick={() => dispatch(toggleSettingsModal())}>X</span>
       </div>
       <form onSubmit={saveSettingsHandler} className='modal__info'>
         <div className='modal__info--setting'>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './Balance.scss';
+import Income from './components/Income/Income';
+import Expense from './components/Expense/Expense';
 
 const Balance = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
@@ -11,20 +13,16 @@ const Balance = () => {
         <div className='balance__content--left'>
           <div className='title'>Incomes</div>
           <ul className='items'>
-            <li>item</li>
-            <li>item</li>
-            <li>item</li>
-            <li>item</li>
-            <li>item</li>
-            <li>item</li>
-            <li>item</li>
+            <Income />
+            <Income />
+            <Income />
           </ul>
         </div>
         <div className='balance__content--right'>
           <div className='title'>Expenses</div>
           <ul className='items'>
-            <li>item</li>
-            <li>item</li>
+            <Expense />
+            <Expense />
           </ul>
         </div>
       </div>

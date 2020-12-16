@@ -7,7 +7,7 @@ import './Dashboard.scss';
 
 const Dashboard = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
-  console.log(isDarkMode);
+
   return (
     <div
       className={isDarkMode ? 'dashboard content dark' : 'dashboard content'}

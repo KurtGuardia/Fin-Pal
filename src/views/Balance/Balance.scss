@@ -1,6 +1,5 @@
 .balance {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   color: #fff;
@@ -8,8 +7,43 @@
   &.dark {
     .balance__content {
       & > div {
-        background-color: #222;
         color: #fff;
+
+        & > .items {
+          background-color: #222;
+
+          & > li {
+            background-color: #222;
+            transition: all 0.3s;
+
+            & > div > div > svg {
+              fill: #444;
+            }
+
+            &:hover {
+              background-color: #333;
+              transform: translateY(-0.5rem);
+
+              & > div {
+                .income__face--name {
+                  text-transform: uppercase;
+                }
+
+                .income__face--icons {
+                  & > * {
+                    fill: #107360;
+                  }
+                }
+
+                .expense__face--icons {
+                  & > * {
+                    fill: #a72121;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -18,10 +52,8 @@
     display: flex;
 
     & > div {
-      background-color: #ddd;
       color: #333;
       margin: 4rem;
-      border-radius: 15px;
       width: 50%;
 
       & > .title {
@@ -38,17 +70,9 @@
 
       & > .items {
         list-style: none;
-
-        & > li {
-          // border-radius: 15px;
-          padding: 1rem;
-          font-size: large;
-
-          &::before {
-            content: '➤';
-            margin-right: 1rem;
-          }
-        }
+        background-color: #ddd;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
       }
     }
 
@@ -59,10 +83,6 @@
       .items > li {
         &:not(:last-child) {
           border-bottom: 1px dotted #107360;
-        }
-
-        &::before {
-          color: #107360;
         }
       }
     }
@@ -75,10 +95,6 @@
         &:not(:last-child) {
           border-bottom: 1px dotted #731010;
         }
-
-        &::before {
-          color: #731010;
-        }
       }
     }
   }
@@ -88,6 +104,7 @@
     border: none;
     outline: none;
     margin: 0 auto;
+    margin-bottom: 3rem;
     border-radius: 30px;
     padding: 1rem;
     background-color: #123596;

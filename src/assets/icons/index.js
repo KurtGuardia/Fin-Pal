@@ -9,3 +9,5 @@ export { ReactComponent as Stock } from './stock.svg';
 export { ReactComponent as Debts2 } from './debts2.svg';
 export { ReactComponent as Expenses } from './expenses.svg';
 export { ReactComponent as MoneyBag } from './money-bag.svg';
+export { ReactComponent as Edit } from './edit.svg';
+export { ReactComponent as TrashCan } from './trash-can.svg';
