@@ -4,9 +4,22 @@ export const toggleSidebar = () => {
   };
 };
 
-export const toggleModal = () => {
+export const toggleSettingsModal = () => {
   return {
-    type: 'TOGGLE_MODAL',
+    type: 'TOGGLE_SETTINGS_MODAL',
+  };
+};
+
+export const toggleAddTransactionModal = () => {
+  return {
+    type: 'TOGGLE_ADD_TR_MODAL',
+  };
+};
+
+export const toggleEditTransactionModal = (item) => {
+  return {
+    type: 'TOGGLE_EDIT_TR_MODAL',
+    payload: item,
   };
 };
 

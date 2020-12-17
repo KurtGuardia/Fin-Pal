@@ -6,11 +6,11 @@ import { Settings, Arrow } from '../../assets/icons';
 import { FinpalDark, FinpalLight } from '../../assets/images';
 import SidebarLink from './components/SidebarLink/SidebarLink';
 import {
-  toggleModal,
+  toggleSettingsModal,
   toggleSidebar,
 } from '../../store/actions/settingsActions';
 import { useDispatch, useSelector } from 'react-redux';
-import Modal from '../UI/Modal/Modal';
+import { Modal } from '../UI';
 import { english, spanish } from '../../languages';
 
 const Sidebar = () => {
@@ -57,8 +57,8 @@ const Sidebar = () => {
             isSidebarOpen={isSidebarOpen}
           />
         ))}
-        <li onClick={() => dispatch(toggleModal())}>
-          <div className='sidebar-link btn'>
+        <li onClick={() => dispatch(toggleSettingsModal())}>
+          <div className='sidebar-link settingsBtn'>
             <Settings />
             {isSidebarOpen && (
               <p>{language === 'english' ? 'Settings' : 'Ajustes'}</p>

@@ -1,0 +1,128 @@
+.transaction-item {
+  cursor: pointer;
+  padding: 1rem;
+  font-size: large;
+  background-color: #ddd;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  text-transform: none;
+  transition: all 0.3s;
+
+  &:last-child {
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+
+  &.dark {
+    background-color: #222;
+    color: #fff;
+
+    .transaction-item__face--icons > svg {
+      fill: #444;
+    }
+
+    &:hover {
+      background-color: #333;
+    }
+  }
+
+  &__face {
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    &--name {
+      flex: 1;
+      text-transform: none;
+      transition: all 0.3s; //Not working
+
+      &::before {
+        content: '➤';
+        margin-right: 1rem;
+        color: #107360;
+      }
+    }
+
+    &--amount {
+      transform: scale(1);
+      margin-right: 2rem;
+      transition: all 0.3s;
+    }
+
+    &--icons {
+      margin: 0.3rem;
+      width: 5rem;
+
+      & > * {
+        cursor: pointer;
+        margin: 0.5rem;
+        transition: all 0.3s;
+        fill: #bbb;
+      }
+    }
+  }
+
+  &.expense {
+    & .transaction-item {
+      &__face--name {
+        &::before {
+          color: #731010;
+        }
+      }
+    }
+
+    &.transaction-item {
+      &__data--date {
+        border-left: 1px dotted #731010;
+      }
+    }
+  }
+
+  &__data {
+    display: flex;
+    align-self: flex-start;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    &--note {
+      margin-left: 2rem;
+    }
+
+    &--date {
+      margin-right: 2rem;
+      padding-left: 1rem;
+      border-left: 1px dotted #107360;
+    }
+  }
+
+  &:hover {
+    background-color: #bbb;
+    transform: translateY(-0.5rem);
+
+    .transaction-item__face--name {
+      text-transform: uppercase;
+    }
+
+    .transaction-item__face--amount {
+      transform: scale(1.15);
+    }
+
+    .transaction-item__face--icons {
+      & > svg {
+        fill: #049678;
+      }
+    }
+
+    &.expense {
+      & .transaction-item__face--icons {
+        & > * {
+          fill: #a01111;
+        }
+      }
+    }
+  }
+}

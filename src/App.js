@@ -1,32 +1,51 @@
 import './App.scss';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Dashboard, Balance, Debts, Stock, NotFound } from './views';
-import Sidebar from './components/Sidebar/Sidebar';
-import Header from './components/Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleModal } from './store/actions/settingsActions';
-import Settingsform from './components/SettingsForm/Settingsform';
+import {
+  toggleAddTransactionModal,
+  toggleSettingsModal,
+  toggleEditTransactionModal,
+} from './store/actions/settingsActions';
+import {
+  SettingsForm,
+  Header,
+  Sidebar,
+  AddTransaction,
+  EditTransaction,
+} from './components';
+import { Backdrop } from './components/UI';
 
 function App() {
-  const isModalOpen = useSelector((state) => state.settings.isModalOpen);
+  const modals = useSelector((state) => state.settings.modals);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
+  const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
 
+  const { isSettingsOpen, isAddTransactionOpen, editTransaction } = modals;
+  console.log(editTransaction);
   return (
     <BrowserRouter>
       <div className={isDarkMode ? 'app dark' : 'app'}>
         <Sidebar />
 
-        {isModalOpen && (
-          <div
-            className='backdrop'
-            onClick={() => dispatch(toggleModal())}
-          ></div>
+        {isSettingsOpen && (
+          <Backdrop clicked={() => dispatch(toggleSettingsModal())} />
         )}
 
-        <Settingsform />
+        {isAddTransactionOpen && (
+          <Backdrop clicked={() => dispatch(toggleAddTransactionModal())} />
+        )}
 
-        <div className='page'>
+        {editTransaction.isOpen && (
+          <Backdrop clicked={() => dispatch(toggleEditTransactionModal())} />
+        )}
+
+        <SettingsForm />
+        <AddTransaction />
+        <EditTransaction item={editTransaction.item} />
+
+        <div className={isSidebarOpen ? 'page sidebarOpen' : 'page'}>
           <Header />
           <Switch>
             <Route exact path='/' component={Dashboard} />

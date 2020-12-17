@@ -1,16 +1,18 @@
-import Modal from '../UI/Modal/Modal';
-import ToggleBtn from '../UI/ToggleBtn/ToggleBtn';
+import { Modal, Btn } from '../UI';
+import { ToggleBtn } from '../UI';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   changeLanguaje,
   toggleDarkMode,
-  toggleModal,
+  toggleSettingsModal,
 } from '../../store/actions/settingsActions';
 import { english, spanish } from '../../languages';
 
-const Settingsform = () => {
-  const isModalOpen = useSelector((state) => state.settings.isModalOpen);
+const SettingsForm = () => {
+  const isSettingsOpen = useSelector(
+    (state) => state.settings.modals.isSettingsOpen
+  );
   const language = useSelector((state) => state.settings.language);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
@@ -26,7 +28,7 @@ const Settingsform = () => {
 
   const saveSettingsHandler = (e) => {
     e.preventDefault();
-    dispatch(toggleModal());
+    dispatch(toggleSettingsModal());
   };
 
   const handleLanguage = (e) => {
@@ -38,10 +40,10 @@ const Settingsform = () => {
   };
 
   return (
-    <Modal show={isModalOpen}>
+    <Modal show={isSettingsOpen}>
       <div className='modal__title'>
         <h2>{content.title}</h2>
-        <span onClick={() => dispatch(toggleModal())}>X</span>
+        <span onClick={() => dispatch(toggleSettingsModal())}>X</span>
       </div>
       <form onSubmit={saveSettingsHandler} className='modal__info'>
         <div className='modal__info--setting'>
@@ -59,10 +61,12 @@ const Settingsform = () => {
           <p>{content.contact}:</p>
           <span>kurtguardia@gmail.com</span>
         </div>
-        <button className='modal__info--btn'>{content.saveBtn}</button>
+        <div className='modal__info--btn'>
+          <Btn text={content.saveBtn} symbol='✓' />
+        </div>
       </form>
     </Modal>
   );
 };
 
-export default Settingsform;
+export default SettingsForm;

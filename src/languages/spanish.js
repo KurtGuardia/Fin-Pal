@@ -22,6 +22,29 @@ const spanish = {
     },
     recentMovements: 'Movimientos Recientes',
   },
+  balance: {
+    incomes: 'Ingresos',
+    expenses: 'Gastos',
+    btnText: 'Agregar Transacción',
+  },
+  addTransaction: {
+    title: 'Añadir Transacción',
+    type: 'Tipo',
+    types: ['Ingreso', 'Gasto'],
+    name: 'Nombre',
+    description: 'Descripción',
+    amount: 'Monto',
+    btn: 'Añadir',
+    date: 'Fecha',
+  },
+  edit: {
+    title: 'Editar Transacción',
+    name: 'Nombre',
+    description: 'Descripción',
+    amount: 'Monto',
+    btn: 'Editar',
+    date: 'fecha',
+  },
 };
 
 export default spanish;
