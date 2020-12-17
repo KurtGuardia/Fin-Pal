@@ -12,13 +12,14 @@ export const toggleSettingsModal = () => {
 
 export const toggleAddTransactionModal = () => {
   return {
-    type: 'TOGGLE_ADD_MODAL',
+    type: 'TOGGLE_ADD_TR_MODAL',
   };
 };
 
-export const toggleEditTransactionModal = () => {
+export const toggleEditTransactionModal = (item) => {
   return {
-    type: 'TOGGLE_EDIT_MODAL',
+    type: 'TOGGLE_EDIT_TR_MODAL',
+    payload: item,
   };
 };
 
@@ -32,12 +33,5 @@ export const changeLanguaje = (language) => {
   return {
     type: 'CHANGE_LANGUAGE',
     payload: language,
-  };
-};
-
-export const addIncome = (income) => {
-  return {
-    type: 'ADD_INCOME',
-    payload: income,
   };
 };

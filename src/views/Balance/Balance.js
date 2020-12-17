@@ -32,7 +32,7 @@ const Balance = () => {
           <div className='title'>{content.incomes}</div>
           <ul className='items'>
             {finance?.incomes?.map((income) => (
-              <TransactionItem key={income.id} {...income} />
+              <TransactionItem {...income} />
             ))}
           </ul>
         </div>

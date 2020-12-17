@@ -28,6 +28,24 @@ const english = {
     expenses: 'expenses',
     btnText: 'Add Transaction',
   },
+  addTransaction: {
+    title: 'Add Transaction',
+    type: 'Type',
+    types: ['Income', 'Expense'],
+    name: 'Name',
+    description: 'Description',
+    amount: 'Amount',
+    btn: 'ADD',
+    date: 'Date',
+  },
+  editTransaction: {
+    title: 'Edit Transaction',
+    name: 'Name',
+    description: 'Description',
+    amount: 'Amount',
+    btn: 'Edit',
+    date: 'Date',
+  },
 };
 
 export default english;

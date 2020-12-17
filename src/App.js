@@ -5,8 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   toggleAddTransactionModal,
   toggleSettingsModal,
+  toggleEditTransactionModal,
 } from './store/actions/settingsActions';
-import { SettingsForm, Header, Sidebar, AddTransaction } from './components';
+import {
+  SettingsForm,
+  Header,
+  Sidebar,
+  AddTransaction,
+  EditTransaction,
+} from './components';
 import { Backdrop } from './components/UI';
 
 function App() {
@@ -15,8 +22,8 @@ function App() {
   const dispatch = useDispatch();
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
 
-  const { isSettingsOpen, isAddTransactionOpen, isEditOpen } = modals;
-
+  const { isSettingsOpen, isAddTransactionOpen, editTransaction } = modals;
+  console.log(editTransaction);
   return (
     <BrowserRouter>
       <div className={isDarkMode ? 'app dark' : 'app'}>
@@ -30,8 +37,13 @@ function App() {
           <Backdrop clicked={() => dispatch(toggleAddTransactionModal())} />
         )}
 
+        {editTransaction.isOpen && (
+          <Backdrop clicked={() => dispatch(toggleEditTransactionModal())} />
+        )}
+
         <SettingsForm />
         <AddTransaction />
+        <EditTransaction item={editTransaction.item} />
 
         <div className={isSidebarOpen ? 'page sidebarOpen' : 'page'}>
           <Header />

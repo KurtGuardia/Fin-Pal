@@ -1,4 +1,4 @@
-import { Modal } from '../UI';
+import { Modal, Btn } from '../UI';
 import { ToggleBtn } from '../UI';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -61,7 +61,9 @@ const SettingsForm = () => {
           <p>{content.contact}:</p>
           <span>kurtguardia@gmail.com</span>
         </div>
-        <button className='modal__info--btn'>{content.saveBtn}</button>
+        <div className='modal__info--btn'>
+          <Btn text={content.saveBtn} symbol='✓' />
+        </div>
       </form>
     </Modal>
   );

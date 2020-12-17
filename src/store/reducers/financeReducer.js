@@ -1,40 +1,15 @@
 const initState = {
   incomes: [
     {
-      id: 1,
-      name: 'Transaccion',
-      amount: 20,
-      description: 'blablabla',
-      date: '10/12/20',
+      id: 12,
+      name: 'Some',
+      amount: 90,
+      description: 'adsff',
       type: 'income',
-    },
-    {
-      id: 2,
-      name: 'Transaccion',
-      amount: 20,
-      description: 'blablabla',
-      date: '10/12/20',
-      type: 'income',
+      date: '12/10/2020',
     },
   ],
-  expenses: [
-    {
-      id: 1,
-      name: 'Transaccion',
-      amount: 20,
-      description: 'blablabla',
-      date: '10/12/20',
-      type: 'expense',
-    },
-    {
-      id: 2,
-      name: 'Transaccion',
-      amount: 20,
-      description: 'blablabla',
-      date: '10/12/20',
-      type: 'expense',
-    },
-  ],
+  expenses: [],
   debts: [],
 };
 
@@ -43,7 +18,7 @@ export const financeReducer = (state = initState, action) => {
   switch (action.type) {
     case 'ADD_INCOME':
       return { ...state, incomes: [...state.incomes, action.payload] };
-    case 'ADD_EXPENSES':
+    case 'ADD_EXPENSE':
       return { ...state, expenses: [...state.expenses, action.payload] };
     case 'REMOVE_INCOME':
       newIncomes = state.incomes.filter(
@@ -55,7 +30,28 @@ export const financeReducer = (state = initState, action) => {
         (expense) => expense.id !== action.payload.id
       );
       return { ...state, expenses: newExpenses };
+    case 'EDIT_INCOME':
+      const editedIncIndex = state.incomes.findIndex(
+        (inc) => inc.id === action.payload.id
+      );
+      newIncomes = [...state.incomes];
+      newIncomes[editedIncIndex] = action.payload;
 
+      return {
+        ...state,
+        incomes: newIncomes,
+      };
+    case 'EDIT_EXPENSE':
+      const editedExpIndex = state.expenses.findIndex(
+        (exp) => exp.id === action.payload.id
+      );
+      newExpenses = [...state.expenses];
+      newExpenses[editedExpIndex] = action.payload;
+
+      return {
+        ...state,
+        expenses: newExpenses,
+      };
     default:
       return state;
   }
