@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './FinPalCard.scss';
-import ToggleBtn from '../../components/UI/ToggleBtn/ToggleBtn';
+import { ToggleBtn } from '../../components/UI';
 
 const FinPalCard = () => {
   const [isCardBlock, setIsCardBlock] = useState(false);

@@ -34,3 +34,10 @@ export const changeLanguaje = (language) => {
     payload: language,
   };
 };
+
+export const addIncome = (income) => {
+  return {
+    type: 'ADD_INCOME',
+    payload: income,
+  };
+};

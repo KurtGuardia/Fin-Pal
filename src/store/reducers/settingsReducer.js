@@ -24,7 +24,7 @@ export const settingsReducer = (state = initState, action) => {
           isSettingsOpen: !state.modals.isSettingsOpen,
         },
       };
-    case 'TOGGLE_EDIT_MODAL':
+    case 'TOGGLE_ADD_MODAL':
       return {
         ...state,
         modals: {
@@ -32,7 +32,7 @@ export const settingsReducer = (state = initState, action) => {
           isAddTransactionOpen: !state.modals.isAddTransactionOpen,
         },
       };
-    case 'TOGGLE_ADD_MODAL':
+    case 'TOGGLE_EDIT_MODAL':
       return {
         ...state,
         modals: {

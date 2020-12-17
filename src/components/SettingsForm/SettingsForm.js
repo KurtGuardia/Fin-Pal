@@ -1,5 +1,5 @@
-import Modal from '../UI/Modal/Modal';
-import ToggleBtn from '../UI/ToggleBtn/ToggleBtn';
+import { Modal } from '../UI';
+import { ToggleBtn } from '../UI';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {

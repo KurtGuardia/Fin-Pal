@@ -10,7 +10,7 @@ import {
   toggleSidebar,
 } from '../../store/actions/settingsActions';
 import { useDispatch, useSelector } from 'react-redux';
-import Modal from '../UI/Modal/Modal';
+import { Modal } from '../UI';
 import { english, spanish } from '../../languages';
 
 const Sidebar = () => {
@@ -58,7 +58,7 @@ const Sidebar = () => {
           />
         ))}
         <li onClick={() => dispatch(toggleSettingsModal())}>
-          <div className='sidebar-link btn'>
+          <div className='sidebar-link settingsBtn'>
             <Settings />
             {isSidebarOpen && (
               <p>{language === 'english' ? 'Settings' : 'Ajustes'}</p>

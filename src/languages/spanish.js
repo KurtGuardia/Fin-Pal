@@ -22,6 +22,11 @@ const spanish = {
     },
     recentMovements: 'Movimientos Recientes',
   },
+  balance: {
+    incomes: 'Ingresos',
+    expenses: 'Gastos',
+    btnText: 'Agregar Transacción',
+  },
 };
 
 export default spanish;

@@ -23,6 +23,11 @@ const english = {
     },
     recentMovements: 'Recent Movements',
   },
+  balance: {
+    incomes: 'incomes',
+    expenses: 'expenses',
+    btnText: 'Add Transaction',
+  },
 };
 
 export default english;

@@ -2,16 +2,20 @@ import './App.scss';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Dashboard, Balance, Debts, Stock, NotFound } from './views';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleSettingsModal } from './store/actions/settingsActions';
-import { SettingsForm, Header, Sidebar } from './components';
+import {
+  toggleAddTransactionModal,
+  toggleSettingsModal,
+} from './store/actions/settingsActions';
+import { SettingsForm, Header, Sidebar, AddTransaction } from './components';
+import { Backdrop } from './components/UI';
 
 function App() {
-  const isSettingsOpen = useSelector(
-    (state) => state.settings.modals.isSettingsOpen
-  );
+  const modals = useSelector((state) => state.settings.modals);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
+
+  const { isSettingsOpen, isAddTransactionOpen, isEditOpen } = modals;
 
   return (
     <BrowserRouter>
@@ -19,13 +23,15 @@ function App() {
         <Sidebar />
 
         {isSettingsOpen && (
-          <div
-            className='backdrop'
-            onClick={() => dispatch(toggleSettingsModal())}
-          ></div>
+          <Backdrop clicked={() => dispatch(toggleSettingsModal())} />
+        )}
+
+        {isAddTransactionOpen && (
+          <Backdrop clicked={() => dispatch(toggleAddTransactionModal())} />
         )}
 
         <SettingsForm />
+        <AddTransaction />
 
         <div className={isSidebarOpen ? 'page sidebarOpen' : 'page'}>
           <Header />
