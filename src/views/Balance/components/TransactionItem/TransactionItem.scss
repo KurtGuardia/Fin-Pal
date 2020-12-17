@@ -1,4 +1,4 @@
-.income {
+.transaction-item {
   cursor: pointer;
   padding: 1rem;
   font-size: large;
@@ -14,6 +14,19 @@
   &:last-child {
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
+  }
+
+  &.dark {
+    background-color: #222;
+    color: #fff;
+
+    .transaction-item__face--icons > svg {
+      fill: #444;
+    }
+
+    &:hover {
+      background-color: #333;
+    }
   }
 
   &__face {
@@ -47,27 +60,40 @@
         cursor: pointer;
         margin: 0.5rem;
         transition: all 0.3s;
+        fill: #bbb;
+      }
+    }
+  }
+
+  &.expense {
+    & .transaction-item {
+      &__face--name {
+        &::before {
+          color: #731010;
+        }
+      }
+    }
+
+    &.transaction-item {
+      &__data--date {
+        border-left: 1px dotted #731010;
       }
     }
   }
 
   &__data {
-    display: none;
+    display: flex;
     align-self: flex-start;
     width: 100%;
     justify-content: space-between;
     margin-top: 1rem;
-
-    &.show {
-      display: flex;
-    }
 
     &--note {
       margin-left: 2rem;
     }
 
     &--date {
-      margin-right: 1rem;
+      margin-right: 2rem;
       padding-left: 1rem;
       border-left: 1px dotted #107360;
     }
@@ -77,17 +103,25 @@
     background-color: #bbb;
     transform: translateY(-0.5rem);
 
-    .income__face--name {
+    .transaction-item__face--name {
       text-transform: uppercase;
     }
 
-    .income__face--amount {
+    .transaction-item__face--amount {
       transform: scale(1.15);
     }
 
-    .income__face--icons {
-      & > * {
+    .transaction-item__face--icons {
+      & > svg {
         fill: #049678;
+      }
+    }
+
+    &.expense {
+      & .transaction-item__face--icons {
+        & > * {
+          fill: #a01111;
+        }
       }
     }
   }

@@ -1,11 +1,9 @@
 import './App.scss';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Dashboard, Balance, Debts, Stock, NotFound } from './views';
-import Sidebar from './components/Sidebar/Sidebar';
-import Header from './components/Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSettingsModal } from './store/actions/settingsActions';
-import Settingsform from './components/SettingsForm/Settingsform';
+import { SettingsForm, Header, Sidebar } from './components';
 
 function App() {
   const isSettingsOpen = useSelector(
@@ -27,7 +25,7 @@ function App() {
           ></div>
         )}
 
-        <Settingsform />
+        <SettingsForm />
 
         <div className={isSidebarOpen ? 'page sidebarOpen' : 'page'}>
           <Header />

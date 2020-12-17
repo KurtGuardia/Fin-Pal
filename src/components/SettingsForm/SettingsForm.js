@@ -9,7 +9,7 @@ import {
 } from '../../store/actions/settingsActions';
 import { english, spanish } from '../../languages';
 
-const Settingsform = () => {
+const SettingsForm = () => {
   const isSettingsOpen = useSelector(
     (state) => state.settings.modals.isSettingsOpen
   );
@@ -67,4 +67,4 @@ const Settingsform = () => {
   );
 };
 
-export default Settingsform;
+export default SettingsForm;

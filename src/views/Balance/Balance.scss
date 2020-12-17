@@ -4,52 +4,14 @@
   flex-direction: column;
   color: #fff;
 
-  &.dark {
-    .balance__content {
-      & > div {
-        color: #fff;
+  &__container {
+    display: flex;
 
-        & > .items {
-          background-color: #222;
-
-          & > li {
-            background-color: #222;
-            transition: all 0.3s;
-
-            & > div > div > svg {
-              fill: #444;
-            }
-
-            &:hover {
-              background-color: #333;
-              transform: translateY(-0.5rem);
-
-              & > div {
-                .income__face--name {
-                  text-transform: uppercase;
-                }
-
-                .income__face--icons {
-                  & > * {
-                    fill: #107360;
-                  }
-                }
-
-                .expense__face--icons {
-                  & > * {
-                    fill: #a72121;
-                  }
-                }
-              }
-            }
-          }
-        }
+    &.dark {
+      & > div > .items {
+        background-color: #222;
       }
     }
-  }
-
-  &__content {
-    display: flex;
 
     & > div {
       color: #333;

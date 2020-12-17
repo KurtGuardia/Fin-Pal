@@ -1,28 +1,33 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './Balance.scss';
-import Income from './components/Income/Income';
-import Expense from './components/Expense/Expense';
+import TransactionItem from './components/TransactionItem/TransactionItem';
 
 const Balance = () => {
+  const finance = useSelector((state) => state.finance);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
 
   return (
-    <div className={isDarkMode ? 'balance dark content' : 'balance content'}>
-      <div className='balance__content'>
-        <div className='balance__content--left'>
+    <div className='balance content'>
+      <div
+        className={
+          isDarkMode ? 'balance__container dark' : 'balance__container'
+        }
+      >
+        <div className='balance__container--left'>
           <div className='title'>Incomes</div>
           <ul className='items'>
-            <Income />
-            <Income />
-            <Income />
+            {finance?.incomes?.map((income) => (
+              <TransactionItem key={income.id} {...income} />
+            ))}
           </ul>
         </div>
-        <div className='balance__content--right'>
+        <div className='balance__container--right'>
           <div className='title'>Expenses</div>
           <ul className='items'>
-            <Expense />
-            <Expense />
+            {finance?.expenses?.map((expense) => (
+              <TransactionItem key={expense.id} {...expense} />
+            ))}
           </ul>
         </div>
       </div>
