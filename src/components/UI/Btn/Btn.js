@@ -1,8 +1,8 @@
 import './Btn.scss';
 
-const Btn = ({ text, symbol, clicked }) => {
+const Btn = ({ text, symbol, clicked, disabled }) => {
   return (
-    <button className='btn' onClick={clicked}>
+    <button className='btn' onClick={clicked} disabled={disabled}>
       <span>{symbol}</span> {text}
     </button>
   );

@@ -11,6 +11,10 @@
     bottom: 2rem;
     left: 2rem;
     font-size: xx-large;
+    & p p {
+      font-size: large;
+      margin-bottom: 0.5rem;
+    }
   }
 
   &__btn {

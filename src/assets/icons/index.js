@@ -11,3 +11,5 @@ export { ReactComponent as Expenses } from './expenses.svg';
 export { ReactComponent as MoneyBag } from './money-bag.svg';
 export { ReactComponent as Edit } from './edit.svg';
 export { ReactComponent as TrashCan } from './trash-can.svg';
+export { ReactComponent as Eye } from './eye.svg';
+export { ReactComponent as Hide } from './hide.svg';

@@ -1,14 +1,5 @@
 const initState = {
-  incomes: [
-    {
-      id: 12,
-      name: 'Some',
-      amount: 90,
-      description: 'adsff',
-      type: 'income',
-      date: '12/10/2020',
-    },
-  ],
+  incomes: [],
   expenses: [],
   debts: [],
 };
@@ -36,7 +27,6 @@ export const financeReducer = (state = initState, action) => {
       );
       newIncomes = [...state.incomes];
       newIncomes[editedIncIndex] = action.payload;
-
       return {
         ...state,
         incomes: newIncomes,

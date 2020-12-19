@@ -4,6 +4,7 @@ import { toggleAddTransactionModal } from '../../store/actions/settingsActions';
 import { addIncome, addExpense } from '../../store/actions/financeActions';
 import { useEffect, useState } from 'react';
 import { english, spanish } from '../../languages';
+import { v4 as uuidv4 } from 'uuid';
 
 const AddTransaction = () => {
   const isAddTransactionOpen = useSelector(
@@ -29,28 +30,19 @@ const AddTransaction = () => {
   const addTransaction = (e) => {
     e.preventDefault();
 
+    const item = {
+      type,
+      name,
+      description,
+      amount,
+      date,
+      id: uuidv4(),
+    };
+
     if (type === 'income') {
-      dispatch(
-        addIncome({
-          type,
-          name,
-          description,
-          amount,
-          date,
-          id: (Math.random() * 1000000).toFixed(0),
-        })
-      );
+      dispatch(addIncome(item));
     } else if (type === 'expense') {
-      dispatch(
-        addExpense({
-          type,
-          name,
-          description,
-          amount,
-          date,
-          id: +(Math.random() * 1000000).toFixed(0),
-        })
-      );
+      dispatch(addExpense(item));
     }
 
     setName('');

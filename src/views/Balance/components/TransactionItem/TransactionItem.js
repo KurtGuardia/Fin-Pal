@@ -7,6 +7,7 @@ import {
   removeExpense,
 } from '../../../../store/actions/financeActions';
 import { toggleEditTransactionModal } from '../../../../store/actions/settingsActions';
+import { formatMoney } from '../../../../shared/utility';
 
 const TransactionItem = ({ id, type, name, description, amount, date }) => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
@@ -40,7 +41,9 @@ const TransactionItem = ({ id, type, name, description, amount, date }) => {
     >
       <div className='transaction-item__face'>
         <span className='transaction-item__face--name'>{name}</span>
-        <span className='transaction-item__face--amount'>{amount}</span>
+        <span className='transaction-item__face--amount'>
+          {formatMoney(amount)}
+        </span>
         <div className='transaction-item__face--icons'>
           <Edit onClick={handleEdit} />
           <TrashCan onClick={handleDelete} />
