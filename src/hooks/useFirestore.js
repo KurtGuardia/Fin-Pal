@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { db } from '../config/fbConfig';
 
-const useFirestore = (collection) => {
+const useFirestore = (uid) => {
   const [doc, setDoc] = useState([]);
 
   useEffect(() => {
@@ -9,14 +9,10 @@ const useFirestore = (collection) => {
       .collection('users')
       .doc(uid)
       .onSnapshot((snap) => {
-        let docs = [];
-        snap.forEach((docField) => {
-          docs.push({ ...docField.data(), id: docField.id });
-        });
-        setDoc(docs);
+        setDoc({ ...snap.data() });
       });
     return () => unsub();
-  }, [collection]);
+  }, [uid]);
 
   return { doc };
 };

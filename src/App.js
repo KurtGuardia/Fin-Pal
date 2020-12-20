@@ -16,6 +16,7 @@ import {
 } from './components';
 import { Backdrop } from './components/UI';
 import useFirestore from './hooks/useFirestore';
+import { useEffect } from 'react';
 
 function App() {
   const uid = useSelector((state) => state.firebase.auth.uid);
@@ -23,10 +24,11 @@ function App() {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
+  const { doc } = useFirestore(uid);
 
   useEffect(() => {
-    const user = useFirestore(uid);
-  }, [uid]);
+    console.log(doc);
+  }, [uid, doc]);
 
   const { isSettingsOpen, isAddTransactionOpen, editTransaction } = modals;
 
