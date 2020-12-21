@@ -8,7 +8,7 @@ export const formatMoney = (
     decimalCount = Math.abs(decimalCount);
     decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
 
-    const negativeSign = amount < 0 ? '+' : '';
+    const negativeSign = amount < 0 ? '-' : '';
 
     let i = parseInt(
       (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))

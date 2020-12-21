@@ -17,6 +17,7 @@ import {
 import { Backdrop } from './components/UI';
 import useFirestore from './hooks/useFirestore';
 import { useEffect } from 'react';
+import { syncData } from './store/actions/financeActions';
 
 function App() {
   const uid = useSelector((state) => state.firebase.auth.uid);
@@ -27,8 +28,10 @@ function App() {
   const { doc } = useFirestore(uid);
 
   useEffect(() => {
-    console.log(doc);
-  }, [uid, doc]);
+    if (doc.finance) {
+      dispatch(syncData(doc.finance));
+    }
+  }, [uid, doc.finance]);
 
   const { isSettingsOpen, isAddTransactionOpen, editTransaction } = modals;
 

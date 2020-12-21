@@ -4,17 +4,18 @@ import { Btn, Spinner } from '../../../components/UI';
 import { english, spanish } from '../../../languages';
 import '../Auth.scss';
 import { Eye, Hide } from '../../../assets/icons';
+import { login } from '../../../store/actions/authActions';
 
 const Login = () => {
+  const auth = useSelector((state) => state.firebase.auth);
+  const language = useSelector((state) => state.settings.language);
+  const authError = useSelector((state) => state.auth.authError);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [content, setContent] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const language = useSelector((state) => state.settings.language);
-  const dispatch = useDispatch();
-  const [isFormValid, setIsFormValid] = useState(false);
   const [isHidePassword, setIsHidePassword] = useState(true);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (language === 'english') {
@@ -26,6 +27,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(login({ email, password }));
+    if (auth.uds) {
+      setIsLoading(true);
+    }
   };
 
   return (
@@ -74,6 +79,7 @@ const Login = () => {
         <Btn text={content.login} symbol='✓' />
       </div>
 
+      {authError ?? <p className='authForm__err'>{authError}</p>}
       {isLoading && <Spinner />}
     </form>
   );

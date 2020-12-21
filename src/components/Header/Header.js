@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
   const language = useSelector((state) => state.settings.language);
+  const auth = useSelector((state) => state.firebase.auth);
+  const profile = useSelector((state) => state.firebase.profile);
   const [text, setText] = useState('');
 
   useEffect(() => {
@@ -18,8 +20,14 @@ const Header = () => {
     }
   }, [language]);
 
+  const initials = () => {
+    const first = profile?.firstName?.slice(0, 1);
+    const last = profile?.lastName?.slice(0, 1);
+    return first + last;
+  };
+
   return (
-    <div className='header'>
+    <div className={auth.uid ? 'header' : 'hidden'}>
       <div className='header__input'>
         <input
           type='text'
@@ -31,7 +39,7 @@ const Header = () => {
 
       <div className='header__user'>
         <User />
-        <h3>KG</h3>
+        <h3>{initials()}</h3>
       </div>
     </div>
   );

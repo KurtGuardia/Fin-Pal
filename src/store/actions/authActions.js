@@ -4,7 +4,7 @@ export const login = (credentials) => {
 
     firebase
       .auth()
-      .signWithEmailAndPassword(credentials.email, credentials.password)
+      .signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(() => {
         dispatch({ type: 'LOGIN_SUCCESS' });
       })

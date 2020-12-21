@@ -56,6 +56,7 @@
   }
 
   &__user {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,11 +64,30 @@
     svg {
       stroke: #107360;
       fill: #107360;
+      transition: all 0.3s;
     }
 
     & h3 {
       margin-top: 0.5rem;
       color: #107360;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      font-size: 20px;
+      & h3 {
+        color: #059b7d;
+      }
+      & svg {
+        fill: #059b7d;
+        stroke: #059b7d;
+        width: 50px;
+        height: 50px;
+      }
     }
   }
+}
+
+.hidden {
+  display: none;
 }
