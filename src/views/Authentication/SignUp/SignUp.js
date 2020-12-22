@@ -123,7 +123,7 @@ const SignUp = () => {
           id='lastName'
           required
           placeholder={content.lastName}
-          className={user.lastName.length !== 3 ? 'error' : ''}
+          className={user.lastName.length < 3 ? 'error' : ''}
           onChange={(e) => {
             checkValidation();
             handleChange(e);

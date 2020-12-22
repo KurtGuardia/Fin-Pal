@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100px;
 
   &__input {
     display: flex;
@@ -56,6 +57,7 @@
   }
 
   &__user {
+    text-decoration: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;

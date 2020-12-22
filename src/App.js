@@ -1,6 +1,14 @@
 import './App.scss';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Dashboard, Balance, Debts, Stock, Auth, NotFound } from './views';
+import {
+  Dashboard,
+  Balance,
+  Debts,
+  Stock,
+  Auth,
+  User,
+  NotFound,
+} from './views';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   toggleAddTransactionModal,
@@ -64,6 +72,7 @@ function App() {
             <Route path='/debts' component={Debts} />
             <Route path='/stock' component={Stock} />
             <Route path='/auth' component={Auth} />
+            <Route path='/user' component={User} />
             <Route component={NotFound} />
           </Switch>
         </div>
