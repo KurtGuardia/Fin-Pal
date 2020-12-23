@@ -37,7 +37,7 @@ const User = () => {
         </div>
         <div className='user-container__icon'>
           <Profile />
-          <Btn text='LogOut' symbol='✓' onClick={() => dispatch(logout())} />
+          <Btn text='LogOut' symbol='✓' clicked={() => dispatch(logout())} />
         </div>
       </div>
       <p>Contacto: kurtguardia@gmail.com</p>
