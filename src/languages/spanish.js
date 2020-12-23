@@ -37,13 +37,31 @@ const spanish = {
     btn: 'Añadir',
     date: 'Fecha',
   },
-  edit: {
+  editTransaction: {
     title: 'Editar Transacción',
     name: 'Nombre',
     description: 'Descripción',
     amount: 'Monto',
     btn: 'Editar',
     date: 'fecha',
+  },
+  authentication: {
+    name: 'Nombre',
+    lastName: 'Apellido',
+    email: 'Email',
+    password: 'Contraseña',
+    repeatPassword: 'Repetir Contreseña',
+    login: 'Acceder',
+    signup: 'Registrarse',
+    pin: 'Pin 4 dígitos (numérico)',
+    errorMsg: {
+      firstName: 'Nombre debe tener al menos 3 caracteres ',
+      lastName: 'Apellido debe tener al menos 3 caracteres ',
+      email: 'Por favor entra un email válido',
+      password: 'La contraseña debe tener al menos 6 caracteres',
+      password2: 'Por favor verifica que la contraseña sea la misma',
+      pin: 'Por favor introduce un pin numérico de 4 dígitos ',
+    },
   },
 };
 

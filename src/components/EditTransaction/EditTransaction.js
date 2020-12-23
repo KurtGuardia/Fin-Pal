@@ -15,8 +15,18 @@ const EditTransaction = ({ item }) => {
   const [date, setDate] = useState('');
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (language === 'english') {
+      setContent({ ...english.editTransaction });
+    } else if (language === 'spanish') {
+      setContent({ ...spanish.editTransaction });
+    }
+    // eslint-disable-next-line
+  }, [language]);
+
   const addTransaction = (e) => {
     e.preventDefault();
+
     const editedItem = {
       id: item.id,
       type: item.type,
@@ -35,26 +45,18 @@ const EditTransaction = ({ item }) => {
     setName('');
     setDescription('');
     setAmount('');
+    setDate('');
 
     setTimeout(() => {
       dispatch(toggleEditTransactionModal());
     }, 300);
   };
 
-  useEffect(() => {
-    if (language === 'english') {
-      setContent({ ...english.editTransaction });
-    } else if (language === 'spanish') {
-      setContent({ ...spanish.editTransaction });
-    }
-    // eslint-disable-next-line
-  }, [language]);
-
   return (
     <Modal show={edit.isOpen}>
       <div className='modal__title'>
         <h2>
-          {content?.title} {'=>'} {item?.name}
+          {content?.title}: {item?.name}
         </h2>
         <span onClick={() => dispatch(toggleEditTransactionModal())}>x</span>
       </div>
@@ -97,8 +99,9 @@ const EditTransaction = ({ item }) => {
           <input
             type='date'
             placeholder={item?.date}
-            onChange={(e) => setDate(+e.target.value)}
+            onChange={(e) => setDate(e.target.value)}
             value={date}
+            required
           />
         </div>
 

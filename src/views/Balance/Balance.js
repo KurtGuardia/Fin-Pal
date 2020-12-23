@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Btn } from '../../components/UI';
 import { english, spanish } from '../../languages';
+import { formatMoney } from '../../shared/utility';
 import { toggleAddTransactionModal } from '../../store/actions/settingsActions';
 import './Balance.scss';
 import TransactionItem from './components/TransactionItem/TransactionItem';
@@ -21,6 +22,15 @@ const Balance = () => {
     }
   }, [language]);
 
+  let totalIncome = 0;
+  for (let i = 0; i < finance.incomes.length; i++) {
+    totalIncome += +finance.incomes[i].amount;
+  }
+  let totalExpense = 0;
+  for (let i = 0; i < finance.expenses.length; i++) {
+    totalExpense += +finance.expenses[i].amount;
+  }
+
   return (
     <div className='balance content'>
       <div
@@ -29,7 +39,10 @@ const Balance = () => {
         }
       >
         <div className='balance__container--left'>
-          <div className='title'>{content.incomes}</div>
+          <div className='title'>
+            <p>{content.incomes}</p>
+            <small>{formatMoney(totalIncome)}</small>
+          </div>
           <ul className='items'>
             {finance?.incomes?.map((income) => (
               <TransactionItem {...income} />
@@ -37,7 +50,10 @@ const Balance = () => {
           </ul>
         </div>
         <div className='balance__container--right'>
-          <div className='title'>{content.expenses}</div>
+          <div className='title'>
+            <p>{content.expenses}</p>
+            <small>{formatMoney(totalExpense)}</small>
+          </div>
           <ul className='items'>
             {finance?.expenses?.map((expense) => (
               <TransactionItem key={expense.id} {...expense} />

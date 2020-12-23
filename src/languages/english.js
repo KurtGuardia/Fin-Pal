@@ -19,7 +19,6 @@ const english = {
       incomes: 'Incomes this month',
       expenses: 'Expenses this month',
       debts: 'Debts',
-      amount: 69.69,
     },
     recentMovements: 'Recent Movements',
   },
@@ -45,6 +44,24 @@ const english = {
     amount: 'Amount',
     btn: 'Edit',
     date: 'Date',
+  },
+  authentication: {
+    name: 'Name',
+    lastName: 'Last Name',
+    email: 'Email',
+    password: 'Password',
+    repeatPassword: 'Repeat Password',
+    login: 'Login',
+    signup: 'Sign Up',
+    pin: 'Pin 4 digits (numeric)',
+    errorMsg: {
+      firstName: 'First Name must have at least 3 characters',
+      lastName: 'Last Name must have at least 3 characters',
+      email: 'Please enter a valid email',
+      password: 'Password must be at least 6 characters',
+      password2: 'Please check passwords fields are the same',
+      pin: 'Please set a numeric 4 digits pin ',
+    },
   },
 };
 

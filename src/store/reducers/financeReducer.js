@@ -1,14 +1,5 @@
 const initState = {
-  incomes: [
-    {
-      id: 12,
-      name: 'Some',
-      amount: 90,
-      description: 'adsff',
-      type: 'income',
-      date: '12/10/2020',
-    },
-  ],
+  incomes: [],
   expenses: [],
   debts: [],
 };
@@ -16,6 +7,13 @@ const initState = {
 export const financeReducer = (state = initState, action) => {
   let newIncomes, newExpenses;
   switch (action.type) {
+    case 'SYNC_DATA':
+      return {
+        ...state,
+        incomes: action.payload.incomes,
+        expenses: action.payload.expenses,
+        debts: action.payload.debts,
+      };
     case 'ADD_INCOME':
       return { ...state, incomes: [...state.incomes, action.payload] };
     case 'ADD_EXPENSE':
@@ -36,7 +34,6 @@ export const financeReducer = (state = initState, action) => {
       );
       newIncomes = [...state.incomes];
       newIncomes[editedIncIndex] = action.payload;
-
       return {
         ...state,
         incomes: newIncomes,

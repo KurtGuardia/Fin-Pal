@@ -24,6 +24,12 @@
       }
 
       & input {
+        &::-webkit-calendar-picker-indicator {
+          filter: invert(100%);
+        }
+      }
+
+      & input {
         &::placeholder {
           color: #107360;
         }
@@ -79,7 +85,7 @@
 
       select,
       input {
-        width: 35%;
+        width: 45%;
         color: inherit;
         border: none;
         background: transparent;
