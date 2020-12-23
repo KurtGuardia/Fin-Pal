@@ -1,0 +1,75 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+
+  & p {
+    color: #107360;
+    font-weight: bold;
+    font-size: xx-large;
+  }
+
+  &-container {
+    background-color: #eee;
+    box-shadow: 2px 3px 5px rgba($color: #000000, $alpha: 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50vw;
+    height: auto;
+    letter-spacing: 1.5px;
+
+    &.dark {
+      background-color: #333;
+
+      & > * > p {
+        color: #eee;
+      }
+    }
+
+    & > * {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 100%;
+
+      & > p {
+        font-size: x-large;
+        margin: 0;
+      }
+    }
+
+    &__keys {
+      align-items: flex-end;
+      margin-left: 1rem;
+      width: fit-content;
+
+      & p {
+        font-weight: normal;
+      }
+    }
+
+    &__values {
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+      & .password {
+        letter-spacing: 10px;
+      }
+    }
+
+    &__icon {
+      justify-content: center;
+
+      & svg {
+        transform: translateY(-5rem);
+      }
+
+      & button {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}

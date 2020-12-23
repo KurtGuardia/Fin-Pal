@@ -58,16 +58,58 @@ export const addExpense = (expense) => {
 };
 
 export const removeIncome = (income) => {
-  return {
-    type: 'REMOVE_INCOME',
-    payload: income,
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newIncomes = [
+      ...profile.finance.incomes.filter((inc) => inc.id !== income.id),
+    ];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          incomes: newIncomes,
+        },
+      })
+      .then(() => {
+        console.log('income removed');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
 export const removeExpense = (expense) => {
-  return {
-    type: 'REMOVE_EXPENSE',
-    payload: expense,
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newExpenses = [
+      ...profile.finance.expenses.filter((exp) => exp.id !== expense.id),
+    ];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          expenses: newExpenses,
+        },
+      })
+      .then(() => {
+        console.log('expense removed');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 

@@ -28,7 +28,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password }));
-    if (auth.uds) {
+    if (auth.uid) {
       setIsLoading(true);
     }
   };

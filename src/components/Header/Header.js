@@ -5,6 +5,7 @@ import { Search } from '../../assets/icons';
 import english from '../../languages/english';
 import spanish from '../../languages/spanish';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const language = useSelector((state) => state.settings.language);
@@ -37,10 +38,10 @@ const Header = () => {
         <Search className='header__input--icon' />
       </div>
 
-      <div className='header__user'>
+      <Link className='header__user' to='/user'>
         <User />
         <h3>{initials()}</h3>
-      </div>
+      </Link>
     </div>
   );
 };
