@@ -70,6 +70,13 @@ const spanish = {
     logOut: 'Salir',
     contact: 'Contacto',
   },
+  debts: {
+    debts: 'Deudas',
+    amount: 'Monto',
+    concept: 'Concepto',
+    dueDate: 'Vencimiento',
+    liqTime: 'Tiempo de liquidación',
+  },
 };
 
 export default spanish;

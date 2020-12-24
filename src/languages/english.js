@@ -70,6 +70,13 @@ const english = {
     logOut: 'Log Out',
     contact: 'Contact',
   },
+  debts: {
+    debts: 'Debts',
+    amount: 'Amount',
+    concept: 'Concept',
+    dueDate: 'Due date',
+    liqTime: 'Liquidation time',
+  },
 };
 
 export default english;

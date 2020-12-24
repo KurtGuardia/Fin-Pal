@@ -22,7 +22,7 @@ export const addIncome = (income) => {
           incomes: newIncomes,
         },
       })
-      .then(() => {
+      .then((res) => {
         console.log('income added');
       })
       .catch((err) => {
