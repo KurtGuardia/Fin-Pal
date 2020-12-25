@@ -51,7 +51,6 @@ const Debt = ({ id, type, name, description, amount, dueDate }) => {
     const dateToPay = new Date(dueDate);
     const diference = +dateToPay - +today;
     const month = diference / 2629746000;
-    console.log(month);
 
     if (month <= 1) {
       return 'urgent';

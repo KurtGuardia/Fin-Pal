@@ -24,7 +24,8 @@ const Header = () => {
   const initials = () => {
     const first = profile?.firstName?.slice(0, 1);
     const last = profile?.lastName?.slice(0, 1);
-    return first + last;
+
+    return (first + last).toString();
   };
 
   return (

@@ -35,3 +35,9 @@ export const changeLanguaje = (language) => {
     payload: language,
   };
 };
+
+export const toggleAddDebtModal = () => {
+  return {
+    type: 'TOGGLE_ADD_DEBT',
+  };
+};

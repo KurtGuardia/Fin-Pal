@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { english, spanish } from '../../languages';
 import { formatMoney } from '../../shared/utility';
 import './Debts.scss';
 import Debt from './components/Debt';
+import { Btn } from '../../components/UI';
+import { toggleAddDebtModal } from '../../store/actions/settingsActions';
 
 const Debts = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -13,6 +15,7 @@ const Debts = () => {
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
   const history = useHistory();
+  const dispatch = useDispatch();
 
   if (!auth.uid) history.push('/auth');
 
@@ -47,11 +50,16 @@ const Debts = () => {
         <div className='debts__container--content'>
           <ul className='items'>
             {finance?.debts?.map((debt) => (
-              <Debt {...debt} />
+              <Debt key={debt.id} {...debt} />
             ))}
           </ul>
         </div>
       </div>
+      <Btn
+        text={content?.btnText}
+        symbol='+'
+        clicked={() => dispatch(toggleAddDebtModal())}
+      />
     </div>
   );
 };

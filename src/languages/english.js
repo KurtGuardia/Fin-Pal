@@ -71,6 +71,7 @@ const english = {
     contact: 'Contact',
   },
   debts: {
+    title: 'Add Debt',
     debts: 'Debts',
     amount: 'Amount',
     concept: 'Concept',
@@ -80,6 +81,11 @@ const english = {
     months: 'Months',
     days: 'Days',
     expired: 'TIME EXPIRED!',
+    btnText: 'Add Debt',
+    name: 'Name',
+    description: 'Description',
+    amount: 'Amount',
+    date: 'Date',
   },
 };
 

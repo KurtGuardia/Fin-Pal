@@ -172,3 +172,29 @@ export const editExpense = (editedExpense) => {
       });
   };
 };
+
+export const addDebt = (debt) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newDebts = [...profile.finance.debts, debt];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          debts: newDebts,
+        },
+      })
+      .then((res) => {
+        console.log('debt added');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
