@@ -1,0 +1,85 @@
+.debts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__container {
+    margin: 4rem 0;
+    background-color: #eee;
+    box-shadow: 2px 3px 5px rgba($color: #000000, $alpha: 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 65vw;
+    height: fit-content;
+
+    & > * {
+      width: 100%;
+    }
+
+    & .amount {
+      width: 180px;
+    }
+
+    & .dueDate {
+      width: 155px;
+    }
+
+    & .liqTime {
+      width: 230px;
+    }
+
+    & p {
+      padding: 0.5rem 2rem;
+      text-align: center;
+    }
+
+    &--title {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      letter-spacing: 2px;
+      font-size: x-large;
+      text-align: center;
+      color: #fff;
+      background-color: #107360;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      padding: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    &--subtitle {
+      display: flex;
+      font-style: italic;
+      background-color: #eee;
+      border-bottom: 1px dotted #333;
+
+      & p:first-child {
+        flex: 1;
+      }
+
+      & p:last-child {
+        margin-right: 85px;
+      }
+    }
+
+    &--content {
+      background-color: #eee;
+    }
+
+    &.dark {
+      background-color: #000;
+
+      .debts__container--subtitle {
+        background-color: #222;
+      }
+
+      .debts__container--content {
+        background-color: #222;
+      }
+    }
+  }
+}

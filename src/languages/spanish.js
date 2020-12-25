@@ -70,6 +70,33 @@ const spanish = {
     logOut: 'Salir',
     contact: 'Contacto',
   },
+  debts: {
+    debts: 'Deudas',
+    concept: 'Concepto',
+    dueDate: 'Vencimiento',
+    liqTime: 'Tiempo de liquidación',
+    years: 'Años',
+    months: 'Meses',
+    days: 'Días',
+    expired: 'EL TIEMPO EXPIRÓ',
+    btnText: 'Añadir Deuda',
+  },
+  addDebts: {
+    title: 'Añadir Deuda',
+    amount: 'Monto',
+    name: 'Nombre',
+    description: 'Descripción',
+    date: 'Fecha de Liquidación',
+    btnText: 'Añadir',
+  },
+  editDebts: {
+    title: 'Editar Deuda',
+    name: 'Nombre',
+    description: 'Descripción',
+    amount: 'Monto',
+    btn: 'Editar',
+    date: 'Fecha de Liquidación',
+  },
 };
 
 export default spanish;

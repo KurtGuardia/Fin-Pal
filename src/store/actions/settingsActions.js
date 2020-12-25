@@ -17,6 +17,7 @@ export const toggleAddTransactionModal = () => {
 };
 
 export const toggleEditTransactionModal = (item) => {
+  console.log(item);
   return {
     type: 'TOGGLE_EDIT_TR_MODAL',
     payload: item,
@@ -33,5 +34,18 @@ export const changeLanguaje = (language) => {
   return {
     type: 'CHANGE_LANGUAGE',
     payload: language,
+  };
+};
+
+export const toggleAddDebtModal = () => {
+  return {
+    type: 'TOGGLE_ADD_DEBT_MODAL',
+  };
+};
+
+export const toggleEditDebtModal = (item) => {
+  return {
+    type: 'TOGGLE_EDIT_DEBT_MODAL',
+    payload: item,
   };
 };
