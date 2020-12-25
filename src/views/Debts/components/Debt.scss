@@ -1,9 +1,15 @@
 .debt {
   cursor: pointer;
+  padding: 0.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.3s;
+  background-color: #eee;
+
+  & > div > * {
+    height: 100%;
+  }
 
   & div:first-child {
     flex: 1;
@@ -15,6 +21,10 @@
   }
 
   &__concept {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     & p:first-child {
       transition: all 0.5s;
       &::before {
@@ -36,7 +46,6 @@
   }
 
   &__icons {
-    margin: 0.3rem;
     width: 5rem;
 
     & > * {
@@ -56,6 +65,37 @@
       & > * {
         fill: #107360;
       }
+    }
+  }
+
+  &.dark {
+    background-color: #222;
+
+    &:hover {
+      background-color: #333;
+      .debt__icons svg {
+        fill: #107360;
+      }
+    }
+
+    .debt__icons svg {
+      fill: #444;
+    }
+  }
+
+  &.mild {
+    background-color: rgba(212, 192, 17, 0.199);
+
+    &:hover {
+      background-color: rgba(212, 192, 17, 0.199);
+    }
+  }
+
+  &.urgent {
+    background-color: rgba(175, 0, 0, 0.199);
+
+    &:hover {
+      background-color: rgba(175, 0, 0, 0.199);
     }
   }
 }

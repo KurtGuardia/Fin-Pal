@@ -76,6 +76,10 @@ const spanish = {
     concept: 'Concepto',
     dueDate: 'Vencimiento',
     liqTime: 'Tiempo de liquidación',
+    years: 'Años',
+    months: 'Meses',
+    days: 'Días',
+    expired: 'EL TIEMPO EXPIRÓ',
   },
 };
 

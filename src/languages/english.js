@@ -76,6 +76,10 @@ const english = {
     concept: 'Concept',
     dueDate: 'Due date',
     liqTime: 'Liquidation time',
+    years: 'Years',
+    months: 'Months',
+    days: 'Days',
+    expired: 'TIME EXPIRED!',
   },
 };
 

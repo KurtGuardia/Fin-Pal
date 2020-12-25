@@ -13,7 +13,6 @@ const Debts = () => {
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
   const history = useHistory();
-  console.log(finance);
 
   if (!auth.uid) history.push('/auth');
 
@@ -25,11 +24,16 @@ const Debts = () => {
     }
   }, [language]);
 
-  let totalDebts = 1542.451;
+  let totalDebts = 0;
+  for (let i = 0; i < finance.debts.length; i++) {
+    totalDebts += +finance.debts[i].amount;
+  }
 
   return (
     <div className='debts content'>
-      <div className='debts__container'>
+      <div
+        className={isDarkMode ? 'debts__container dark' : 'debts__container'}
+      >
         <div className='debts__container--title'>
           <p>{content.debts}</p>
           <small>{formatMoney(totalDebts)}</small>
