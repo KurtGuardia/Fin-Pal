@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Edit, TrashCan } from '../../../assets/icons';
 import { english, spanish } from '../../../languages';
 import { formatMoney } from '../../../shared/utility';
+import { removeDebt } from '../../../store/actions/financeActions';
+import { toggleEditDebtModal } from '../../../store/actions/settingsActions';
 import './Debt.scss';
 
 const Debt = ({ id, type, name, description, amount, dueDate }) => {
@@ -33,12 +35,12 @@ const Debt = ({ id, type, name, description, amount, dueDate }) => {
     if (!years) {
       years = null;
     } else {
-      years = `${content.years}: ${years} -`;
+      years = `${content.years}: ${years} |`;
     }
     if (!months) {
       months = null;
     } else {
-      months = `${content.months}: ${months} -`;
+      months = `${content.months}: ${months} |`;
     }
 
     return `${years ? years : ''} ${months ? months : ''}  ${
@@ -59,8 +61,15 @@ const Debt = ({ id, type, name, description, amount, dueDate }) => {
     }
   };
 
-  const handleEdit = () => {};
-  const handleDelete = () => {};
+  const handleEdit = () => {
+    const item = { id, type, name, description, amount, dueDate };
+    dispatch(toggleEditDebtModal(item));
+  };
+
+  const handleDelete = () => {
+    const item = { id, type, name, description, amount, dueDate };
+    dispatch(removeDebt(item));
+  };
 
   return (
     <li

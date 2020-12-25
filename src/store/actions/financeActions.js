@@ -198,3 +198,61 @@ export const addDebt = (debt) => {
       });
   };
 };
+
+export const editDebt = (editedDebt) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const editedDebtIndex = profile.finance.debts.findIndex(
+      (debt) => debt.id === editedDebt.id
+    );
+    const newDebts = [...profile.finance.debts];
+    newDebts[editedDebtIndex] = editedDebt;
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          debts: newDebts,
+        },
+      })
+      .then(() => {
+        console.log('debt added');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const removeDebt = (debt) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newDebts = [
+      ...profile.finance.debts.filter((deb) => deb.id !== debt.id),
+    ];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          debts: newDebts,
+        },
+      })
+      .then(() => {
+        console.log('debt removed');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};

@@ -15,6 +15,7 @@ import {
   toggleSettingsModal,
   toggleEditTransactionModal,
   toggleAddDebtModal,
+  toggleEditDebtModal,
 } from './store/actions/settingsActions';
 import {
   SettingsForm,
@@ -23,6 +24,7 @@ import {
   AddTransaction,
   EditTransaction,
   AddDebt,
+  EditDebt,
 } from './components';
 import { Backdrop } from './components/UI';
 import useFirestore from './hooks/useFirestore';
@@ -48,6 +50,7 @@ function App() {
     isAddTransactionOpen,
     editTransaction,
     isAddDebtOpen,
+    editDebt,
   } = modals;
 
   return (
@@ -71,10 +74,15 @@ function App() {
           <Backdrop clicked={() => dispatch(toggleAddDebtModal())} />
         )}
 
+        {editDebt.isOpen && (
+          <Backdrop clicked={() => dispatch(toggleEditDebtModal())} />
+        )}
+
         <SettingsForm />
         <AddTransaction />
         <EditTransaction item={editTransaction.item} />
         <AddDebt />
+        <EditDebt item={editDebt.item} />
 
         <div className={isSidebarOpen ? 'page sidebarOpen' : 'page'}>
           <Header />

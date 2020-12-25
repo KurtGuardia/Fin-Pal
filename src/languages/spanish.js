@@ -71,9 +71,7 @@ const spanish = {
     contact: 'Contacto',
   },
   debts: {
-    title: 'Añadir Deuda',
     debts: 'Deudas',
-    amount: 'Monto',
     concept: 'Concepto',
     dueDate: 'Vencimiento',
     liqTime: 'Tiempo de liquidación',
@@ -82,8 +80,21 @@ const spanish = {
     days: 'Días',
     expired: 'EL TIEMPO EXPIRÓ',
     btnText: 'Añadir Deuda',
+  },
+  addDebts: {
+    title: 'Añadir Deuda',
+    amount: 'Monto',
     name: 'Nombre',
     description: 'Descripción',
+    date: 'Fecha de Liquidación',
+    btnText: 'Añadir',
+  },
+  editDebts: {
+    title: 'Editar Deuda',
+    name: 'Nombre',
+    description: 'Descripción',
+    amount: 'Monto',
+    btn: 'Editar',
     date: 'Fecha de Liquidación',
   },
 };

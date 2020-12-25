@@ -26,7 +26,6 @@ const TransactionItem = ({ id, type, name, description, amount, date }) => {
 
   const handleEdit = () => {
     const item = { id, type, name, description, amount, date };
-
     dispatch(toggleEditTransactionModal(item));
   };
 

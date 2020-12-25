@@ -5,3 +5,4 @@ export { default as Header } from './Header/Header';
 export { default as SettingsForm } from './SettingsForm/SettingsForm';
 export { default as Sidebar } from './Sidebar/Sidebar';
 export { default as AddDebt } from './AddDebt/AddDebt';
+export { default as EditDebt } from './EditDebt/EditDebt';

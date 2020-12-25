@@ -28,6 +28,10 @@ const Main = () => {
   for (let i = 0; i < finance.expenses.length; i++) {
     totalExpense += +finance.expenses[i].amount;
   }
+  let totalDebts = 0;
+  for (let i = 0; i < finance.debts.length; i++) {
+    totalDebts += +finance.debts[i].amount;
+  }
 
   useEffect(() => {
     let totalBalance = totalIncome - totalExpense;
@@ -57,7 +61,7 @@ const Main = () => {
             <Debts2 />
           </div>
           <span className='title'>{content.debts}</span>
-          <span className='amount'></span>
+          <span className='amount'>{formatMoney(totalDebts)}</span>
         </div>
       </div>
     </div>

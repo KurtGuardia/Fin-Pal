@@ -20,9 +20,9 @@ const AddDebt = () => {
 
   useEffect(() => {
     if (language === 'english') {
-      setContent({ ...english.debts });
+      setContent({ ...english.addDebts });
     } else if (language === 'spanish') {
-      setContent({ ...spanish.debts });
+      setContent({ ...spanish.addDebts });
     }
   }, [language]);
 
