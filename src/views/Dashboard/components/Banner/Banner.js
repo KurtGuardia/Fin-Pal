@@ -5,6 +5,7 @@ import './Banner.scss';
 import { english, spanish } from '../../../../languages';
 
 const Banner = () => {
+  const profile = useSelector((state) => state.firebase.profile);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
 
@@ -43,7 +44,9 @@ const Banner = () => {
   return (
     <div className='banner'>
       <div className='banner__text'>
-        <h1>{content.title} Kurt</h1>
+        <h1>
+          {content.title} {profile.firstName}
+        </h1>
         <p className='banner__text--date'>
           {content.today}: {date}
         </p>

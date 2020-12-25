@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Btn } from '../../components/UI';
 import { english, spanish } from '../../languages';
 import { formatMoney } from '../../shared/utility';
@@ -8,11 +9,15 @@ import './Balance.scss';
 import TransactionItem from './components/TransactionItem/TransactionItem';
 
 const Balance = () => {
+  const auth = useSelector((state) => state.firebase.auth);
   const finance = useSelector((state) => state.finance);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  if (!auth.uid) history.push('/auth');
 
   useEffect(() => {
     if (language === 'english') {

@@ -1,12 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Banner from './components/Banner/Banner';
 import Main from './components/Main/Main';
 import RecentMovements from './components/RecentMovements/RecentMovements';
 import './Dashboard.scss';
 
 const Dashboard = () => {
+  const auth = useSelector((state) => state.firebase.auth);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
+  const history = useHistory();
+
+  if (!auth.uid) history.push('/auth');
 
   return (
     <div

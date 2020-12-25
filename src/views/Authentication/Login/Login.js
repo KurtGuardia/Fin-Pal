@@ -5,6 +5,7 @@ import { english, spanish } from '../../../languages';
 import '../Auth.scss';
 import { Eye, Hide } from '../../../assets/icons';
 import { login } from '../../../store/actions/authActions';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -16,6 +17,9 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isHidePassword, setIsHidePassword] = useState(true);
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  if (auth.uid) history.push('/');
 
   useEffect(() => {
     if (language === 'english') {

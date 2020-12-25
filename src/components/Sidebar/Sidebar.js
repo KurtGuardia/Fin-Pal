@@ -14,6 +14,7 @@ import { Modal } from '../UI';
 import { english, spanish } from '../../languages';
 
 const Sidebar = () => {
+  const auth = useSelector((state) => state.firebase.auth);
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
   const language = useSelector((state) => state.settings.language);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
@@ -49,14 +50,15 @@ const Sidebar = () => {
       </div>
 
       <ul className='sidebar__menu'>
-        {sidebarLinks.map((link, i) => (
-          <SidebarLink
-            key={link.id}
-            {...link}
-            text={content && content[i]}
-            isSidebarOpen={isSidebarOpen}
-          />
-        ))}
+        {auth.uid &&
+          sidebarLinks.map((link, i) => (
+            <SidebarLink
+              key={link.id}
+              {...link}
+              text={content && content[i]}
+              isSidebarOpen={isSidebarOpen}
+            />
+          ))}
         <li onClick={() => dispatch(toggleSettingsModal())}>
           <div className='sidebar-link settingsBtn'>
             <Settings />

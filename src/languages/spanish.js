@@ -63,6 +63,13 @@ const spanish = {
       pin: 'Por favor introduce un pin numérico de 4 dígitos ',
     },
   },
+  user: {
+    firstName: 'Nombre',
+    lastName: 'Apellido/s',
+    password: 'Contraseña',
+    logOut: 'Salir',
+    contact: 'Contacto',
+  },
 };
 
 export default spanish;

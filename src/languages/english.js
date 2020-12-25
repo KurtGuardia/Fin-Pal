@@ -63,6 +63,13 @@ const english = {
       pin: 'Please set a numeric 4 digits pin ',
     },
   },
+  user: {
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    password: 'Password',
+    logOut: 'Log Out',
+    contact: 'Contact',
+  },
 };
 
 export default english;

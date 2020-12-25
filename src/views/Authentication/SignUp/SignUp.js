@@ -6,6 +6,7 @@ import '../Auth.scss';
 import { Eye, Hide } from '../../../assets/icons';
 import { re } from '../../../shared/utility';
 import { signup } from '../../../store/actions/authActions';
+import { useHistory } from 'react-router-dom';
 
 const SignUp = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -25,6 +26,11 @@ const SignUp = () => {
     password2: '',
     pin: '',
   });
+  const history = useHistory();
+
+  useEffect(() => {
+    if (auth.uid) history.push('/');
+  }, [auth]);
 
   useEffect(() => {
     if (language === 'english') {

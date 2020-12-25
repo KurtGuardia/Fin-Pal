@@ -24,7 +24,7 @@ const EditTransaction = ({ item }) => {
     // eslint-disable-next-line
   }, [language]);
 
-  const addTransaction = (e) => {
+  const editTransaction = (e) => {
     e.preventDefault();
 
     const editedItem = {
@@ -60,7 +60,7 @@ const EditTransaction = ({ item }) => {
         </h2>
         <span onClick={() => dispatch(toggleEditTransactionModal())}>x</span>
       </div>
-      <form className='modal__info' onSubmit={addTransaction}>
+      <form className='modal__info' onSubmit={editTransaction}>
         <div className='modal__info--setting'>
           <label>{content?.name}</label>
           <input
