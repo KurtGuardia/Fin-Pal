@@ -16,6 +16,7 @@ import {
   toggleEditTransactionModal,
   toggleAddDebtModal,
   toggleEditDebtModal,
+  toggleAddArticleModal,
 } from './store/actions/settingsActions';
 import {
   SettingsForm,
@@ -25,6 +26,7 @@ import {
   EditTransaction,
   AddDebt,
   EditDebt,
+  AddArticle,
 } from './components';
 import { Backdrop } from './components/UI';
 import useFirestore from './hooks/useFirestore';
@@ -43,6 +45,7 @@ function App() {
     if (doc.finance) {
       dispatch(syncData(doc.finance));
     }
+    // eslint-disable-next-line
   }, [uid, doc.finance]);
 
   const {
@@ -51,6 +54,7 @@ function App() {
     editTransaction,
     isAddDebtOpen,
     editDebt,
+    isAddArticleOpen,
   } = modals;
 
   return (
@@ -78,11 +82,16 @@ function App() {
           <Backdrop clicked={() => dispatch(toggleEditDebtModal())} />
         )}
 
+        {isAddArticleOpen && (
+          <Backdrop clicked={() => dispatch(toggleAddArticleModal())} />
+        )}
+
         <SettingsForm />
         <AddTransaction />
         <EditTransaction item={editTransaction.item} />
         <AddDebt />
         <EditDebt item={editDebt.item} />
+        <AddArticle />
 
         <div className={isSidebarOpen ? 'page sidebarOpen' : 'page'}>
           <Header />

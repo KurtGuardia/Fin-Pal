@@ -36,7 +36,7 @@ const Main = () => {
   useEffect(() => {
     let totalBalance = totalIncome - totalExpense;
     setTotal(totalBalance);
-  }, [finance]);
+  }, [finance, totalIncome, totalExpense]);
 
   return (
     <div className='main'>

@@ -13,7 +13,7 @@ const User = () => {
   const profile = useSelector((state) => state.firebase.profile);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
-  const { firstName, lastName, email, password, pin } = profile;
+  const { firstName, lastName, email, password } = profile;
   const dispatch = useDispatch();
   const history = useHistory();
 

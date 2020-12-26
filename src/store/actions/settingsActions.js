@@ -49,3 +49,9 @@ export const toggleEditDebtModal = (item) => {
     payload: item,
   };
 };
+
+export const toggleAddArticleModal = () => {
+  return {
+    type: 'TOGGLE_ADD_ARTICLE_MODAL',
+  };
+};

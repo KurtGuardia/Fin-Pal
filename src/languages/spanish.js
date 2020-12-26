@@ -97,6 +97,15 @@ const spanish = {
     btn: 'Editar',
     date: 'Fecha de Liquidación',
   },
+  stock: {
+    stock: 'Inventario',
+    article: 'Artículo',
+    quantity: 'Cantidad',
+    unitCost: 'Costo Unitario',
+    totalCost: 'Costo Total',
+    dueDate: 'Vencimeinto',
+    btnText: 'Añadir Artículo',
+  },
 };
 
 export default spanish;

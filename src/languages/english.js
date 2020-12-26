@@ -98,6 +98,15 @@ const english = {
     btn: 'Edit',
     date: 'Liquidation Date',
   },
+  stock: {
+    stock: 'Stock',
+    article: 'Article',
+    quantity: 'Quantity',
+    unitCost: 'Unit Cost',
+    totalCost: 'Total Cost',
+    dueDate: 'Due Date',
+    btnText: 'Add Article',
+  },
 };
 
 export default english;

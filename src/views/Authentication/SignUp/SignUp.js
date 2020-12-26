@@ -30,6 +30,7 @@ const SignUp = () => {
 
   useEffect(() => {
     if (auth.uid) history.push('/');
+    // eslint-disable-next-line
   }, [auth]);
 
   useEffect(() => {

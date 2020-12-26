@@ -48,7 +48,6 @@ const Login = () => {
           required
           placeholder='Email'
           value={email}
-          required
           onChange={(e) => {
             setEmail(e.target.value);
           }}
