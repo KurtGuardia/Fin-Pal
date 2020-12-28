@@ -106,6 +106,15 @@ const spanish = {
     dueDate: 'Vencimeinto',
     btnText: 'Añadir Artículo',
   },
+  addArticle: {
+    title: 'Añadir Artículo',
+    totalCost: 'Costo Total',
+    name: 'Nombre',
+    description: 'Descripción',
+    date: 'Fecha de Vencimiento',
+    btnText: 'Añadir',
+    quantity: 'Cantidad',
+  },
 };
 
 export default spanish;

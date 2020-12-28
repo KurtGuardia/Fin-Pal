@@ -107,6 +107,15 @@ const english = {
     dueDate: 'Due Date',
     btnText: 'Add Article',
   },
+  addArticle: {
+    title: 'Add Article',
+    totalCost: 'Total Cost',
+    name: 'Name',
+    description: 'Description',
+    date: 'Expiring Date',
+    btnText: 'Add',
+    quantity: 'Quantity',
+  },
 };
 
 export default english;

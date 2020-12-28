@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Edit, TrashCan } from '../../../assets/icons';
 import { formatMoney } from '../../../shared/utility';
-// import { removeDebt } from '../../../store/actions/financeActions';
+import { removeArticle } from '../../../store/actions/financeActions';
 // import { toggleEditDebtModal } from '../../../store/actions/settingsActions';
 import './Article.scss';
 
@@ -59,7 +59,7 @@ const Article = ({
       quantity,
       dueDate,
     };
-    // dispatch(removeDebt(item));
+    dispatch(removeArticle(item));
   };
 
   return (

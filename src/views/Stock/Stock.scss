@@ -19,7 +19,7 @@
     }
 
     & p {
-      padding: 0.5rem 2rem;
+      padding: 0.5rem 1.95rem;
       text-align: center;
     }
 
@@ -45,29 +45,33 @@
       background-color: #eee;
       border-bottom: 1px dotted #333;
 
+      & p:not(:first-child) {
+        width: 9rem;
+      }
+
       & p:first-child {
         flex: 1;
       }
 
       & p:last-child {
-        margin-right: 85px;
+        margin-right: 5rem;
+      }
+    }
+
+    &.dark {
+      background-color: #000;
+
+      .stock__container--subtitle {
+        background-color: #222;
+      }
+
+      .stock__container--content {
+        background-color: #222;
       }
     }
   }
 
   &--content {
     background-color: #eee;
-  }
-
-  &.dark {
-    background-color: #000;
-
-    .stock__container--subtitle {
-      background-color: #222;
-    }
-
-    .stock__container--content {
-      background-color: #222;
-    }
   }
 }

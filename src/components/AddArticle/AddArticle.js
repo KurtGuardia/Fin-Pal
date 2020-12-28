@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Btn, Modal } from '../UI';
-// import { toggleAddDebtModal } from '../../store/actions/settingsActions';
-// import { addArticle } from '../../store/actions/financeActions';
+import { addArticle } from '../../store/actions/financeActions';
 import { useEffect, useState } from 'react';
 import { english, spanish } from '../../languages';
 import { v4 as uuidv4 } from 'uuid';
+import { toggleAddArticleModal } from '../../store/actions/settingsActions';
 
 const AddArticle = () => {
   const isAddArticleOpen = useSelector(
@@ -15,23 +15,23 @@ const AddArticle = () => {
   const [name, setName] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [totalCost, setTotalCost] = useState('');
-  const [quantity, setQuantity] = useState(''); // ESTE NO ESTA AGREGADO
+  const [quantity, setQuantity] = useState('');
   const [content, setContent] = useState({});
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (language === 'english') {
-      setContent({ ...english.addArticle }); //AUN NO HAY ESTOS OBJETOS EN LOS IDIOMAS
+      setContent({ ...english.addArticle });
     } else if (language === 'spanish') {
       setContent({ ...spanish.addArticle });
     }
   }, [language]);
 
-  const addCurDebt = (e) => {
+  const addCurArticle = (e) => {
     e.preventDefault();
 
     const item = {
-      type: 'debt',
+      type: 'stock',
       name,
       description,
       totalCost,
@@ -40,14 +40,15 @@ const AddArticle = () => {
       id: uuidv4(),
     };
 
-    // dispatch(addDebt(item));
+    dispatch(addArticle(item));
 
     setName('');
     setDescription('');
     setTotalCost('');
+    setQuantity('');
 
     setTimeout(() => {
-      dispatch(isAddArticleOpen());
+      dispatch(toggleAddArticleModal());
     }, 300);
   };
 
@@ -58,7 +59,7 @@ const AddArticle = () => {
         <span onClick={() => dispatch(isAddArticleOpen())}>X</span>
       </div>
 
-      <form className='modal__info' onSubmit={addCurDebt}>
+      <form className='modal__info' onSubmit={addCurArticle}>
         <div className='modal__info--setting'>
           <label>{content.name}</label>
           <input
@@ -82,12 +83,21 @@ const AddArticle = () => {
         </div>
 
         <div className='modal__info--setting'>
-          <label>{content.totalCost}</label>
+          <label>{content.quantity}</label>
+          <input
+            type='number'
+            placeholder={content.quantity}
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className='modal__info--setting'>
           <label>{content.totalCost}</label>
           <input
             type='number'
             placeholder='€€'
-            value={totalCost}
             value={totalCost}
             onChange={(e) => setTotalCost(e.target.value)}
             required
@@ -98,7 +108,7 @@ const AddArticle = () => {
           <label>{content.date}</label>
           <input
             type='date'
-            placeholder={content.date}
+            placeholder={content.dueDate}
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
             required

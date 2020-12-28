@@ -50,7 +50,7 @@ const Stock = () => {
         </div>
         <div className='stock__container--content'>
           {finance.stock.map((article) => (
-            <Article {...article} />
+            <Article {...article} key={article.id} />
           ))}
         </div>
       </div>

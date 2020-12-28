@@ -257,28 +257,56 @@ export const removeDebt = (debt) => {
   };
 };
 
-// export const addDebt = (article) => {
-//   return (dispatch, getState, { getFirebase, getFirestore }) => {
-//     const firestore = getFirestore();
-//     const uid = getState().firebase.auth.uid;
-//     const profile = getState().firebase.profile;
-//     const newStock = [...profile.finance.stock, article];
+export const addArticle = (article) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newStock = [...profile.finance.stock, article];
 
-//     firestore
-//       .collection('users')
-//       .doc(uid)
-//       .set({
-//         ...profile,
-//         finance: {
-//           ...profile.finance,
-//           stock: newStock,
-//         },
-//       })
-//       .then((res) => {
-//         console.log('article added');
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          stock: newStock,
+        },
+      })
+      .then((res) => {
+        console.log('article added');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const removeArticle = (article) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newStock = [
+      ...profile.finance.stock.filter((art) => art.id !== article.id),
+    ];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          stock: newStock,
+        },
+      })
+      .then(() => {
+        console.log('article removed');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};

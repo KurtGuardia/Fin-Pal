@@ -44,8 +44,9 @@
     justify-content: center;
     align-items: center;
 
-    & p:first-child {
-      padding-right: 3rem;
+    & > p {
+      width: 9rem;
+      padding: 0;
     }
   }
 
