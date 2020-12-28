@@ -50,8 +50,8 @@ export const toggleEditDebtModal = (item) => {
   };
 };
 
-export const toggleAddArticleModal = () => {
+export const toggleAddItemModal = () => {
   return {
-    type: 'TOGGLE_ADD_ARTICLE_MODAL',
+    type: 'TOGGLE_ADD_ITEM_MODAL',
   };
 };

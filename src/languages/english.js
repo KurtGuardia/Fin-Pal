@@ -100,21 +100,30 @@ const english = {
   },
   stock: {
     stock: 'Stock',
-    article: 'Article',
+    item: 'Item',
     quantity: 'Quantity',
     unitCost: 'Unit Cost',
     totalCost: 'Total Cost',
     dueDate: 'Due Date',
-    btnText: 'Add Article',
+    btnText: 'Add Item',
   },
-  addArticle: {
-    title: 'Add Article',
+  addItem: {
+    title: 'Add Item',
     totalCost: 'Total Cost',
     name: 'Name',
     description: 'Description',
     date: 'Expiring Date',
     btnText: 'Add',
     quantity: 'Quantity',
+  },
+  editItem: {
+    title: 'Edit Item',
+    name: 'Name',
+    description: 'Description',
+    quantity: 'Quantity',
+    totalCost: 'Total Cost',
+    btn: 'Edit',
+    date: 'Expiring Date',
   },
 };
 

@@ -6,7 +6,7 @@ import './Stock.scss';
 import Article from './components/Article';
 import { formatMoney } from '../../shared/utility';
 import { english, spanish } from '../../languages';
-import { toggleAddArticleModal } from '../../store/actions/settingsActions';
+import { toggleAddItemModal } from '../../store/actions/settingsActions';
 
 const Stock = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -57,7 +57,7 @@ const Stock = () => {
       <Btn
         text={content.btnText}
         symbol='+'
-        clicked={() => dispatch(toggleAddArticleModal())}
+        clicked={() => dispatch(toggleAddItemModal())}
       />
     </div>
   );

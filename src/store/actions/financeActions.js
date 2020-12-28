@@ -257,12 +257,12 @@ export const removeDebt = (debt) => {
   };
 };
 
-export const addArticle = (article) => {
+export const addItem = (item) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
-    const newStock = [...profile.finance.stock, article];
+    const newStock = [...profile.finance.stock, item];
 
     firestore
       .collection('users')
@@ -275,7 +275,7 @@ export const addArticle = (article) => {
         },
       })
       .then((res) => {
-        console.log('article added');
+        console.log('item added');
       })
       .catch((err) => {
         console.log(err);

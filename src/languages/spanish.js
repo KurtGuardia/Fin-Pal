@@ -99,21 +99,30 @@ const spanish = {
   },
   stock: {
     stock: 'Inventario',
-    article: 'Artículo',
+    item: 'Item',
     quantity: 'Cantidad',
     unitCost: 'Costo Unitario',
     totalCost: 'Costo Total',
     dueDate: 'Vencimeinto',
-    btnText: 'Añadir Artículo',
+    btnText: 'Añadir Item',
   },
   addArticle: {
-    title: 'Añadir Artículo',
+    title: 'Añadir Item',
     totalCost: 'Costo Total',
     name: 'Nombre',
     description: 'Descripción',
     date: 'Fecha de Vencimiento',
     btnText: 'Añadir',
     quantity: 'Cantidad',
+  },
+  editItem: {
+    title: 'Editar Item',
+    name: 'Nombre',
+    description: 'Descripción',
+    totalCost: 'Costo Total',
+    quantity: 'Cantidad',
+    btn: 'Editar',
+    date: 'Expiring Date',
   },
 };
 

@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Btn, Modal } from '../UI';
-import { addArticle } from '../../store/actions/financeActions';
+import { addItem } from '../../store/actions/financeActions';
 import { useEffect, useState } from 'react';
 import { english, spanish } from '../../languages';
 import { v4 as uuidv4 } from 'uuid';
-import { toggleAddArticleModal } from '../../store/actions/settingsActions';
+import { toggleAddItemModal } from '../../store/actions/settingsActions';
 
-const AddArticle = () => {
-  const isAddArticleOpen = useSelector(
-    (state) => state.settings.modals.isAddArticleOpen
+const AddItem = () => {
+  const isAddItemOpen = useSelector(
+    (state) => state.settings.modals.isAddItemOpen
   );
   const language = useSelector((state) => state.settings.language);
   const [description, setDescription] = useState('');
@@ -21,13 +21,13 @@ const AddArticle = () => {
 
   useEffect(() => {
     if (language === 'english') {
-      setContent({ ...english.addArticle });
+      setContent({ ...english.addItem });
     } else if (language === 'spanish') {
-      setContent({ ...spanish.addArticle });
+      setContent({ ...spanish.addItem });
     }
   }, [language]);
 
-  const addCurArticle = (e) => {
+  const addCurItem = (e) => {
     e.preventDefault();
 
     const item = {
@@ -40,7 +40,7 @@ const AddArticle = () => {
       id: uuidv4(),
     };
 
-    dispatch(addArticle(item));
+    dispatch(addItem(item));
 
     setName('');
     setDescription('');
@@ -48,18 +48,18 @@ const AddArticle = () => {
     setQuantity('');
 
     setTimeout(() => {
-      dispatch(toggleAddArticleModal());
+      dispatch(toggleAddItemModal());
     }, 300);
   };
 
   return (
-    <Modal show={isAddArticleOpen}>
+    <Modal show={isAddItemOpen}>
       <div className='modal__title'>
         <h2>{content.title}</h2>
-        <span onClick={() => dispatch(isAddArticleOpen())}>X</span>
+        <span onClick={() => dispatch(toggleAddItemModal())}>X</span>
       </div>
 
-      <form className='modal__info' onSubmit={addCurArticle}>
+      <form className='modal__info' onSubmit={addCurItem}>
         <div className='modal__info--setting'>
           <label>{content.name}</label>
           <input
@@ -123,4 +123,4 @@ const AddArticle = () => {
   );
 };
 
-export default AddArticle;
+export default AddItem;
