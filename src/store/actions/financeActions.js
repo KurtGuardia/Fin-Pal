@@ -256,3 +256,87 @@ export const removeDebt = (debt) => {
       });
   };
 };
+
+export const addItem = (item) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newStock = [...profile.finance.stock, item];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          stock: newStock,
+        },
+      })
+      .then((res) => {
+        console.log('item added');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const removeItem = (item) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newStock = [
+      ...profile.finance.stock.filter((art) => art.id !== item.id),
+    ];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          stock: newStock,
+        },
+      })
+      .then(() => {
+        console.log('item removed');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const editItem = (editedItem) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const editedItemIndex = profile.finance.stock.findIndex(
+      (item) => item.id === editedItem.id
+    );
+    const newStock = [...profile.finance.stock];
+    newStock[editedItemIndex] = editedItem;
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          stock: newStock,
+        },
+      })
+      .then(() => {
+        console.log('item added');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};

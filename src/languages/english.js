@@ -98,6 +98,33 @@ const english = {
     btn: 'Edit',
     date: 'Liquidation Date',
   },
+  stock: {
+    stock: 'Stock',
+    item: 'Item',
+    quantity: 'Quantity',
+    unitCost: 'Unit Cost',
+    totalCost: 'Total Cost',
+    dueDate: 'Due Date',
+    btnText: 'Add Item',
+  },
+  addItem: {
+    title: 'Add Item',
+    totalCost: 'Total Cost',
+    name: 'Name',
+    description: 'Description',
+    date: 'Expiring Date',
+    btnText: 'Add',
+    quantity: 'Quantity',
+  },
+  editItem: {
+    title: 'Edit Item',
+    name: 'Name',
+    description: 'Description',
+    quantity: 'Quantity',
+    totalCost: 'Total Cost',
+    btn: 'Edit',
+    date: 'Expiring Date',
+  },
 };
 
 export default english;

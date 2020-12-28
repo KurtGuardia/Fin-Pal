@@ -11,6 +11,11 @@ const initState = {
       isOpen: false,
       item: {},
     },
+    isAddItemOpen: false,
+    editItem: {
+      isOpen: false,
+      item: {},
+    },
   },
   isSidebarOpen: false,
   isDarkMode: false,
@@ -76,6 +81,25 @@ export const settingsReducer = (state = initState, action) => {
           ...state.modals,
           editDebt: {
             isOpen: !state.modals.editDebt.isOpen,
+            item: action.payload,
+          },
+        },
+      };
+    case 'TOGGLE_ADD_ITEM_MODAL':
+      return {
+        ...state,
+        modals: {
+          ...state.modals,
+          isAddItemOpen: !state.modals.isAddItemOpen,
+        },
+      };
+    case 'TOGGLE_EDIT_ITEM_MODAL':
+      return {
+        ...state,
+        modals: {
+          ...state.modals,
+          editItem: {
+            isOpen: !state.modals.editItem.isOpen,
             item: action.payload,
           },
         },

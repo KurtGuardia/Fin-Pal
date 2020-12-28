@@ -6,3 +6,5 @@ export { default as SettingsForm } from './SettingsForm/SettingsForm';
 export { default as Sidebar } from './Sidebar/Sidebar';
 export { default as AddDebt } from './AddDebt/AddDebt';
 export { default as EditDebt } from './EditDebt/EditDebt';
+export { default as AddItem } from './AddItem/AddItem';
+export { default as EditItem } from './EditItem/EditItem';
