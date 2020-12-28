@@ -106,7 +106,7 @@ const spanish = {
     dueDate: 'Vencimeinto',
     btnText: 'Añadir Item',
   },
-  addArticle: {
+  addItem: {
     title: 'Añadir Item',
     totalCost: 'Costo Total',
     name: 'Nombre',

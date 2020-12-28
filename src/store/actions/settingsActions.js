@@ -55,3 +55,10 @@ export const toggleAddItemModal = () => {
     type: 'TOGGLE_ADD_ITEM_MODAL',
   };
 };
+
+export const toggleEditItemModal = (item) => {
+  return {
+    type: 'TOGGLE_EDIT_ITEM_MODAL',
+    payload: item,
+  };
+};

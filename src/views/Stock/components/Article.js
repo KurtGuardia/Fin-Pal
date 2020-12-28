@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Edit, TrashCan } from '../../../assets/icons';
 import { formatMoney } from '../../../shared/utility';
-import { removeArticle } from '../../../store/actions/financeActions';
-// import { toggleEditDebtModal } from '../../../store/actions/settingsActions';
+import { removeItem } from '../../../store/actions/financeActions';
+import { toggleEditItemModal } from '../../../store/actions/settingsActions';
 import './Article.scss';
 
 const Article = ({
@@ -46,7 +46,7 @@ const Article = ({
       quantity,
       dueDate,
     };
-    // dispatch(toggleEditDebtModal(item));
+    dispatch(toggleEditItemModal(item));
   };
 
   const handleDelete = () => {
@@ -59,7 +59,7 @@ const Article = ({
       quantity,
       dueDate,
     };
-    dispatch(removeArticle(item));
+    dispatch(removeItem(item));
   };
 
   return (

@@ -1,30 +1,31 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleEditDebtModal } from '../../store/actions/settingsActions';
-import { editDebt } from '../../store/actions/financeActions';
+import { toggleEditItemModal } from '../../store/actions/settingsActions';
+import { editItem } from '../../store/actions/financeActions';
 import { Modal, Btn } from '../UI';
 import { english, spanish } from '../../languages';
 
 const EditDebt = ({ item }) => {
-  const edit = useSelector((state) => state.settings.modals.editDebt);
+  const edit = useSelector((state) => state.settings.modals.editItem);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [totalCost, setTotalCost] = useState('');
   const [dueDate, setDueDate] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (language === 'english') {
-      setContent({ ...english.editDebts });
+      setContent({ ...english.editItem });
     } else if (language === 'spanish') {
-      setContent({ ...spanish.editDebts });
+      setContent({ ...spanish.editItem });
     }
     // eslint-disable-next-line
   }, [language]);
 
-  const editCurDebt = (e) => {
+  const editCurItem = (e) => {
     e.preventDefault();
 
     const editedItem = {
@@ -32,19 +33,21 @@ const EditDebt = ({ item }) => {
       type: item.type,
       name,
       description,
-      amount,
+      totalCost,
+      quantity,
       dueDate,
     };
 
-    dispatch(editDebt(editedItem));
+    dispatch(editItem(editedItem));
 
     setName('');
     setDescription('');
-    setAmount('');
+    setQuantity('');
+    setTotalCost('');
     setDueDate('');
 
     setTimeout(() => {
-      dispatch(toggleEditDebtModal());
+      dispatch(toggleEditItemModal());
     }, 300);
   };
 
@@ -54,9 +57,9 @@ const EditDebt = ({ item }) => {
         <h2>
           {content?.title}: {item?.name}
         </h2>
-        <span onClick={() => dispatch(toggleEditDebtModal())}>x</span>
+        <span onClick={() => dispatch(toggleEditItemModal())}>x</span>
       </div>
-      <form className='modal__info' onSubmit={editCurDebt}>
+      <form className='modal__info' onSubmit={editCurItem}>
         <div className='modal__info--setting'>
           <label>{content?.name}</label>
           <input
@@ -80,12 +83,23 @@ const EditDebt = ({ item }) => {
         </div>
 
         <div className='modal__info--setting'>
-          <label>{content?.amount}</label>
+          <label>{content?.quantity}</label>
           <input
             type='number'
-            placeholder={item?.amount}
-            onChange={(e) => setAmount(+e.target.value)}
-            value={amount}
+            placeholder={item?.quantity}
+            onChange={(e) => setQuantity(+e.target.value)}
+            value={quantity}
+            required
+          />
+        </div>
+
+        <div className='modal__info--setting'>
+          <label>{content?.totalCost}</label>
+          <input
+            type='number'
+            placeholder={item?.totalCost}
+            onChange={(e) => setTotalCost(+e.target.value)}
+            value={totalCost}
             required
           />
         </div>
