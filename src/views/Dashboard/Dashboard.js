@@ -6,6 +6,7 @@ import Main from './components/Main/Main';
 import RecentMovements from './components/RecentMovements/RecentMovements';
 import './Dashboard.scss';
 import { Header } from '../../components';
+import { Chart } from '../../assets/images';
 
 const Dashboard = () => {
   const auth = useSelector((state) => state.firebase.auth);

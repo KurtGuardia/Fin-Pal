@@ -64,10 +64,10 @@
       }
 
       &.expenses {
-        border-left: 10px solid #f39c12;
+        border-left: 10px solid #c0392b;
         transition: all 0.3s;
         &:hover {
-          background-color: #f39c12 !important;
+          background-color: #c0392b !important;
 
           .main__summary--icon {
             display: none;
@@ -76,10 +76,10 @@
       }
 
       &.debts {
-        border-left: 10px solid #c0392b;
+        border-left: 10px solid #1f4992;
         transition: all 0.3s;
         &:hover {
-          background-color: #c0392b !important;
+          background-color: #1f4992 !important;
 
           .main__summary--icon {
             display: none;
