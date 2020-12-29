@@ -11,6 +11,7 @@ import { formatMoney } from '../../../../shared/utility';
 
 const TransactionItem = ({ id, type, name, description, amount, date }) => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
+  const lock = useSelector((state) => state.firebase.profile.isAccountLocked);
   const [isItemOpen, setIsItemOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -44,10 +45,12 @@ const TransactionItem = ({ id, type, name, description, amount, date }) => {
         <span className='transaction-item__face--amount'>
           {formatMoney(amount)}
         </span>
-        <div className='transaction-item__face--icons'>
-          <Edit onClick={handleEdit} />
-          <TrashCan onClick={handleDelete} />
-        </div>
+        {!lock && (
+          <div className='transaction-item__face--icons'>
+            <Edit onClick={handleEdit} />
+            <TrashCan onClick={handleDelete} />
+          </div>
+        )}
       </div>
       {isItemOpen && (
         <div className='transaction-item__data'>

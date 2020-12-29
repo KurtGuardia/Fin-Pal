@@ -9,6 +9,7 @@ import './Debt.scss';
 
 const Debt = ({ id, type, name, description, amount, dueDate }) => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
+  const lock = useSelector((state) => state.firebase.profile.isAccountLocked);
   const [isItemOpen, setIsItemOpen] = useState(false);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
@@ -90,8 +91,12 @@ const Debt = ({ id, type, name, description, amount, dueDate }) => {
         <p className='liqTime'>{getLiqTime(dueDate)}</p>
       </div>
       <div className='debt__icons'>
-        <Edit onClick={handleEdit} />
-        <TrashCan onClick={handleDelete} />
+        {!lock && (
+          <>
+            <Edit onClick={handleEdit} />
+            <TrashCan onClick={handleDelete} />
+          </>
+        )}
       </div>
     </li>
   );

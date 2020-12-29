@@ -15,7 +15,7 @@ const LockAccount = () => {
   const [content, setContent] = useState({});
   const profile = useSelector((state) => state.firebase.profile);
   const [code, setCode] = useState([]);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(' ');
 
   useEffect(() => {
     if (language === 'english') {
