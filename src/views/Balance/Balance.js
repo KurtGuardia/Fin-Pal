@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Btn } from '../../components/UI';
+import { Header } from '../../components';
 import { english, spanish } from '../../languages';
 import { formatMoney } from '../../shared/utility';
 import { toggleAddTransactionModal } from '../../store/actions/settingsActions';
@@ -37,41 +38,45 @@ const Balance = () => {
   }
 
   return (
-    <div className='balance content'>
-      <div
-        className={
-          isDarkMode ? 'balance__container dark' : 'balance__container'
-        }
-      >
-        <div className='balance__container--left'>
-          <div className='title'>
-            <p>{content.incomes}</p>
-            <small>{formatMoney(totalIncome)}</small>
+    <>
+      {' '}
+      <Header />
+      <div className='balance content'>
+        <div
+          className={
+            isDarkMode ? 'balance__container dark' : 'balance__container'
+          }
+        >
+          <div className='balance__container--left'>
+            <div className='title'>
+              <p>{content.incomes}</p>
+              <small>{formatMoney(totalIncome)}</small>
+            </div>
+            <ul className='items'>
+              {finance?.incomes?.map((income) => (
+                <TransactionItem key={income.id} {...income} />
+              ))}
+            </ul>
           </div>
-          <ul className='items'>
-            {finance?.incomes?.map((income) => (
-              <TransactionItem key={income.id} {...income} />
-            ))}
-          </ul>
-        </div>
-        <div className='balance__container--right'>
-          <div className='title'>
-            <p>{content.expenses}</p>
-            <small>{formatMoney(totalExpense)}</small>
+          <div className='balance__container--right'>
+            <div className='title'>
+              <p>{content.expenses}</p>
+              <small>{formatMoney(totalExpense)}</small>
+            </div>
+            <ul className='items'>
+              {finance?.expenses?.map((expense) => (
+                <TransactionItem key={expense.id} {...expense} />
+              ))}
+            </ul>
           </div>
-          <ul className='items'>
-            {finance?.expenses?.map((expense) => (
-              <TransactionItem key={expense.id} {...expense} />
-            ))}
-          </ul>
         </div>
+        <Btn
+          text={content?.btnText}
+          symbol='+'
+          clicked={() => dispatch(toggleAddTransactionModal())}
+        />
       </div>
-      <Btn
-        text={content?.btnText}
-        symbol='+'
-        clicked={() => dispatch(toggleAddTransactionModal())}
-      />
-    </div>
+    </>
   );
 };
 

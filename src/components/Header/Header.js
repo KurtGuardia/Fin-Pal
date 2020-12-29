@@ -5,13 +5,15 @@ import { Search } from '../../assets/icons';
 import english from '../../languages/english';
 import spanish from '../../languages/spanish';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Header = () => {
   const language = useSelector((state) => state.settings.language);
   const auth = useSelector((state) => state.firebase.auth);
   const profile = useSelector((state) => state.firebase.profile);
   const [text, setText] = useState('');
+  const [displaySearch, setDisplaySearch] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     if (language === 'english') {
@@ -21,22 +23,31 @@ const Header = () => {
     }
   }, [language]);
 
+  useEffect(() => {
+    if (history.location.pathname === '/') {
+      setDisplaySearch(false);
+    }
+  }, [history]);
+
   const initials = () => {
     const first = profile?.firstName?.slice(0, 1);
     const last = profile?.lastName?.slice(0, 1);
-
     return (first + last).toString();
   };
 
   return (
     <div className={auth.uid ? 'header' : 'hidden'}>
       <div className='header__input'>
-        <input
-          type='text'
-          className='header__input--search'
-          placeholder={text}
-        />
-        <Search className='header__input--icon' />
+        {displaySearch ? (
+          <>
+            <input
+              type='text'
+              className='header__input--search'
+              placeholder={text}
+            />
+            <Search className='header__input--icon' />
+          </>
+        ) : null}
       </div>
 
       <Link className='header__user' to='/user'>

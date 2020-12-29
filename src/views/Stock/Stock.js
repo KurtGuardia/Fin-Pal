@@ -7,6 +7,7 @@ import Article from './components/Article';
 import { formatMoney } from '../../shared/utility';
 import { english, spanish } from '../../languages';
 import { toggleAddItemModal } from '../../store/actions/settingsActions';
+import { Header } from '../../components';
 
 const Stock = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -33,33 +34,36 @@ const Stock = () => {
   if (!auth.uid) history.push('/auth');
 
   return (
-    <div className='stock content'>
-      <div
-        className={isDarkMode ? 'stock__container dark' : 'stock__container'}
-      >
-        <div className='stock__container--title'>
-          <p>{content.stock}</p>
-          <small>{formatMoney(totalStock)}</small>
+    <>
+      <Header />
+      <div className='stock content'>
+        <div
+          className={isDarkMode ? 'stock__container dark' : 'stock__container'}
+        >
+          <div className='stock__container--title'>
+            <p>{content.stock}</p>
+            <small>{formatMoney(totalStock)}</small>
+          </div>
+          <div className='stock__container--subtitle'>
+            <p>{content.article}</p>
+            <p>{content.quantity}</p>
+            <p>{content.totalCost}</p>
+            <p>{content.unitCost}</p>
+            <p>{content.dueDate}</p>
+          </div>
+          <div className='stock__container--content'>
+            {finance.stock.map((article) => (
+              <Article {...article} key={article.id} />
+            ))}
+          </div>
         </div>
-        <div className='stock__container--subtitle'>
-          <p>{content.article}</p>
-          <p>{content.quantity}</p>
-          <p>{content.totalCost}</p>
-          <p>{content.unitCost}</p>
-          <p>{content.dueDate}</p>
-        </div>
-        <div className='stock__container--content'>
-          {finance.stock.map((article) => (
-            <Article {...article} key={article.id} />
-          ))}
-        </div>
+        <Btn
+          text={content.btnText}
+          symbol='+'
+          clicked={() => dispatch(toggleAddItemModal())}
+        />
       </div>
-      <Btn
-        text={content.btnText}
-        symbol='+'
-        clicked={() => dispatch(toggleAddItemModal())}
-      />
-    </div>
+    </>
   );
 };
 

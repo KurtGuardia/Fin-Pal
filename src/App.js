@@ -21,7 +21,6 @@ import {
 } from './store/actions/settingsActions';
 import {
   SettingsForm,
-  Header,
   Sidebar,
   AddTransaction,
   EditTransaction,
@@ -102,7 +101,6 @@ function App() {
         <EditItem item={editItem.item} />
 
         <div className={isSidebarOpen ? 'page sidebarOpen' : 'page'}>
-          <Header />
           <Switch>
             <Route exact path='/' component={Dashboard} />
             <Route path='/balance' component={Balance} />
