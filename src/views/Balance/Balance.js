@@ -8,6 +8,7 @@ import { formatMoney } from '../../shared/utility';
 import { toggleAddTransactionModal } from '../../store/actions/settingsActions';
 import './Balance.scss';
 import TransactionItem from './components/TransactionItem/TransactionItem';
+import { Revenue } from '../../assets/images';
 
 const Balance = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -77,7 +78,8 @@ const Balance = () => {
             symbol='+'
             clicked={() => dispatch(toggleAddTransactionModal())}
           />
-        )}
+        )}{' '}
+        <Revenue className='balance__icon' />
       </div>
     </>
   );

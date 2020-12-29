@@ -3,3 +3,7 @@ export { ReactComponent as FinpalDark } from './finpal-dark.svg';
 export { ReactComponent as FinpalLight } from './finpal-light.svg';
 export { ReactComponent as Wallet } from './wallet.svg';
 export { ReactComponent as Profile } from './profile.svg';
+export { ReactComponent as Chart } from './chart.svg';
+export { ReactComponent as Revenue } from './revenue.svg';
+export { ReactComponent as StockIcon } from './stock.svg';
+export { ReactComponent as Business } from './business.svg';

@@ -13,6 +13,7 @@
     flex-direction: column;
     width: 65vw;
     height: fit-content;
+    z-index: 1;
 
     & > * {
       width: 100%;
@@ -32,6 +33,7 @@
       text-align: center;
       color: #fff;
       background-color: #107360;
+      background-color: #945d1f;
       border-top-left-radius: 15px;
       border-top-right-radius: 15px;
       padding: 1rem;
@@ -73,5 +75,15 @@
 
   &--content {
     background-color: #eee;
+  }
+
+  &__icon {
+    position: absolute;
+    right: 10rem;
+    bottom: 3rem;
+    width: 30rem;
+    height: auto;
+    z-index: 0;
+    filter: opacity(80%);
   }
 }

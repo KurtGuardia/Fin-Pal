@@ -8,6 +8,7 @@ import { formatMoney } from '../../shared/utility';
 import { english, spanish } from '../../languages';
 import { toggleAddItemModal } from '../../store/actions/settingsActions';
 import { Header } from '../../components';
+import { StockIcon } from '../../assets/images';
 
 const Stock = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -65,6 +66,7 @@ const Stock = () => {
             clicked={() => dispatch(toggleAddItemModal())}
           />
         )}
+        <StockIcon className='stock__icon' />
       </div>
     </>
   );

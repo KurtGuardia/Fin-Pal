@@ -8,6 +8,7 @@ import Debt from './components/Debt';
 import { Btn } from '../../components/UI';
 import { toggleAddDebtModal } from '../../store/actions/settingsActions';
 import { Header } from '../../components';
+import { Business } from '../../assets/images';
 
 const Debts = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -67,6 +68,7 @@ const Debts = () => {
             clicked={() => dispatch(toggleAddDebtModal())}
           />
         )}
+        <Business className='debts__icon' />
       </div>
     </>
   );
