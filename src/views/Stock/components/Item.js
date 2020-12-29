@@ -4,9 +4,9 @@ import { Edit, TrashCan } from '../../../assets/icons';
 import { formatMoney } from '../../../shared/utility';
 import { removeItem } from '../../../store/actions/financeActions';
 import { toggleEditItemModal } from '../../../store/actions/settingsActions';
-import './Article.scss';
+import './Item.scss';
 
-const Article = ({
+const Item = ({
   id,
   type,
   name,
@@ -16,6 +16,7 @@ const Article = ({
   dueDate,
 }) => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
+  const lock = useSelector((state) => state.firebase.profile.isAccountLocked);
   const [isItemOpen, setIsItemOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -66,16 +67,16 @@ const Article = ({
     <li
       className={
         isDarkMode
-          ? `article dark ${getUrgency(dueDate)}`
-          : `article ${getUrgency(dueDate)}`
+          ? `item dark ${getUrgency(dueDate)}`
+          : `item ${getUrgency(dueDate)}`
       }
       onClick={() => setIsItemOpen(!isItemOpen)}
     >
-      <div className='article__concept'>
+      <div className='item__concept'>
         <p>{name}</p>
         {isItemOpen && <p>{description}</p>}
       </div>
-      <div className='article__extra'>
+      <div className='item__extra'>
         <p className='quantity'>{quantity}</p>
         <p className='cost-total'>{formatMoney(totalCost)}</p>
         <p className='cost-unit'>
@@ -83,12 +84,17 @@ const Article = ({
         </p>
         <p className='dueDate'>{dueDate}</p>
       </div>
-      <div className='article__icons'>
-        <Edit onClick={handleEdit} />
-        <TrashCan onClick={handleDelete} />
+      <div className='item__icons'>
+        {!lock && (
+          <>
+            {' '}
+            <Edit onClick={handleEdit} />
+            <TrashCan onClick={handleDelete} />{' '}
+          </>
+        )}
       </div>
     </li>
   );
 };
 
-export default Article;
+export default Item;

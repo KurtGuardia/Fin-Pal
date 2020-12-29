@@ -1,4 +1,4 @@
-.article {
+.item {
   cursor: pointer;
   padding: 0.5rem 0;
   display: flex;
@@ -66,7 +66,7 @@
     transform: translateY(-0.5rem);
     text-transform: uppercase;
 
-    .article__icons {
+    .item__icons {
       & > * {
         fill: #107360;
       }
@@ -78,12 +78,12 @@
 
     &:hover {
       background-color: #333;
-      .article__icons svg {
+      .item__icons svg {
         fill: #107360;
       }
     }
 
-    .article__icons svg {
+    .item__icons svg {
       fill: #444;
     }
   }

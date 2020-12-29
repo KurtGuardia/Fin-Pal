@@ -18,6 +18,7 @@ import {
   toggleEditDebtModal,
   toggleAddItemModal,
   toggleEditItemModal,
+  toggleLockAccountModal,
 } from './store/actions/settingsActions';
 import {
   SettingsForm,
@@ -28,11 +29,13 @@ import {
   EditDebt,
   AddItem,
   EditItem,
+  LockAccount,
 } from './components';
 import { Backdrop } from './components/UI';
 import useFirestore from './hooks/useFirestore';
 import { useEffect } from 'react';
 import { syncData } from './store/actions/financeActions';
+import { lockState } from './store/actions/lockActions';
 
 function App() {
   const uid = useSelector((state) => state.firebase.auth.uid);
@@ -49,6 +52,13 @@ function App() {
     // eslint-disable-next-line
   }, [uid, doc.finance]);
 
+  useEffect(() => {
+    if (doc.isAccountLocked) {
+      dispatch(lockState(doc.isAccountLocked));
+    }
+    // eslint-disable-next-line
+  }, [uid, doc.isAccountLocked]);
+
   const {
     isSettingsOpen,
     isAddTransactionOpen,
@@ -57,6 +67,7 @@ function App() {
     editDebt,
     isAddItemOpen,
     editItem,
+    isLockAccountOpen,
   } = modals;
 
   return (
@@ -66,6 +77,10 @@ function App() {
 
         {isSettingsOpen && (
           <Backdrop clicked={() => dispatch(toggleSettingsModal())} />
+        )}
+
+        {isLockAccountOpen && (
+          <Backdrop clicked={() => dispatch(toggleLockAccountModal())} />
         )}
 
         {isAddTransactionOpen && (
@@ -93,6 +108,7 @@ function App() {
         )}
 
         <SettingsForm />
+        <LockAccount />
         <AddTransaction />
         <EditTransaction item={editTransaction.item} />
         <AddDebt />

@@ -14,6 +14,7 @@ const Balance = () => {
   const finance = useSelector((state) => state.finance);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
+  const lock = useSelector((state) => state.firebase.profile.isAccountLocked);
   const [content, setContent] = useState({});
   const dispatch = useDispatch();
   const history = useHistory();
@@ -70,11 +71,13 @@ const Balance = () => {
             </ul>
           </div>
         </div>
-        <Btn
-          text={content?.btnText}
-          symbol='+'
-          clicked={() => dispatch(toggleAddTransactionModal())}
-        />
+        {!lock && (
+          <Btn
+            text={content?.btnText}
+            symbol='+'
+            clicked={() => dispatch(toggleAddTransactionModal())}
+          />
+        )}
       </div>
     </>
   );

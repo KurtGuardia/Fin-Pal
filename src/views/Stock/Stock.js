@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Btn } from '../../components/UI';
 import './Stock.scss';
-import Article from './components/Article';
+import Item from './components/Item';
 import { formatMoney } from '../../shared/utility';
 import { english, spanish } from '../../languages';
 import { toggleAddItemModal } from '../../store/actions/settingsActions';
@@ -11,6 +11,7 @@ import { Header } from '../../components';
 
 const Stock = () => {
   const auth = useSelector((state) => state.firebase.auth);
+  const lock = useSelector((state) => state.firebase.profile.isAccountLocked);
   const finance = useSelector((state) => state.finance);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
@@ -45,23 +46,25 @@ const Stock = () => {
             <small>{formatMoney(totalStock)}</small>
           </div>
           <div className='stock__container--subtitle'>
-            <p>{content.article}</p>
+            <p>{content.item}</p>
             <p>{content.quantity}</p>
             <p>{content.totalCost}</p>
             <p>{content.unitCost}</p>
             <p>{content.dueDate}</p>
           </div>
           <div className='stock__container--content'>
-            {finance.stock.map((article) => (
-              <Article {...article} key={article.id} />
+            {finance.stock.map((item) => (
+              <Item {...item} key={item.id} />
             ))}
           </div>
         </div>
-        <Btn
-          text={content.btnText}
-          symbol='+'
-          clicked={() => dispatch(toggleAddItemModal())}
-        />
+        {!lock && (
+          <Btn
+            text={content.btnText}
+            symbol='+'
+            clicked={() => dispatch(toggleAddItemModal())}
+          />
+        )}
       </div>
     </>
   );

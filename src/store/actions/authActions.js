@@ -52,6 +52,7 @@ export const signup = (newUser) => {
               expenses: [],
               debts: [],
             },
+            isAccountLocked: false,
           });
       })
       .then(() => {

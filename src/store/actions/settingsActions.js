@@ -62,3 +62,9 @@ export const toggleEditItemModal = (item) => {
     payload: item,
   };
 };
+
+export const toggleLockAccountModal = () => {
+  return {
+    type: 'TOGGLE_LOCK_ACCOUNT_MODAL',
+  };
+};

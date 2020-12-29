@@ -1,0 +1,56 @@
+.numbers {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & .row {
+    width: fit-content;
+    margin: 0.25rem 0;
+
+    & .number {
+      cursor: pointer;
+      font-size: xx-large;
+      margin: 0.5rem 1rem;
+      padding: 0 1rem;
+      border: none;
+      background: none;
+      border-bottom: 2px solid #107360;
+      transition: all 0.5s;
+
+      &:hover {
+        background: linear-gradient(#ffffff, #d3ffd7c2 100%);
+        border-bottom: 2px solid #107360;
+      }
+
+      &:active,
+      &:focus {
+        background: #107360;
+        border-radius: 5px;
+        color: #ffffff;
+        outline: none;
+        border-bottom: 2px solid #107360;
+      }
+    }
+  }
+}
+
+.dark .modal__info--setting .numbers {
+  & .number {
+    color: #fff;
+
+    &:hover {
+      background: linear-gradient(#333, #124410c2 100%);
+    }
+
+    &:active,
+    &:focus {
+      background: #107360;
+      border-radius: 5px;
+      color: #ffffff;
+      outline: none;
+      border-bottom: 2px solid #107360;
+    }
+  }
+}

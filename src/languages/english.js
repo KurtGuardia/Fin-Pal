@@ -125,6 +125,13 @@ const english = {
     btn: 'Edit',
     date: 'Expiring Date',
   },
+  lockAccount: {
+    incorrectPin: 'Incorrect Pin',
+    enter: 'Enter your PIN to ',
+    block: 'Block',
+    unblock: 'Unblock',
+    end: 'your account',
+  },
 };
 
 export default english;
