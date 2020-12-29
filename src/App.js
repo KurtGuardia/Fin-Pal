@@ -18,6 +18,7 @@ import {
   toggleEditDebtModal,
   toggleAddItemModal,
   toggleEditItemModal,
+  toggleLockAccountModal,
 } from './store/actions/settingsActions';
 import {
   SettingsForm,
@@ -28,6 +29,7 @@ import {
   EditDebt,
   AddItem,
   EditItem,
+  LockAccount,
 } from './components';
 import { Backdrop } from './components/UI';
 import useFirestore from './hooks/useFirestore';
@@ -57,6 +59,7 @@ function App() {
     editDebt,
     isAddItemOpen,
     editItem,
+    isLockAccountOpen,
   } = modals;
 
   return (
@@ -66,6 +69,10 @@ function App() {
 
         {isSettingsOpen && (
           <Backdrop clicked={() => dispatch(toggleSettingsModal())} />
+        )}
+
+        {isLockAccountOpen && (
+          <Backdrop clicked={() => dispatch(toggleLockAccountModal())} />
         )}
 
         {isAddTransactionOpen && (
@@ -93,6 +100,7 @@ function App() {
         )}
 
         <SettingsForm />
+        <LockAccount />
         <AddTransaction />
         <EditTransaction item={editTransaction.item} />
         <AddDebt />

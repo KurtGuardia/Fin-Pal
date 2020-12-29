@@ -16,6 +16,7 @@ const initState = {
       isOpen: false,
       item: {},
     },
+    isLockAccountOpen: false,
   },
   isSidebarOpen: false,
   isDarkMode: false,
@@ -102,6 +103,14 @@ export const settingsReducer = (state = initState, action) => {
             isOpen: !state.modals.editItem.isOpen,
             item: action.payload,
           },
+        },
+      };
+    case 'TOGGLE_LOCK_ACCOUNT_MODAL':
+      return {
+        ...state,
+        modals: {
+          ...state.modals,
+          isLockAccountOpen: !state.modals.isLockAccountOpen,
         },
       };
     default:
