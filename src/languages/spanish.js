@@ -124,6 +124,9 @@ const spanish = {
     btn: 'Editar',
     date: 'Expiring Date',
   },
+  lockAccount: {
+    incorrectPin: 'Pin Incorrecto',
+  },
 };
 
 export default spanish;

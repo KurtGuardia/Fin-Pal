@@ -125,6 +125,9 @@ const english = {
     btn: 'Edit',
     date: 'Expiring Date',
   },
+  lockAccount: {
+    incorrectPin: 'Incorrect Pin',
+  },
 };
 
 export default english;

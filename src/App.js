@@ -35,6 +35,7 @@ import { Backdrop } from './components/UI';
 import useFirestore from './hooks/useFirestore';
 import { useEffect } from 'react';
 import { syncData } from './store/actions/financeActions';
+import { lockState } from './store/actions/lockActions';
 
 function App() {
   const uid = useSelector((state) => state.firebase.auth.uid);
@@ -50,6 +51,13 @@ function App() {
     }
     // eslint-disable-next-line
   }, [uid, doc.finance]);
+
+  useEffect(() => {
+    if (doc.isAccountLocked) {
+      dispatch(lockState(doc.isAccountLocked));
+    }
+    // eslint-disable-next-line
+  }, [uid, doc.isAccountLocked]);
 
   const {
     isSettingsOpen,
