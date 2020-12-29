@@ -125,7 +125,11 @@ const spanish = {
     date: 'Expiring Date',
   },
   lockAccount: {
-    incorrectPin: 'Pin Incorrecto',
+    incorrectPin: ' Pin Incorrecto',
+    enter: 'Introduce tu PIN para ',
+    block: 'Bloquear',
+    unblock: 'Desbloquear',
+    end: 'tu cuenta',
   },
 };
 

@@ -15,6 +15,7 @@ const LockAccount = () => {
   const [content, setContent] = useState({});
   const profile = useSelector((state) => state.firebase.profile);
   const [code, setCode] = useState([]);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
     if (language === 'english') {
@@ -30,19 +31,21 @@ const LockAccount = () => {
     const stringCodeNoCommas = codeInString.replace(/,/g, '');
     if (stringCodeNoCommas === profile.pin) {
       dispatch(toggleLock(!profile.isAccountLocked));
+      dispatch(toggleLockAccountModal());
+      setErrorMsg(null);
+    } else {
+      setErrorMsg(content.incorrectPin);
     }
     setCode([]);
-    dispatch(toggleLockAccountModal());
   };
 
   return (
     <Modal show={isLockAccountOpen}>
       <div className='modal__title'>
         <p>
-          Enter your Pin to block the accont{' '}
-          <small style={{ color: 'red', fontWeight: 'bold', padding: '2rem' }}>
-            Pin incorrecto
-          </small>
+          {content.enter}
+          {profile.isAccountLocked ? content.unblock : content.block}{' '}
+          {content.end}
         </p>
 
         <span onClick={() => dispatch(toggleLockAccountModal())}>X</span>
@@ -173,9 +176,23 @@ const LockAccount = () => {
             </div>
           </div>
         </div>
+        <small
+          style={{
+            color: 'red',
+            fontWeight: 'bold',
+            margin: 'auto',
+            fontSize: 'x-large',
+          }}
+        >
+          {' '}
+          {errorMsg}
+        </small>
         <div className='modal__info--btn'>
           {' '}
-          <Btn text='Enter' symbol='✓' />
+          <Btn
+            text={profile.isAccountLocked ? content.unblock : content.block}
+            symbol='✓'
+          />
         </div>
       </form>
     </Modal>
