@@ -23,7 +23,9 @@ const RecentMovements = () => {
       <h2 className='recentMovements__title'>Recent Movements</h2>
       <ul className='recentMovements__content'>
         {profile.recentMovements.map((recentMovementItem, index) => {
-          return <RecentMovement index={index} />;
+          return (
+            <RecentMovement index={index} key={recentMovementItem.info.id} />
+          );
         })}
       </ul>
     </div>

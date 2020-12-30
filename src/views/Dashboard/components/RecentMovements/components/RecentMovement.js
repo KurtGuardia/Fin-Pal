@@ -8,6 +8,7 @@ const RecentMovement = ({ index }) => {
   const profile = useSelector((state) => state.firebase.profile);
   const [isOpen, setIsOpen] = useState(false);
   const [content, setContent] = useState('');
+  let date;
 
   useEffect(() => {
     if (language === 'english') {
@@ -19,15 +20,24 @@ const RecentMovement = ({ index }) => {
 
   const type = () => {
     if (profile.recentMovements[index].info.type === 'income') {
-      return 'income';
+      return 'recentMoventIncome';
     } else if (profile.recentMovements[index].info.type === 'expense') {
-      return 'expense';
+      return 'recentMoventExpense';
     } else if (profile.recentMovements[index].info.type === 'stock') {
-      return 'stock';
+      return 'recentMoventStock';
     } else if (profile.recentMovements[index].info.type === 'debt') {
-      return 'debt';
+      return 'recentMoventDebt';
     }
   };
+
+  const displayDate = () => {
+    if (profile.recentMovements[index].info.date) {
+      date = profile.recentMovements[index].info.date;
+    } else if (profile.recentMovements[index].info.dueDate) {
+      date = profile.recentMovements[index].info.dueDate;
+    }
+  };
+  displayDate();
 
   return (
     <li
@@ -46,9 +56,7 @@ const RecentMovement = ({ index }) => {
       {isOpen && (
         <div className='extra'>
           <span>{profile.recentMovements[index].info.description} </span>
-          <small className='date'>
-            | {profile.recentMovements[index].info.date}
-          </small>
+          <small className='date'>| {date}</small>
         </div>
       )}
     </li>

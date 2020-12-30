@@ -55,20 +55,20 @@
         }
       }
 
-      &.income {
+      &.recentMoventIncome {
         border-left: 10px solid rgb(16, 115, 96);
       }
 
-      &.expense {
+      &.recentMoventExpense {
         border-left: 10px solid #c0392b;
       }
 
-      &.debt {
+      &.recentMoventDebt {
         border-left: 10px solid #1f4992;
       }
 
-      &.stock {
-        border-left: 10px solid #945d1f;
+      &.recentMoventStock {
+        border-left: 10px solid #e2871e;
       }
     }
   }
