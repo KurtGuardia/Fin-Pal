@@ -12,13 +12,13 @@ export const addIncome = (income) => {
     const profile = getState().firebase.profile;
     const newIncomes = [...profile.finance.incomes, income];
     const newRecentMovementItem = { info: income, type: 'added' };
-    const newRecentMovements = [
-      ...profile.recentMovements,
-      newRecentMovementItem,
-    ];
+    const recentMovements = [...profile.recentMovements];
+
+    recentMovements.unshift(newRecentMovementItem);
+    const newRecentMovements = recentMovements;
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -48,13 +48,13 @@ export const addExpense = (expense) => {
     const profile = getState().firebase.profile;
     const newExpenses = [...profile.finance.expenses, expense];
     const newRecentMovementItem = { info: expense, type: 'added' };
-    const newRecentMovements = [
-      ...profile.recentMovements,
-      newRecentMovementItem,
-    ];
+    const recentMovements = [...profile.recentMovements];
+
+    recentMovements.unshift(newRecentMovementItem);
+    const newRecentMovements = recentMovements;
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -96,7 +96,7 @@ export const removeIncome = (income) => {
     );
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -138,7 +138,7 @@ export const removeExpense = (expense) => {
     );
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -186,7 +186,7 @@ export const editIncome = (editedIncome) => {
     );
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -234,7 +234,7 @@ export const editExpense = (editedExpense) => {
     );
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -264,13 +264,13 @@ export const addDebt = (debt) => {
     const profile = getState().firebase.profile;
     const newDebts = [...profile.finance.debts, debt];
     const newRecentMovementItem = { info: debt, type: 'added' };
-    const newRecentMovements = [
-      ...profile.recentMovements,
-      newRecentMovementItem,
-    ];
+    const recentMovements = [...profile.recentMovements];
+
+    recentMovements.unshift(newRecentMovementItem);
+    const newRecentMovements = recentMovements;
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -312,7 +312,7 @@ export const removeDebt = (debt) => {
     );
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -360,7 +360,7 @@ export const editDebt = (editedDebt) => {
     );
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -390,13 +390,13 @@ export const addItem = (item) => {
     const profile = getState().firebase.profile;
     const newStock = [...profile.finance.stock, item];
     const newRecentMovementItem = { info: item, type: 'added' };
-    const newRecentMovements = [
-      ...profile.recentMovements,
-      newRecentMovementItem,
-    ];
+    const recentMovements = [...profile.recentMovements];
+
+    recentMovements.unshift(newRecentMovementItem);
+    const newRecentMovements = recentMovements;
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -438,7 +438,7 @@ export const removeItem = (item) => {
     );
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
@@ -486,7 +486,7 @@ export const editItem = (editedItem) => {
     );
 
     if (newRecentMovements.length > 8) {
-      newRecentMovements.shift();
+      newRecentMovements.pop();
     }
 
     firestore
