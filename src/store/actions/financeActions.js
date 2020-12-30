@@ -11,6 +11,11 @@ export const addIncome = (income) => {
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
     const newIncomes = [...profile.finance.incomes, income];
+    const newRecentMovementItem = { info: income, type: 'added' };
+    const newRecentMovements = [
+      ...profile.recentMovements,
+      newRecentMovementItem,
+    ];
 
     firestore
       .collection('users')
@@ -21,6 +26,7 @@ export const addIncome = (income) => {
           ...profile.finance,
           incomes: newIncomes,
         },
+        recentMovements: newRecentMovements,
       })
       .then((res) => {
         console.log('income added');
@@ -37,6 +43,11 @@ export const addExpense = (expense) => {
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
     const newExpenses = [...profile.finance.expenses, expense];
+    const newRecentMovementItem = { info: expense, type: 'added' };
+    const newRecentMovements = [
+      ...profile.recentMovements,
+      newRecentMovementItem,
+    ];
 
     firestore
       .collection('users')
@@ -47,6 +58,7 @@ export const addExpense = (expense) => {
           ...profile.finance,
           expenses: newExpenses,
         },
+        recentMovements: newRecentMovements,
       })
       .then(() => {
         console.log('expense added');
@@ -65,6 +77,11 @@ export const removeIncome = (income) => {
     const newIncomes = [
       ...profile.finance.incomes.filter((inc) => inc.id !== income.id),
     ];
+    const newRecentMovements = [
+      ...profile.recentMovements.filter(
+        (recentMovementItem) => recentMovementItem.info.id !== income.id
+      ),
+    ];
 
     firestore
       .collection('users')
@@ -75,6 +92,7 @@ export const removeIncome = (income) => {
           ...profile.finance,
           incomes: newIncomes,
         },
+        recentMovements: newRecentMovements,
       })
       .then(() => {
         console.log('income removed');
@@ -93,6 +111,11 @@ export const removeExpense = (expense) => {
     const newExpenses = [
       ...profile.finance.expenses.filter((exp) => exp.id !== expense.id),
     ];
+    const newRecentMovements = [
+      ...profile.recentMovements.filter(
+        (recentMovementItem) => recentMovementItem.info.id !== expense.id
+      ),
+    ];
 
     firestore
       .collection('users')
@@ -103,6 +126,7 @@ export const removeExpense = (expense) => {
           ...profile.finance,
           expenses: newExpenses,
         },
+        recentMovements: newRecentMovements,
       })
       .then(() => {
         console.log('expense removed');
@@ -199,6 +223,40 @@ export const addDebt = (debt) => {
   };
 };
 
+export const removeDebt = (debt) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newDebts = [
+      ...profile.finance.debts.filter((deb) => deb.id !== debt.id),
+    ];
+    const newRecentMovements = [
+      ...profile.recentMovements.filter(
+        (recentMovementItem) => recentMovementItem.info.id !== debt.id
+      ),
+    ];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          debts: newDebts,
+        },
+        recentMovements: newRecentMovements,
+      })
+      .then(() => {
+        console.log('debt removed');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export const editDebt = (editedDebt) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
@@ -222,34 +280,6 @@ export const editDebt = (editedDebt) => {
       })
       .then(() => {
         console.log('debt added');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
-
-export const removeDebt = (debt) => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
-    const firestore = getFirestore();
-    const uid = getState().firebase.auth.uid;
-    const profile = getState().firebase.profile;
-    const newDebts = [
-      ...profile.finance.debts.filter((deb) => deb.id !== debt.id),
-    ];
-
-    firestore
-      .collection('users')
-      .doc(uid)
-      .set({
-        ...profile,
-        finance: {
-          ...profile.finance,
-          debts: newDebts,
-        },
-      })
-      .then(() => {
-        console.log('debt removed');
       })
       .catch((err) => {
         console.log(err);
@@ -291,6 +321,11 @@ export const removeItem = (item) => {
     const newStock = [
       ...profile.finance.stock.filter((art) => art.id !== item.id),
     ];
+    const newRecentMovements = [
+      ...profile.recentMovements.filter(
+        (recentMovementItem) => recentMovementItem.info.id !== item.id
+      ),
+    ];
 
     firestore
       .collection('users')
@@ -301,6 +336,7 @@ export const removeItem = (item) => {
           ...profile.finance,
           stock: newStock,
         },
+        recentMovements: newRecentMovements,
       })
       .then(() => {
         console.log('item removed');

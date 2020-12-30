@@ -1,15 +1,75 @@
+//___________________________________________________________________________________________________//
+//INDIVIDUAL RECENTMOVEMENTITEM STYLES ARE WORKED HERE
+//___________________________________________________________________________________________________//
+
 .recentMovements {
   height: 99%;
   margin: 2rem;
   border-radius: 15px;
-  padding: 2rem;
+  min-width: 30rem;
 
-  h2 {
+  &__title {
+    margin: 1rem;
+    padding: 1.5rem;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding-bottom: 1rem;
     border-bottom: 2px solid #107360;
     color: #107360;
+  }
+
+  &__content {
+    margin: 1.5rem;
+    list-style: none;
+
+    &--item {
+      cursor: pointer;
+      padding: 1rem;
+      margin: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #fff;
+      position: relative;
+      border-radius: 10px;
+
+      & .face {
+        display: flex;
+        justify-content: space-between;
+
+        & .type {
+          transform: translateY(0.75rem);
+        }
+      }
+
+      & .extra {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & .date {
+          width: 6rem;
+        }
+      }
+
+      &.income {
+        border-left: 10px solid rgb(16, 115, 96);
+      }
+
+      &.expense {
+        border-left: 10px solid #c0392b;
+      }
+
+      &.debt {
+        border-left: 10px solid #1f4992;
+      }
+
+      &.stock {
+        border-left: 10px solid #945d1f;
+      }
+    }
   }
 }
