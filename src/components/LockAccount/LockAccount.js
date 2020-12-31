@@ -10,12 +10,12 @@ const LockAccount = () => {
   const isLockAccountOpen = useSelector(
     (state) => state.settings.modals.isLockAccountOpen
   );
-  const dispatch = useDispatch();
   const language = useSelector((state) => state.settings.language);
-  const [content, setContent] = useState({});
   const profile = useSelector((state) => state.firebase.profile);
+  const [content, setContent] = useState({});
   const [code, setCode] = useState([]);
   const [errorMsg, setErrorMsg] = useState(' ');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (language === 'english') {
