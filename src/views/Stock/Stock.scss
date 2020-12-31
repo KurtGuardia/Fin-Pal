@@ -14,6 +14,25 @@
     width: 65vw;
     height: fit-content;
     z-index: 1;
+    max-height: 55vh;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 1em;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 15px;
+      background-color: #107360;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #10735fcc;
+    }
+
+    &::-webkit-scrollbar-thumb:active {
+      background-color: #10735fcc;
+    }
 
     & > * {
       width: 100%;
@@ -80,7 +99,7 @@
     position: absolute;
     right: 10rem;
     bottom: 3rem;
-    width: 30rem;
+    width: 25%;
     height: auto;
     z-index: 0;
     filter: opacity(80%);
