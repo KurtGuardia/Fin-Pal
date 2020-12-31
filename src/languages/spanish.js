@@ -131,6 +131,7 @@ const spanish = {
     unblock: 'Desbloquear',
     end: 'tu cuenta',
   },
+  recentMovements: 'Movimientos Recientes',
 };
 
 export default spanish;

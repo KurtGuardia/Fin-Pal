@@ -3,10 +3,30 @@
 //___________________________________________________________________________________________________//
 
 .recentMovements {
-  height: 99%;
+  background-color: #eee;
+  min-width: 25vw;
+  height: 44rem;
   margin: 2rem;
   border-radius: 15px;
   min-width: 30rem;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 1em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: #107360;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #10735fcc;
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background-color: #10735fcc;
+  }
 
   &__title {
     margin: 1rem;
@@ -23,6 +43,12 @@
     margin: 1.5rem;
     list-style: none;
 
+    &.dark {
+      & .recentMovements__content--item {
+        background-color: #333;
+      }
+    }
+
     &--item {
       cursor: pointer;
       padding: 1rem;
@@ -38,8 +64,14 @@
         display: flex;
         justify-content: space-between;
 
-        & .type {
-          transform: translateY(0.75rem);
+        & .text {
+          flex: 1;
+          display: flex;
+          align-items: center;
+
+          & .name {
+            margin-right: 1rem;
+          }
         }
       }
 

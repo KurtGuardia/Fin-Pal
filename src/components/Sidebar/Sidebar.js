@@ -41,7 +41,6 @@ const Sidebar = () => {
           : 'sidebar'
       }
     >
-      <Modal />
       <div className='sidebar__logo'>
         <Link to='/'>
           {isDarkMode ? <FinpalDark /> : <FinpalLight />}

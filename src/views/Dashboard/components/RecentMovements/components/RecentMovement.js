@@ -9,6 +9,7 @@ const RecentMovement = ({ index }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [content, setContent] = useState('');
   let date;
+  let amount;
 
   useEffect(() => {
     if (language === 'english') {
@@ -39,23 +40,32 @@ const RecentMovement = ({ index }) => {
   };
   displayDate();
 
+  const displayAmount = () => {
+    if (profile.recentMovements[index].info.amount) {
+      amount = profile.recentMovements[index].info.amount;
+    } else if (profile.recentMovements[index].info.totalCost) {
+      amount = profile.recentMovements[index].info.totalCost;
+    }
+  };
+  displayAmount();
+
   return (
     <li
       className={`recentMovements__content--item ${type()}`}
       onClick={() => setIsOpen(!isOpen)}
     >
       <div className='face'>
-        <span className='name'>{profile.recentMovements[index].info.name}</span>
-        {isOpen && (
+        <div className='text'>
+          <span className='name'>
+            {profile.recentMovements[index].info.type}
+          </span>
           <small className='type'>{profile.recentMovements[index].type}</small>
-        )}
-        <span className='amount'>
-          {formatMoney(profile.recentMovements[index].info.amount)}
-        </span>
+        </div>
+        <span className='amount'>{formatMoney(amount)}</span>
       </div>
       {isOpen && (
         <div className='extra'>
-          <span>{profile.recentMovements[index].info.description} </span>
+          <span>{profile.recentMovements[index].info.name} </span>
           <small className='date'>| {date}</small>
         </div>
       )}

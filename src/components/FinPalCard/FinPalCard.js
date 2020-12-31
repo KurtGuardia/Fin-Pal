@@ -3,16 +3,13 @@ import './FinPalCard.scss';
 import { ToggleBtn } from '../../components/UI';
 import { formatMoney } from '../../shared/utility';
 import { toggleLockAccountModal } from '../../store/actions/settingsActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const FinPalCard = ({ amount }) => {
-  const [isCardBlock, setIsCardBlock] = useState(false);
+  const isAccountLocked = useSelector(
+    (state) => state.firebase.profile.isAccountLocked
+  );
   const dispatch = useDispatch();
-
-  const toggleLockAccount = () => {
-    setIsCardBlock(true);
-    dispatch(toggleLockAccountModal());
-  };
 
   return (
     <div className='finpalCard main__card'>
@@ -23,8 +20,8 @@ const FinPalCard = ({ amount }) => {
       </span>
       <span className='finpalCard__btn'>
         <ToggleBtn
-          isToggleOn={isCardBlock}
-          changeToggle={() => toggleLockAccount()}
+          isToggleOn={isAccountLocked}
+          changeToggle={() => dispatch(toggleLockAccountModal())}
         />
       </span>
     </div>

@@ -11,15 +11,6 @@
     }
   }
 
-  &__right {
-    min-width: 25vw;
-
-    & > div {
-      background-color: #eee;
-      height: 80%;
-    }
-  }
-
   &.dark {
     .dashboard__left,
     .dashboard__right {
