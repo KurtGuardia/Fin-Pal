@@ -6,9 +6,9 @@
   background-color: #eee;
   min-width: 25vw;
   height: 44rem;
+  max-height: 72vh;
   margin: 2rem;
   border-radius: 15px;
-  min-width: 30rem;
   overflow-x: hidden;
 
   &::-webkit-scrollbar {
@@ -59,6 +59,7 @@
       background-color: #fff;
       position: relative;
       border-radius: 10px;
+      transition: all 0.3s;
 
       & .face {
         display: flex;
@@ -101,6 +102,10 @@
 
       &.recentMoventStock {
         border-left: 10px solid #e2871e;
+      }
+
+      &:hover {
+        transform: translateY(-0.5rem);
       }
     }
   }

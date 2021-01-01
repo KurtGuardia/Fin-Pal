@@ -1,9 +1,10 @@
 .finpalCard {
   background: url(../../assets/images/card.svg);
-  height: 259px;
+  height: 16rem;
   width: 25rem;
   position: relative;
-  border-radius: 15px;
+  border-radius: 20px;
+  border-bottom-left-radius: 30px;
 
   &__money {
     color: #fff;
