@@ -58,6 +58,10 @@
 
   .sidebar.open {
     width: 12%;
+
+    @media screen and (max-width: 1300px) {
+      width: 14%;
+    }
   }
 
   .content {

@@ -7,7 +7,10 @@
   border-bottom-left-radius: 30px;
   display: flex;
   align-items: center;
-  // transition: all 0.3s;
+
+  @media screen and (max-width: 1300px) {
+    margin-left: -20px;
+  }
 
   &:hover {
     background-color: rgba($color: #fff, $alpha: 0.2);
