@@ -53,11 +53,11 @@ const Stock = () => {
             <p>{content.unitCost}</p>
             <p>{content.dueDate}</p>
           </div>
-          <div className='stock__container--content'>
+          <ul className='stock__container--content'>
             {finance.stock.map((item) => (
               <Item {...item} key={item.id} />
             ))}
-          </div>
+          </ul>
         </div>
         {!lock && (
           <Btn
