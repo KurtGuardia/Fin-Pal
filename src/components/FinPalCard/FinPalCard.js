@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './FinPalCard.scss';
 import { ToggleBtn } from '../../components/UI';
 import { formatMoney } from '../../shared/utility';

@@ -10,7 +10,6 @@ import {
   toggleSidebar,
 } from '../../store/actions/settingsActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { Modal } from '../UI';
 import { english, spanish } from '../../languages';
 
 const Sidebar = () => {
