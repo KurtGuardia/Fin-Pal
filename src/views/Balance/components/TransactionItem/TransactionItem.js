@@ -41,7 +41,15 @@ const TransactionItem = ({ id, type, name, description, amount, date }) => {
       onClick={() => setIsItemOpen(!isItemOpen)}
     >
       <div className='transaction-item__face'>
-        <span className='transaction-item__face--name'>{name}</span>
+        <span
+          className={
+            isItemOpen
+              ? 'transaction-item__face--name isOpen'
+              : 'transaction-item__face--name'
+          }
+        >
+          {name}
+        </span>
         <span className='transaction-item__face--amount'>
           {formatMoney(amount)}
         </span>

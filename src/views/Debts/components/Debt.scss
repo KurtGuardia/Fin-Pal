@@ -20,6 +20,11 @@
     }
   }
 
+  &:last-child {
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
   &__concept {
     display: flex;
     flex-direction: column;
@@ -27,6 +32,7 @@
 
     & p:first-child {
       transition: all 0.5s;
+
       &::before {
         content: '➤';
         margin-right: 1rem;

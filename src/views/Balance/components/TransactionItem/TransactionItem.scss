@@ -1,6 +1,6 @@
 .transaction-item {
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.5rem 0;
   font-size: large;
   background-color: #eee;
   transition: all 0.3s;
@@ -10,10 +10,6 @@
   justify-content: stretch;
   text-transform: none;
   transition: all 0.3s;
-
-  @media screen and (max-width: 1300px) {
-    padding: 0.25rem 0.5rem;
-  }
 
   &:last-child {
     border-bottom-right-radius: 15px;
@@ -42,6 +38,19 @@
       flex: 1;
       text-transform: none;
       transition: all 0.3s; //Not working
+      padding: 0.5rem 0.5rem 0.5rem 5rem;
+
+      @media screen and (max-width: 1300px) {
+        padding-left: 2rem;
+      }
+
+      &.isOpen {
+        padding-left: 2rem;
+
+        @media screen and (max-width: 1300px) {
+          padding-left: 1rem;
+        }
+      }
 
       &::before {
         content: '➤';
@@ -100,10 +109,10 @@
     align-self: flex-start;
     width: 100%;
     justify-content: space-between;
-    margin-top: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 5rem;
 
-    &--note {
-      margin-left: 2rem;
+    @media screen and (max-width: 1300px) {
+      padding-left: 1.5rem;
     }
 
     &--date {
