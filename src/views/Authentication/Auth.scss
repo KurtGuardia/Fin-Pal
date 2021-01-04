@@ -4,13 +4,13 @@
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.185);
 
-  & .auth__container {
+  &__container {
     width: 40%;
     height: 85%;
     background-color: #fff;
     border-bottom: 15px;
 
-    & .auth__container--switch {
+    &--switch {
       display: flex;
       height: 15%;
       width: 100%;
@@ -82,6 +82,10 @@
           border-bottom: 1px solid #107360;
           outline: none;
           padding: 0.3rem 1rem;
+
+          @media screen and (max-width: 1300px) {
+            width: 55%;
+          }
 
           &::placeholder {
             color: #10735f57;
