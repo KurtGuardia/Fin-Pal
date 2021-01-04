@@ -52,6 +52,10 @@
     border-bottom: 2px solid #107360;
     letter-spacing: 3px;
 
+    @media screen and (max-width: 1300px) {
+      font-size: 1rem;
+    }
+
     & span {
       color: #c0392b;
       font-weight: bold;
@@ -76,6 +80,10 @@
     margin: 1rem;
     flex: 1;
     width: 60%;
+
+    @media screen and (max-width: 1300px) {
+      width: 80%;
+    }
 
     &--setting {
       display: flex;

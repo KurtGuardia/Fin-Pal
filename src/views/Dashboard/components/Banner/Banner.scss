@@ -21,5 +21,8 @@
   svg {
     transform: translateY(-5.5rem);
     min-width: 18.75rem;
+    @media screen and (max-width: 1300px) {
+      min-width: 15.75rem;
+    }
   }
 }
