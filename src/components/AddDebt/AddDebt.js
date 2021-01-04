@@ -90,7 +90,7 @@ const AddDebt = () => {
           />
         </div>
 
-        <div className='modal__info--setting'>
+        <div className='modal__info--setting date'>
           <label>{content.date}</label>
           <input
             type='date'
