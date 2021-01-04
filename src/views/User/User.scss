@@ -9,6 +9,10 @@
     color: #107360;
     font-weight: bold;
     font-size: xx-large;
+
+    @media screen and (max-width: 1300px) {
+      font-size: x-large;
+    }
   }
 
   &-container {
@@ -23,6 +27,10 @@
 
     @media screen and (max-width: 1400px) {
       width: 70vw;
+    }
+
+    @media screen and (max-width: 1024px) {
+      height: 40%;
     }
 
     &.dark {
@@ -71,7 +79,11 @@
         transform: translateY(-5rem);
 
         @media screen and (max-width: 1500px) {
-          width: 22rem;
+          width: 18rem;
+        }
+
+        @media screen and (max-width: 1024px) {
+          transform: translateY(-2rem);
         }
       }
 
