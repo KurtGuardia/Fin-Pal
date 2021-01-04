@@ -34,9 +34,13 @@ const Header = () => {
     const last = profile?.lastName?.slice(0, 1);
     return (first + last).toString();
   };
-
+  console.log(displaySearch);
   return (
-    <div className={auth.uid ? 'header' : 'hidden'}>
+    <div
+      className={
+        auth.uid ? (!displaySearch ? 'header nop' : 'header') : 'hidden'
+      }
+    >
       <div className='header__input'>
         {displaySearch ? (
           <>

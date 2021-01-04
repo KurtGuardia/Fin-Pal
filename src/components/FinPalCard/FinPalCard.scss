@@ -6,6 +6,16 @@
   border-radius: 20px;
   border-bottom-left-radius: 30px;
 
+  @media screen and (max-width: 1024px) {
+    transform: scale(0.8);
+  }
+
+  &:hover {
+    & .finpalCard__btn {
+      transform: scale(1.2);
+    }
+  }
+
   &__money {
     color: #fff;
     position: absolute;
@@ -22,5 +32,6 @@
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+    transition: all 0.3s;
   }
 }

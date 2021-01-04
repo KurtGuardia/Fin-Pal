@@ -2,8 +2,14 @@
   display: flex;
   justify-content: space-between;
   border-radius: 15px;
-  max-height: 15rem;
+  max-height: 14rem;
   transform: translateY(-2rem);
+
+  @media screen and (max-width: 1024px) {
+    transform: translateY(0);
+    margin-bottom: 1.5rem;
+    max-height: 12rem;
+  }
 
   &__text {
     color: #107360;
@@ -11,6 +17,11 @@
     flex-direction: column;
     max-width: 31.25rem;
     margin: 3rem 0 3rem 3rem;
+
+    @media screen and (max-width: 1024px) {
+      transform: translateY(0);
+      margin: 2rem 0 2rem 2rem;
+    }
 
     &--date {
       font-style: italic;
@@ -21,6 +32,7 @@
   svg {
     transform: translateY(-5.5rem);
     min-width: 18.75rem;
+
     @media screen and (max-width: 1300px) {
       min-width: 15.75rem;
     }

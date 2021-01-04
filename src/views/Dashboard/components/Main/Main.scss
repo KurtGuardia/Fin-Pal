@@ -13,6 +13,10 @@
     display: flex;
     justify-content: space-evenly;
 
+    @media screen and (max-width: 1024px) {
+      margin-bottom: 1rem;
+    }
+
     &--item {
       width: 20%;
       height: 10vh;
@@ -25,6 +29,11 @@
       justify-content: space-evenly;
       transition: all 0.3s;
       color: #fff;
+
+      @media screen and (max-width: 1300px) {
+        width: 24%;
+        height: 9vh;
+      }
 
       & > span {
         display: none;
@@ -43,11 +52,15 @@
         text-transform: uppercase;
         letter-spacing: 2px;
         font-weight: bold;
+        font-size: small;
       }
 
       .amount {
         font-size: x-large;
         font-weight: bold;
+        @media screen and (max-width: 1300px) {
+          font-size: larger;
+        }
       }
 
       &.incomes {
@@ -90,6 +103,10 @@
     &--icon {
       svg {
         fill: #555;
+
+        @media screen and (max-width: 1300px) {
+          width: 3rem;
+        }
       }
     }
   }
