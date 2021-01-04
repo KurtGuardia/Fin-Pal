@@ -33,6 +33,11 @@
       height: 40%;
     }
 
+    @media screen and (max-width: 800px) {
+      height: 25%;
+      width: 80vw;
+    }
+
     &.dark {
       background-color: #333;
 
@@ -46,17 +51,21 @@
       flex-direction: column;
       justify-content: space-around;
       height: 100%;
+      width: fit-content;
 
       & > p {
         font-size: large;
         margin: 0;
+
+        @media screen and (max-width: 800px) {
+          font-size: small;
+        }
       }
     }
 
     &__keys {
       align-items: flex-end;
       margin-left: 1rem;
-      width: fit-content;
 
       & p {
         font-weight: normal;
@@ -64,8 +73,6 @@
     }
 
     &__values {
-      display: flex;
-      flex-direction: column;
       font-weight: bold;
       & .password {
         letter-spacing: 10px;
