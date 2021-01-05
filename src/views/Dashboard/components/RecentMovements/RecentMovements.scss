@@ -11,8 +11,16 @@
   border-radius: 15px;
   overflow-x: hidden;
 
+  @media screen and (max-width: 500px) {
+    margin: 2rem 0;
+  }
+
   &::-webkit-scrollbar {
     width: 1em;
+
+    @media screen and (max-width: 500px) {
+      width: 0.5rem;
+    }
   }
 
   &::-webkit-scrollbar-thumb {

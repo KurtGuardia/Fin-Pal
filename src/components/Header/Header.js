@@ -34,7 +34,7 @@ const Header = () => {
     const last = profile?.lastName?.slice(0, 1);
     return (first + last).toString();
   };
-  console.log(displaySearch);
+
   return (
     <div
       className={

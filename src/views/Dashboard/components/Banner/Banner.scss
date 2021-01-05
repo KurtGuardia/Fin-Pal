@@ -11,6 +11,10 @@
     max-height: 12rem;
   }
 
+  @media screen and (max-width: 500px) {
+    flex-direction: column-reverse;
+  }
+
   &__text {
     color: #107360;
     display: flex;
@@ -21,6 +25,19 @@
     @media screen and (max-width: 1024px) {
       transform: translateY(0);
       margin: 2rem 0 2rem 2rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      margin: 1rem;
+
+      h1 {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 12px;
+        letter-spacing: 1px;
+      }
     }
 
     &--date {
@@ -35,6 +52,15 @@
 
     @media screen and (max-width: 1300px) {
       min-width: 15.75rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      min-height: 6rem;
+      transform: translateY(0);
+      min-width: 7.75rem;
+      max-width: 7.75rem;
+      align-self: flex-end;
+      // transform: translateX(1.5rem);
     }
   }
 }

@@ -42,7 +42,6 @@ function App() {
   const modals = useSelector((state) => state.settings.modals);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
-  const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
   const { doc } = useFirestore(uid);
 
   useEffect(() => {
@@ -116,7 +115,7 @@ function App() {
         <AddItem />
         <EditItem item={editItem.item} />
 
-        <div className={isSidebarOpen ? 'page sidebarOpen' : 'page'}>
+        <div className='page'>
           <Switch>
             <Route exact path='/' component={Dashboard} />
             <Route path='/balance' component={Balance} />
