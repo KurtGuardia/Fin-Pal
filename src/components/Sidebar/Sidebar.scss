@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: space-between;
   margin-left: 1rem;
+  z-index: 2;
 
   &.dark {
     background-color: #16a085;
@@ -106,8 +107,10 @@
       width: 70%;
     }
 
-    &:hover {
-      background-color: rgba($color: #fff, $alpha: 0.2);
+    @media (hover: hover) {
+      &:hover {
+        background-color: rgba($color: #fff, $alpha: 0.2);
+      }
     }
 
     .arrow {

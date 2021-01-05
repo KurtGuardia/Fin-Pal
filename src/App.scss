@@ -19,6 +19,8 @@
     transition: all 0.3s;
     overflow-y: scroll;
 
+    z-index: 1;
+
     &::-webkit-scrollbar {
       width: 1em;
 
@@ -90,6 +92,10 @@
 
       &.dashboard {
         flex-direction: column;
+      }
+
+      &.auth {
+        flex: 1;
       }
     }
   }
