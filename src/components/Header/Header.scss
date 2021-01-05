@@ -16,6 +16,10 @@
     align-items: center;
     height: 2.7rem;
 
+    @media screen and (max-width: 768px) {
+      height: 2rem;
+    }
+
     &--search {
       width: 25rem;
       height: 100%;
@@ -28,6 +32,10 @@
       border-top-left-radius: 30px;
       border-bottom-left-radius: 30px;
       transition: all 0.3s;
+
+      @media screen and (max-width: 768px) {
+        width: 18rem;
+      }
 
       &:hover,
       &:focus {
