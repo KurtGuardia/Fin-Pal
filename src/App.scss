@@ -56,6 +56,11 @@
     @media screen and (max-width: 768px) {
       width: 11%;
     }
+
+    @media screen and (max-width: 500px) {
+      height: 90vh;
+      width: 14%;
+    }
   }
 
   .sidebar.open {
@@ -67,6 +72,10 @@
 
     @media screen and (max-width: 768px) {
       width: 18%;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 33%;
     }
   }
 
