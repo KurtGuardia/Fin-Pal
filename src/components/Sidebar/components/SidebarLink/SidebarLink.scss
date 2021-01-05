@@ -21,6 +21,10 @@
     border-radius: 30px;
     width: 100%;
 
+    @media screen and (max-width: 1024px) {
+      width: 80%;
+    }
+
     svg {
       min-width: 30px;
       height: 40px;

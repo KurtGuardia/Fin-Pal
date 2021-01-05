@@ -83,7 +83,7 @@ const Debt = ({ id, type, name, description, amount, dueDate }) => {
     >
       <div className='debt__concept'>
         <p>{name}</p>
-        {isItemOpen && <p>{description}</p>}
+        {isItemOpen && <small>{description}</small>}
       </div>
       <div className='debt__extra'>
         <p>{formatMoney(amount)}</p>

@@ -74,7 +74,7 @@ const Item = ({
     >
       <div className='item__concept'>
         <p>{name}</p>
-        {isItemOpen && <p>{description}</p>}
+        {isItemOpen && <small>{description}</small>}
       </div>
       <div className='item__extra'>
         <p className='quantity'>{quantity}</p>

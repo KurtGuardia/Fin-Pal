@@ -62,8 +62,8 @@ const TransactionItem = ({ id, type, name, description, amount, date }) => {
       </div>
       {isItemOpen && (
         <div className='transaction-item__data'>
-          <p className='transaction-item__data--note'>{description}</p>
-          <p className='transaction-item__data--date'>{date}</p>
+          <small className='transaction-item__data--note'>{description}</small>
+          <small className='transaction-item__data--date'>{date}</small>
         </div>
       )}
     </li>
