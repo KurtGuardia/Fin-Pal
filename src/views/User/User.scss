@@ -29,7 +29,7 @@
       width: 70vw;
     }
 
-    @media screen and (max-width: 1024px) and (orientation: landscape) {
+    @media screen and (max-width: 1024px) {
       height: 40%;
     }
 
@@ -89,7 +89,7 @@
           width: 18rem;
         }
 
-        @media screen and (max-width: 1024px) and (orientation: landscape) {
+        @media screen and (max-width: 1024px) {
           transform: translateY(-2rem);
         }
       }

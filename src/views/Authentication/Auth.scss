@@ -10,7 +10,7 @@
     background-color: #fff;
     border-bottom: 15px;
 
-    @media screen and (max-width: 1024px) and (orientation: landscape) {
+    @media screen and (max-width: 1024px) {
       width: 60%;
     }
 
@@ -127,7 +127,7 @@
         margin-top: 2rem;
         letter-spacing: 1.5px;
         font-weight: bold;
-        @media screen and (max-width: 1024px) and (orientation: landscape) and (orientation: landscape) {
+        @media screen and (max-width: 1024px) {
           margin-top: 1rem;
         }
       }

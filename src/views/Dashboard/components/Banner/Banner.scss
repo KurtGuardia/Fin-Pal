@@ -5,7 +5,7 @@
   max-height: 14rem;
   transform: translateY(-2rem);
 
-  @media screen and (max-width: 1024px) and (orientation: landscape) {
+  @media screen and (max-width: 1024px) {
     transform: translateY(0);
     margin-bottom: 1.5rem;
     max-height: 12rem;
@@ -18,7 +18,7 @@
     max-width: 31.25rem;
     margin: 3rem 0 3rem 3rem;
 
-    @media screen and (max-width: 1024px) and (orientation: landscape) {
+    @media screen and (max-width: 1024px) {
       transform: translateY(0);
       margin: 2rem 0 2rem 2rem;
     }

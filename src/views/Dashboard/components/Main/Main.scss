@@ -13,7 +13,7 @@
     display: flex;
     justify-content: space-evenly;
 
-    @media screen and (max-width: 1024px) and (orientation: landscape) {
+    @media screen and (max-width: 1024px) {
       margin-bottom: 1rem;
     }
 
@@ -33,6 +33,10 @@
       @media screen and (max-width: 1300px) {
         width: 24%;
         height: 9vh;
+      }
+
+      @media screen and (max-width: 768px) {
+        height: 7vh;
       }
 
       & > span {
