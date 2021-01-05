@@ -19,6 +19,10 @@
       border-bottom: 2px solid #107360;
       transition: all 0.5s;
 
+      @media screen and (max-width: 500px) {
+        font-size: large;
+      }
+
       &:hover {
         background: linear-gradient(#ffffff, #d3ffd7c2 100%);
         border-bottom: 2px solid #107360;
