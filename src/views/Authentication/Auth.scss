@@ -10,6 +10,10 @@
     background-color: #fff;
     border-bottom: 15px;
 
+    @media screen and (max-width: 1024px) and (orientation: landscape) and (orientation: landscape) {
+      width: 60%;
+    }
+
     &--switch {
       display: flex;
       height: 15%;
@@ -71,6 +75,10 @@
           font-size: large;
         }
 
+        &.last {
+          margin-bottom: 2rem;
+        }
+
         & input {
           width: 70%;
           color: #107360;
@@ -110,10 +118,14 @@
       }
 
       &__err {
+        text-align: center;
         color: red;
-        margin-top: 1rem;
+        margin-top: 2rem;
         letter-spacing: 1.5px;
         font-weight: bold;
+        @media screen and (max-width: 1024px) and (orientation: landscape) and (orientation: landscape) {
+          margin-top: 1rem;
+        }
       }
     }
   }

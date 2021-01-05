@@ -4,7 +4,7 @@
   align-items: center;
   height: 100px;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1024px) and (orientation: landscape) {
     &.nop {
       justify-content: start;
       height: 70px;
@@ -70,7 +70,7 @@
     flex-direction: column;
     align-items: center;
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1024px) and (orientation: landscape) {
       height: 4rem;
     }
 

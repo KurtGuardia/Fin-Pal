@@ -231,7 +231,7 @@ const SignUp = () => {
           />
         )}
       </div>
-      <div className='authForm__input'>
+      <div className='authForm__input last'>
         <label>{content.pin}</label>
         <input
           type='number'

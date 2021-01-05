@@ -19,6 +19,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  console.log(authError);
+
   if (auth.uid) history.push('/');
 
   useEffect(() => {
@@ -53,7 +55,7 @@ const Login = () => {
           }}
         />
       </div>
-      <div className='authForm__input'>
+      <div className='authForm__input last'>
         <label htmlFor='password'>{content.password}</label>
         <input
           type={isHidePassword ? 'password' : 'text'}
@@ -82,7 +84,7 @@ const Login = () => {
         <Btn text={content.login} symbol='✓' />
       </div>
 
-      {authError ?? <p className='authForm__err'>{authError}</p>}
+      {authError && <p className='authForm__err'>{authError}</p>}
       {isLoading && <Spinner />}
     </form>
   );

@@ -19,7 +19,7 @@
       margin: 2rem 4rem;
       width: 50%;
 
-      @media screen and (max-width: 1024px) {
+      @media screen and (max-width: 1024px) and (orientation: landscape) {
         margin: 2rem;
       }
 

@@ -1,7 +1,7 @@
 .dashboard {
   display: flex;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1024px) and (orientation: landscape) {
     flex-direction: column;
   }
 
@@ -11,7 +11,7 @@
     flex-direction: column;
     margin-left: 1.5rem;
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1024px) and (orientation: landscape) {
       margin-right: 1.5rem;
     }
 
