@@ -29,6 +29,7 @@
     width: 50vw;
     height: auto;
     letter-spacing: 1.5px;
+    border-radius: 15px;
 
     @media screen and (max-width: 1300px) {
       width: 70vw;
@@ -89,6 +90,7 @@
 
       @media screen and (max-width: 500px) {
         width: 10rem !important;
+        margin-left: 0.5rem;
       }
 
       &::-webkit-scrollbar {

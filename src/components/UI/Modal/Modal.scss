@@ -137,13 +137,17 @@
         }
 
         @media screen and (max-width: 500px) {
-          width: 60%;
+          width: 50%;
         }
       }
 
       input:focus {
         width: 50%;
         border-radius: 3px;
+
+        @media screen and (max-width: 500px) {
+          width: 60%;
+        }
       }
 
       &.date {

@@ -94,12 +94,17 @@
         }
 
         @media screen and (max-width: 800px) {
-          padding: 0;
+          padding: 0.25rem;
         }
       }
 
-      & p:first-child {
-        flex: 1;
+      & p {
+        @media screen and (max-width: 500px) {
+          padding-top: 0.25rem;
+        }
+        &:first-child {
+          flex: 1;
+        }
       }
 
       & p:last-child {
