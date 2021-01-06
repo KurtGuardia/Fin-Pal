@@ -18,6 +18,16 @@
       padding-right: 0;
       text-align: left;
       border-left: none;
+
+      &.open {
+        @media screen and (max-width: 800px) {
+          padding-left: 3rem;
+        }
+
+        @media screen and (max-width: 500px) {
+          padding-left: 2rem;
+        }
+      }
     }
   }
 
@@ -58,9 +68,6 @@
 
       @media screen and (max-width: 800px) {
         margin-left: 1.5rem;
-      }
-
-      @media screen and (max-width: 800px) {
         margin-top: 0.5rem;
       }
     }
@@ -74,6 +81,10 @@
 
   &__icons {
     width: 5rem;
+
+    @media screen and (max-width: 500px) {
+      width: 4rem;
+    }
 
     & > * {
       cursor: pointer;

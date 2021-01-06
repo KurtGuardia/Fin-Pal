@@ -50,8 +50,9 @@
       @media screen and (max-width: 1300px) {
         padding: 0.5rem 1rem;
       }
+
       @media screen and (max-width: 800px) {
-        padding: 0.5rem;
+        padding: 0 0.5rem;
       }
 
       @media screen and (max-width: 500px) {
@@ -88,6 +89,10 @@
       border-bottom: 1px dotted #333;
 
       @media screen and (max-width: 800px) {
+        min-width: 650px;
+      }
+
+      @media screen and (max-width: 500px) {
         min-width: 550px;
       }
 
@@ -97,6 +102,10 @@
 
       & p:last-child {
         margin-right: 85px;
+
+        @media screen and (max-width: 500px) {
+          margin-right: 70px;
+        }
       }
     }
 
@@ -109,12 +118,15 @@
 
       @media screen and (max-width: 800px) {
         & .items {
-          min-width: 550px;
+          min-width: 650px;
         }
       }
 
       @media screen and (max-width: 500px) {
         max-height: 40vh;
+        & .items {
+          min-width: 550px;
+        }
       }
 
       &::-webkit-scrollbar {
@@ -164,8 +176,12 @@
 
     @media screen and (max-width: 800px) {
       bottom: 4rem;
-      width: 45%;
+      width: 30%;
       left: 10rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 45%;
     }
   }
 }

@@ -97,12 +97,6 @@
         &::-webkit-scrollbar-thumb:active {
           background-color: #10735fcc;
         }
-
-        & > li {
-          &:not(:last-child) {
-            border-bottom: 1px dotted #107360;
-          }
-        }
       }
     }
 
@@ -129,12 +123,6 @@
 
         &::-webkit-scrollbar-thumb:active {
           background-color: #731010cc;
-        }
-
-        & > li {
-          &:not(:last-child) {
-            border-bottom: 1px dotted #731010;
-          }
         }
       }
     }

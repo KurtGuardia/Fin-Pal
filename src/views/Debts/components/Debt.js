@@ -82,7 +82,7 @@ const Debt = ({ id, type, name, description, amount, dueDate }) => {
       onClick={() => setIsItemOpen(!isItemOpen)}
     >
       <div className='debt__concept'>
-        <p>{name}</p>
+        <p className={isItemOpen ? 'open' : ''}>{name}</p>
         {isItemOpen && <small>{description}</small>}
       </div>
       <div className='debt__extra'>

@@ -27,6 +27,11 @@
       margin-left: 1rem;
     }
 
+    @media screen and (max-width: 800px) {
+      height: 1.5rem;
+      margin-left: 0;
+    }
+
     &--search {
       width: 25rem;
       height: 100%;
@@ -47,6 +52,7 @@
       @media screen and (max-width: 500px) {
         width: 9rem;
         padding: 0 0.75rem;
+        font-size: 12px;
       }
 
       &:hover,

@@ -46,18 +46,22 @@ const Stock = () => {
             <p>{content.stock}</p>
             <small>{formatMoney(totalStock)}</small>
           </div>
-          <div className='stock__container--subtitle'>
-            <p>{content.item}</p>
-            <p>{content.quantity}</p>
-            <p>{content.totalCost}</p>
-            <p>{content.unitCost}</p>
-            <p>{content.dueDate}</p>
+
+          <div className='stock__container--content'>
+            <div className='stock__container--subtitle'>
+              {/* I had to set the subtitle here when making it responsive in tablets and mobile due to neccessity on scrolling  */}
+              <p>{content.item}</p>
+              <p>{content.quantity}</p>
+              <p>{content.totalCost}</p>
+              <p>{content.unitCost}</p>
+              <p>{content.dueDate}</p>
+            </div>
+            <ul className='items'>
+              {finance.stock.map((item) => (
+                <Item {...item} key={item.id} />
+              ))}
+            </ul>
           </div>
-          <ul className='stock__container--content'>
-            {finance.stock.map((item) => (
-              <Item {...item} key={item.id} />
-            ))}
-          </ul>
         </div>
         {!lock && (
           <Btn
