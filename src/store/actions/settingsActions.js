@@ -17,7 +17,6 @@ export const toggleAddTransactionModal = () => {
 };
 
 export const toggleEditTransactionModal = (item) => {
-  console.log(item);
   return {
     type: 'TOGGLE_EDIT_TR_MODAL',
     payload: item,

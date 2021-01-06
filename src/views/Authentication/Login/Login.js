@@ -19,8 +19,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(authError);
-
   if (auth.uid) history.push('/');
 
   useEffect(() => {
