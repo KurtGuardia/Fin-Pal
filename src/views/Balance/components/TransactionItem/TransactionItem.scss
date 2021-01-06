@@ -1,6 +1,6 @@
 .transaction-item {
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.5rem 0;
   font-size: large;
   background-color: #eee;
   transition: all 0.3s;
@@ -10,6 +10,15 @@
   justify-content: stretch;
   text-transform: none;
   transition: all 0.3s;
+
+  @media screen and (max-width: 800px) {
+    padding: 0;
+    font-size: 15px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: small;
+  }
 
   &:last-child {
     border-bottom-right-radius: 15px;
@@ -37,7 +46,28 @@
     &--name {
       flex: 1;
       text-transform: none;
-      transition: all 0.3s; //Not working
+      transition: all 0.3s;
+      padding: 0.5rem 0.5rem 0.5rem 5rem;
+
+      @media screen and (max-width: 1300px) {
+        padding-left: 1rem;
+      }
+
+      @media screen and (max-width: 500px) {
+        padding-left: 0.7rem;
+      }
+
+      &.isOpen {
+        padding-left: 2rem;
+
+        @media screen and (max-width: 1300px) {
+          padding-left: 3rem;
+        }
+
+        @media screen and (max-width: 500px) {
+          padding-left: 2rem;
+        }
+      }
 
       &::before {
         content: '➤';
@@ -50,17 +80,44 @@
       transform: scale(1);
       margin-right: 2rem;
       transition: all 0.3s;
+
+      @media screen and (max-width: 500px) {
+        margin-right: 0;
+      }
     }
 
     &--icons {
       margin: 0.3rem;
       width: 5rem;
 
+      @media screen and (max-width: 1024px) {
+        width: 4.1rem;
+      }
+
+      @media screen and (max-width: 800px) {
+        width: 4.5rem;
+      }
+
+      @media screen and (max-width: 500px) {
+        width: 3.8rem;
+      }
+
       & > * {
         cursor: pointer;
         margin: 0.5rem;
         transition: all 0.3s;
         fill: #bbb;
+
+        @media screen and (max-width: 1024px) {
+          width: 20px;
+          height: 20px;
+          margin: 0.2rem 0.4rem;
+        }
+
+        @media screen and (max-width: 500px) {
+          height: 15px;
+          width: 15px;
+        }
       }
     }
   }
@@ -86,10 +143,10 @@
     align-self: flex-start;
     width: 100%;
     justify-content: space-between;
-    margin-top: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 5rem;
 
-    &--note {
-      margin-left: 2rem;
+    @media screen and (max-width: 1300px) {
+      padding-left: 1.5rem;
     }
 
     &--date {
@@ -99,28 +156,30 @@
     }
   }
 
-  &:hover {
-    background-color: #bbb;
-    transform: translateY(-0.5rem);
+  @media (hover: hover) {
+    &:hover {
+      background-color: #bbb;
+      transform: translateY(-0.5rem);
 
-    .transaction-item__face--name {
-      text-transform: uppercase;
-    }
-
-    .transaction-item__face--amount {
-      transform: scale(1.15);
-    }
-
-    .transaction-item__face--icons {
-      & > svg {
-        fill: #049678;
+      .transaction-item__face--name {
+        text-transform: uppercase;
       }
-    }
 
-    &.expense {
-      & .transaction-item__face--icons {
-        & > * {
-          fill: #a01111;
+      .transaction-item__face--amount {
+        transform: scale(1.15);
+      }
+
+      .transaction-item__face--icons {
+        & > svg {
+          fill: #049678;
+        }
+      }
+
+      &.expense {
+        & .transaction-item__face--icons {
+          & > * {
+            fill: #a01111;
+          }
         }
       }
     }

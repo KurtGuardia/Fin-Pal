@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { formatMoney } from '../../../../../shared/utility';
-import { english, spanish } from '../../../../../languages';
 import { useSelector } from 'react-redux';
 
 const RecentMovement = ({ index }) => {
-  const language = useSelector((state) => state.settings.language);
   const profile = useSelector((state) => state.firebase.profile);
   const [isOpen, setIsOpen] = useState(false);
-  const [content, setContent] = useState('');
   let date;
   let amount;
-
-  useEffect(() => {
-    if (language === 'english') {
-      setContent(english.dashboard.recentMovements);
-    } else if (language === 'spanish') {
-      setContent(spanish.dashboard.recentMovements);
-    }
-  }, [language]);
 
   const type = () => {
     if (profile.recentMovements[index].info.type === 'income') {

@@ -73,8 +73,8 @@ const Item = ({
       onClick={() => setIsItemOpen(!isItemOpen)}
     >
       <div className='item__concept'>
-        <p>{name}</p>
-        {isItemOpen && <p>{description}</p>}
+        <p className={isItemOpen ? 'open' : ''}>{name}</p>
+        {isItemOpen && <small>{description}</small>}
       </div>
       <div className='item__extra'>
         <p className='quantity'>{quantity}</p>

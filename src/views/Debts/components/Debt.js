@@ -82,13 +82,13 @@ const Debt = ({ id, type, name, description, amount, dueDate }) => {
       onClick={() => setIsItemOpen(!isItemOpen)}
     >
       <div className='debt__concept'>
-        <p>{name}</p>
-        {isItemOpen && <p>{description}</p>}
+        <p className={isItemOpen ? 'open' : ''}>{name}</p>
+        {isItemOpen && <small>{description}</small>}
       </div>
       <div className='debt__extra'>
-        <p className='amount'>{formatMoney(amount)}</p>
-        <p className='dueDate'>{dueDate}</p>
-        <p className='liqTime'>{getLiqTime(dueDate)}</p>
+        <p>{formatMoney(amount)}</p>
+        <p>{dueDate}</p>
+        <p>{getLiqTime(dueDate)}</p>
       </div>
       <div className='debt__icons'>
         {!lock && (

@@ -41,7 +41,15 @@ const TransactionItem = ({ id, type, name, description, amount, date }) => {
       onClick={() => setIsItemOpen(!isItemOpen)}
     >
       <div className='transaction-item__face'>
-        <span className='transaction-item__face--name'>{name}</span>
+        <span
+          className={
+            isItemOpen
+              ? 'transaction-item__face--name isOpen'
+              : 'transaction-item__face--name'
+          }
+        >
+          {name}
+        </span>
         <span className='transaction-item__face--amount'>
           {formatMoney(amount)}
         </span>
@@ -54,8 +62,8 @@ const TransactionItem = ({ id, type, name, description, amount, date }) => {
       </div>
       {isItemOpen && (
         <div className='transaction-item__data'>
-          <p className='transaction-item__data--note'>{description}</p>
-          <p className='transaction-item__data--date'>{date}</p>
+          <small className='transaction-item__data--note'>{description}</small>
+          <small className='transaction-item__data--date'>{date}</small>
         </div>
       )}
     </li>

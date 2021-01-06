@@ -1,9 +1,28 @@
 .finpalCard {
   background: url(../../assets/images/card.svg);
-  height: 259px;
+  height: 16rem;
   width: 25rem;
   position: relative;
-  border-radius: 15px;
+  border-radius: 20px;
+  border-bottom-left-radius: 30px;
+
+  @media screen and (max-width: 1024px) {
+    transform: scale(0.8);
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 27rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    transform: scale(0.6);
+  }
+
+  &:hover {
+    & .finpalCard__btn {
+      transform: scale(1.2);
+    }
+  }
 
   &__money {
     color: #fff;
@@ -21,5 +40,6 @@
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+    transition: all 0.3s;
   }
 }

@@ -7,7 +7,15 @@
   border-bottom-left-radius: 30px;
   display: flex;
   align-items: center;
-  // transition: all 0.3s;
+
+  @media screen and (max-width: 1300px) {
+    margin-left: -16px;
+  }
+
+  @media screen and (max-width: 800px) {
+    margin-left: -11px;
+    padding: 0 0 0 0.5rem;
+  }
 
   &:hover {
     background-color: rgba($color: #fff, $alpha: 0.2);
@@ -18,7 +26,16 @@
     border-radius: 30px;
     width: 100%;
 
+    @media screen and (max-width: 1024px) {
+      width: 80%;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 50%;
+    }
+
     svg {
+      min-width: 20px;
       height: 40px;
       width: 40px;
     }
@@ -121,5 +138,13 @@
   &__icon {
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: 1024px) {
+      width: 2.2rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 1.5rem;
+    }
   }
 }

@@ -17,7 +17,22 @@
     & p {
       text-align: left;
       border-left: none;
+
+      &.open {
+        @media screen and (max-width: 800px) {
+          padding-left: 3rem;
+        }
+
+        @media screen and (max-width: 500px) {
+          padding-left: 2rem;
+        }
+      }
     }
+  }
+
+  &:last-child {
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
   }
 
   &__concept {
@@ -36,6 +51,23 @@
 
     & p:last-child {
       padding-left: 5rem;
+
+      @media screen and (max-width: 1300px) {
+        padding-left: 1.5rem;
+      }
+
+      @media screen and (max-width: 500px) {
+        padding-left: 0.75rem;
+      }
+    }
+
+    small {
+      margin-left: 5rem;
+
+      @media screen and (max-width: 800px) {
+        margin-left: 1.5rem;
+        margin-top: 0.5rem;
+      }
     }
   }
 
@@ -47,28 +79,48 @@
     & > p {
       width: 9rem;
       padding: 0;
+
+      @media screen and (max-width: 1300px) {
+        width: 6rem;
+      }
     }
   }
 
   &__icons {
     width: 5rem;
 
+    @media screen and (max-width: 500px) {
+      width: 4rem;
+    }
+
     & > * {
       cursor: pointer;
       margin: 0.5rem;
       transition: all 0.3s;
       fill: #bbb;
+
+      @media screen and (max-width: 1024px) {
+        width: 20px;
+        height: 20px;
+        margin: 0.2rem 0.4rem;
+      }
+
+      @media screen and (max-width: 500px) {
+        width: 15px;
+      }
     }
   }
 
-  &:hover {
-    background-color: #bbb;
-    transform: translateY(-0.5rem);
-    text-transform: uppercase;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #bbb;
+      transform: translateY(-0.5rem);
+      text-transform: uppercase;
 
-    .item__icons {
-      & > * {
-        fill: #107360;
+      .item__icons {
+        & > * {
+          fill: #107360;
+        }
       }
     }
   }

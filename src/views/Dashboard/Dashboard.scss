@@ -1,13 +1,33 @@
 .dashboard {
   display: flex;
 
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
+
   &__left {
     flex: 1;
     display: flex;
     flex-direction: column;
+    margin-left: 1.5rem;
+
+    @media screen and (max-width: 1024px) {
+      margin-right: 1.5rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      margin-left: 0;
+      margin-right: 0;
+    }
 
     & > div {
       background-color: #eee;
+    }
+  }
+
+  &__right {
+    @media screen and (max-width: 500px) {
+      margin-right: 0.5rem;
     }
   }
 

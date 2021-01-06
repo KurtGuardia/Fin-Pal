@@ -4,7 +4,9 @@
   justify-content: space-around;
   flex: 1;
   border-radius: 15px;
-  margin-top: 2rem;
+  @media screen and (max-width: 500px) {
+    height: 70%;
+  }
 
   &__card {
     align-self: center;
@@ -14,10 +16,19 @@
     display: flex;
     justify-content: space-evenly;
 
+    @media screen and (max-width: 1024px) {
+      margin-bottom: 1rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
     &--item {
       width: 20%;
       height: 10vh;
-      background-color: #aaa;
+      background-color: #fff;
       transition: all 0.3s;
       border-radius: 15px;
       display: flex;
@@ -25,10 +36,25 @@
       align-items: center;
       justify-content: space-evenly;
       transition: all 0.3s;
-      color: #fff;
+      color: #000;
+
+      @media screen and (max-width: 1300px) {
+        width: 24%;
+        height: 9vh;
+      }
+
+      @media screen and (max-width: 800px) {
+        height: 7vh;
+      }
+
+      @media screen and (max-width: 500px) {
+        width: 70%;
+        margin: 0.35rem 0;
+      }
 
       & > span {
         display: none;
+        color: #fff;
         transition: all 3s; //not working
       }
 
@@ -44,16 +70,26 @@
         text-transform: uppercase;
         letter-spacing: 2px;
         font-weight: bold;
+        font-size: small;
       }
 
       .amount {
         font-size: x-large;
         font-weight: bold;
+
+        @media screen and (max-width: 1300px) {
+          font-size: larger;
+        }
+
+        @media screen and (max-width: 500px) {
+          font-size: medium;
+        }
       }
 
       &.incomes {
         border-left: 10px solid #27ae60;
         transition: all 0.3s;
+
         &:hover {
           background-color: #27ae60 !important;
 
@@ -91,6 +127,14 @@
     &--icon {
       svg {
         fill: #555;
+
+        @media screen and (max-width: 1300px) {
+          width: 3rem;
+        }
+
+        @media screen and (max-width: 500px) {
+          width: 2.5rem;
+        }
       }
     }
   }

@@ -36,7 +36,11 @@ const Header = () => {
   };
 
   return (
-    <div className={auth.uid ? 'header' : 'hidden'}>
+    <div
+      className={
+        auth.uid ? (!displaySearch ? 'header nop' : 'header') : 'hidden'
+      }
+    >
       <div className='header__input'>
         {displaySearch ? (
           <>
