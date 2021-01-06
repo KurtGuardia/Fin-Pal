@@ -22,7 +22,7 @@
     align-items: center;
     height: 2.7rem;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 800px) {
       height: 2rem;
       margin-left: 1rem;
     }
@@ -40,7 +40,7 @@
       border-bottom-left-radius: 30px;
       transition: all 0.3s;
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 800px) {
         width: 18rem;
       }
 

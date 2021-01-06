@@ -47,13 +47,16 @@ const Debts = () => {
             <p>{content.debts}</p>
             <small>{formatMoney(totalDebts)}</small>
           </div>
-          <div className='debts__container--subtitle'>
-            <p>{content.concept}</p>
-            <p className='amount'>{content.amount}</p>
-            <p className='dueDate'>{content.dueDate}</p>
-            <p className='liqTime'>{content.liqTime}</p>
-          </div>
+
           <div className='debts__container--content'>
+            <div className='debts__container--subtitle'>
+              {' '}
+              {/* I had to set the subtitle here when making it responsive in tablets and mobile due to neccessity on scrolling  */}
+              <p>{content.concept}</p>
+              <p className='amount'>{content.amount}</p>
+              <p className='dueDate'>{content.dueDate}</p>
+              <p className='liqTime'>{content.liqTime}</p>
+            </div>
             <ul className='items'>
               {finance?.debts?.map((debt) => (
                 <Debt key={debt.id} {...debt} />

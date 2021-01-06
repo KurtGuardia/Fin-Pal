@@ -9,7 +9,7 @@
   max-height: 72vh;
   margin: 2rem;
   border-radius: 15px;
-  overflow-x: hidden;
+  overflow-y: scroll;
 
   @media screen and (max-width: 500px) {
     margin: 2rem 0;

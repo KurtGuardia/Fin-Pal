@@ -7,16 +7,16 @@
   @media screen and (max-width: 500px) {
     flex-direction: column-reverse;
 
-    &.content {
-      flex: none;
-    }
+    // &.content {
+    //   flex: none;
+    // }
   }
 
   &__container {
     display: flex;
     z-index: 1;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 800px) {
       flex-direction: column;
       align-items: center;
     }
@@ -36,7 +36,7 @@
         margin: 2rem;
       }
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 800px) {
         width: 80%;
       }
 
@@ -79,7 +79,7 @@
 
       .items {
         max-height: 55vh;
-        overflow-x: hidden;
+        overflow-y: scroll;
 
         &::-webkit-scrollbar {
           width: 1em;
@@ -112,7 +112,7 @@
       }
       .items {
         max-height: 55vh;
-        overflow-x: hidden;
+        overflow-y: scroll;
 
         &::-webkit-scrollbar {
           width: 1em;

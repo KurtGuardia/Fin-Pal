@@ -15,6 +15,7 @@
     flex: 1;
 
     & p {
+      padding-right: 0;
       text-align: left;
       border-left: none;
     }
@@ -46,10 +47,22 @@
       @media screen and (max-width: 1300px) {
         padding-left: 1.5rem;
       }
+
+      @media screen and (max-width: 500px) {
+        padding-left: 0.75rem;
+      }
     }
 
     small {
       margin-left: 5rem;
+
+      @media screen and (max-width: 800px) {
+        margin-left: 1.5rem;
+      }
+
+      @media screen and (max-width: 800px) {
+        margin-top: 0.5rem;
+      }
     }
   }
 
@@ -73,17 +86,23 @@
         height: 20px;
         margin: 0.2rem 0.4rem;
       }
+
+      @media screen and (max-width: 500px) {
+        width: 15px;
+      }
     }
   }
 
-  &:hover {
-    background-color: #bbb;
-    transform: translateY(-0.5rem);
-    text-transform: uppercase;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #bbb;
+      transform: translateY(-0.5rem);
+      text-transform: uppercase;
 
-    .debt__icons {
-      & > * {
-        fill: #107360;
+      .debt__icons {
+        & > * {
+          fill: #107360;
+        }
       }
     }
   }
