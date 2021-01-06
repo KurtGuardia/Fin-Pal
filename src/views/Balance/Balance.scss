@@ -4,6 +4,14 @@
   flex-direction: column;
   color: #fff;
 
+  @media screen and (max-width: 500px) {
+    flex-direction: column-reverse;
+
+    &.content {
+      flex: none;
+    }
+  }
+
   &__container {
     display: flex;
     z-index: 1;
@@ -32,6 +40,11 @@
         width: 80%;
       }
 
+      @media screen and (max-width: 500px) {
+        width: 100%;
+        margin: 2rem 0.5rem 0;
+      }
+
       & > .title {
         display: flex;
         justify-content: space-evenly;
@@ -44,6 +57,11 @@
         font-weight: bold;
         letter-spacing: 2px;
         text-transform: uppercase;
+
+        @media screen and (max-width: 500px) {
+          font-size: 15px;
+          padding: 0.5rem;
+        }
       }
 
       & > .items {

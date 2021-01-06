@@ -112,8 +112,10 @@
         border-left: 10px solid #e2871e;
       }
 
-      &:hover {
-        transform: translateY(-0.5rem);
+      @media (hover: hover) {
+        &:hover {
+          transform: translateY(-0.5rem);
+        }
       }
     }
   }

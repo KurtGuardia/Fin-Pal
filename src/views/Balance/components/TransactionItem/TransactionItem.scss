@@ -15,6 +15,10 @@
     padding: 0;
   }
 
+  @media screen and (max-width: 500px) {
+    font-size: small;
+  }
+
   &:last-child {
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -48,11 +52,19 @@
         padding-left: 2rem;
       }
 
+      @media screen and (max-width: 500px) {
+        padding-left: 0.7rem;
+      }
+
       &.isOpen {
         padding-left: 2rem;
 
         @media screen and (max-width: 1300px) {
           padding-left: 1rem;
+        }
+
+        @media screen and (max-width: 500px) {
+          padding-left: 2rem;
         }
       }
 
@@ -67,6 +79,10 @@
       transform: scale(1);
       margin-right: 2rem;
       transition: all 0.3s;
+
+      @media screen and (max-width: 500px) {
+        margin-right: 0;
+      }
     }
 
     &--icons {
@@ -81,6 +97,10 @@
         width: 4.5rem;
       }
 
+      @media screen and (max-width: 500px) {
+        width: 3.8rem;
+      }
+
       & > * {
         cursor: pointer;
         margin: 0.5rem;
@@ -91,6 +111,11 @@
           width: 20px;
           height: 20px;
           margin: 0.2rem 0.4rem;
+        }
+
+        @media screen and (max-width: 500px) {
+          height: 15px;
+          width: 15px;
         }
       }
     }
@@ -130,28 +155,30 @@
     }
   }
 
-  &:hover {
-    background-color: #bbb;
-    transform: translateY(-0.5rem);
+  @media (hover: hover) {
+    &:hover {
+      background-color: #bbb;
+      transform: translateY(-0.5rem);
 
-    .transaction-item__face--name {
-      text-transform: uppercase;
-    }
-
-    .transaction-item__face--amount {
-      transform: scale(1.15);
-    }
-
-    .transaction-item__face--icons {
-      & > svg {
-        fill: #049678;
+      .transaction-item__face--name {
+        text-transform: uppercase;
       }
-    }
 
-    &.expense {
-      & .transaction-item__face--icons {
-        & > * {
-          fill: #a01111;
+      .transaction-item__face--amount {
+        transform: scale(1.15);
+      }
+
+      .transaction-item__face--icons {
+        & > svg {
+          fill: #049678;
+        }
+      }
+
+      &.expense {
+        & .transaction-item__face--icons {
+          & > * {
+            fill: #a01111;
+          }
         }
       }
     }

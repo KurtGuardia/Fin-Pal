@@ -83,6 +83,15 @@
     flex: 1;
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
+
+    @media screen and (max-width: 500px) {
+      padding-right: 0.5rem;
+      flex-direction: column-reverse;
+
+      &.dashboard {
+        flex-direction: column;
+      }
+    }
   }
 
   .backdrop {
