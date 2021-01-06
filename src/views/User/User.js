@@ -46,6 +46,8 @@ const User = () => {
         </div>
         <div className='user-container__icon'>
           <Profile />
+        </div>
+        <div className='logOutBtn'>
           <Btn
             text={content.logOut}
             symbol='✓'
