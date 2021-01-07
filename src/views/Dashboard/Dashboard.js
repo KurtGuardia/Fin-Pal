@@ -14,9 +14,13 @@ const Dashboard = () => {
 
   if (!auth.uid) history.push('/auth');
 
+  const getSearchTerm = () => {
+    return null;
+  };
+
   return (
     <>
-      <Header />
+      <Header getSearchTerm={getSearchTerm} />
       <div
         className={isDarkMode ? 'dashboard content dark' : 'dashboard content'}
       >

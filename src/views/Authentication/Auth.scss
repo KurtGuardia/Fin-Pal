@@ -168,8 +168,23 @@
       }
 
       &__btn {
+        display: flex;
+        width: 70%;
+
         @media screen and (max-width: 500px) {
           margin-top: -3rem;
+        }
+
+        .btn:last-child {
+          span {
+            border: none;
+            svg {
+              fill: #fff;
+              path {
+                stroke-width: 0px;
+              }
+            }
+          }
         }
       }
 

@@ -4,7 +4,7 @@ import { Btn, Spinner } from '../../../components/UI';
 import { english, spanish } from '../../../languages';
 import '../Auth.scss';
 import { Eye, Hide } from '../../../assets/icons';
-import { login } from '../../../store/actions/authActions';
+import { login, demoLogin } from '../../../store/actions/authActions';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
@@ -28,6 +28,15 @@ const Login = () => {
       setContent({ ...spanish.authentication });
     }
   }, [language]);
+
+  const handleDemo = () => {
+    setEmail('test@test.com');
+    setPassword('123456');
+    dispatch(demoLogin());
+    if (auth.uid) {
+      setIsLoading(true);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,6 +89,7 @@ const Login = () => {
       </div>
       <div className='authForm__btn'>
         <Btn text={content.login} symbol='✓' />
+        <Btn text='Demo' symbol={<Eye />} clicked={handleDemo} />
       </div>
 
       {authError && <p className='authForm__err'>{authError}</p>}

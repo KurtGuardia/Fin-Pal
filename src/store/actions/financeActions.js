@@ -20,7 +20,7 @@ export const addIncome = (income) => {
     if (newRecentMovements.length > 8) {
       newRecentMovements.pop();
     }
-
+    console.log(profile);
     firestore
       .collection('users')
       .doc(uid)

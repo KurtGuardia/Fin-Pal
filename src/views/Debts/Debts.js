@@ -47,7 +47,6 @@ const Debts = () => {
 
   return (
     <>
-      {' '}
       <Header getSearchTerm={getSearchTerm} />
       <div className='debts content'>
         <div
@@ -60,7 +59,6 @@ const Debts = () => {
 
           <div className='debts__container--content'>
             <div className='debts__container--subtitle'>
-              {' '}
               {/* I had to set the subtitle here when making it responsive in tablets and mobile due to neccessity on scrolling  */}
               <p>{content.concept}</p>
               <p className='amount'>{content.amount}</p>
@@ -68,7 +66,7 @@ const Debts = () => {
               <p className='liqTime'>{content.liqTime}</p>
             </div>
             <ul className='items'>
-              {debts.map((debt) => (
+              {debts?.map((debt) => (
                 <Debt key={debt.id} {...debt} />
               ))}
             </ul>

@@ -14,6 +14,24 @@ export const login = (credentials) => {
   };
 };
 
+export const demoLogin = () => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase();
+    const email = 'test@test.com';
+    const password = '123456';
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        dispatch({ type: 'LOGIN_SUCCESS' });
+      })
+      .catch((err) => {
+        dispatch({ type: 'LOGIN_ERROR', err });
+      });
+  };
+};
+
 export const logout = () => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
@@ -53,6 +71,7 @@ export const signup = (newUser) => {
               debts: [],
             },
             isAccountLocked: false,
+            recentMovements: [],
           });
       })
       .then(() => {

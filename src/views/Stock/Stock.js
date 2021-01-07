@@ -32,7 +32,7 @@ const Stock = () => {
   }, [language]);
 
   let totalStock = 0;
-  for (let i = 0; i < finance.stock.length; i++) {
+  for (let i = 0; i < finance?.stock?.length; i++) {
     totalStock += +finance.stock[i].totalCost;
   }
 
@@ -67,7 +67,7 @@ const Stock = () => {
               <p>{content.dueDate}</p>
             </div>
             <ul className='items'>
-              {stock.map((item) => (
+              {stock?.map((item) => (
                 <Item {...item} key={item.id} />
               ))}
             </ul>

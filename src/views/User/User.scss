@@ -74,9 +74,12 @@
     }
 
     &__keys {
-      align-items: flex-end;
       margin-left: 1rem;
-      width: 8rem !important;
+      width: 9rem !important;
+
+      @media screen and (max-width: 500px) {
+        width: 6rem !important;
+      }
 
       & p {
         font-weight: normal;
@@ -84,9 +87,9 @@
     }
 
     &__values {
-      font-weight: bold;
       overflow-x: scroll;
       width: 24rem !important;
+      margin-left: 1rem;
 
       @media screen and (max-width: 500px) {
         width: 10rem !important;

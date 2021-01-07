@@ -28,8 +28,8 @@ const RecentMovements = () => {
             : 'recentMovements__content'
         }
       >
-        {profile.recentMovements &&
-          profile.recentMovements.map((recentMovementItem, index) => {
+        {profile?.recentMovements &&
+          profile?.recentMovements?.map((recentMovementItem, index) => {
             return (
               <RecentMovement index={index} key={recentMovementItem.info.id} />
             );
