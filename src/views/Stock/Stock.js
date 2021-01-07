@@ -17,8 +17,11 @@ const Stock = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
+  const [searchTerm, setSearchTerm] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
+
+  if (!auth.uid) history.push('/auth');
 
   useEffect(() => {
     if (language === 'english') {
@@ -33,11 +36,18 @@ const Stock = () => {
     totalStock += +finance.stock[i].totalCost;
   }
 
-  if (!auth.uid) history.push('/auth');
+  let stock = finance?.stock;
+  if (searchTerm !== '') {
+    stock = finance?.stock?.filter((item) => item.name.includes(searchTerm));
+  }
+
+  const getSearchTerm = (searchTerm) => {
+    setSearchTerm(searchTerm);
+  };
 
   return (
     <>
-      <Header />
+      <Header getSearchTerm={getSearchTerm} />
       <div className='stock content'>
         <div
           className={isDarkMode ? 'stock__container dark' : 'stock__container'}
@@ -57,7 +67,7 @@ const Stock = () => {
               <p>{content.dueDate}</p>
             </div>
             <ul className='items'>
-              {finance.stock.map((item) => (
+              {stock.map((item) => (
                 <Item {...item} key={item.id} />
               ))}
             </ul>

@@ -17,7 +17,7 @@ const Balance = () => {
   const language = useSelector((state) => state.settings.language);
   const lock = useSelector((state) => state.firebase.profile.isAccountLocked);
   const [content, setContent] = useState({});
-  const [searchTerm, setSearhTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -32,7 +32,7 @@ const Balance = () => {
   }, [language]);
 
   const getSearchTerm = (searchTerm) => {
-    setSearhTerm(searchTerm);
+    setSearchTerm(searchTerm);
   };
 
   let totalIncome = 0;
