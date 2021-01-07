@@ -17,6 +17,7 @@ const Debts = () => {
   const language = useSelector((state) => state.settings.language);
   const lock = useSelector((state) => state.firebase.profile.isAccountLocked);
   const [content, setContent] = useState({});
+  const [searchTerm, setSearhTerm] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -35,10 +36,19 @@ const Debts = () => {
     totalDebts += +finance.debts[i].amount;
   }
 
+  let debts = finance?.debts;
+  if (searchTerm !== '') {
+    debts = finance?.debts?.filter((item) => item.name.includes(searchTerm));
+  }
+
+  const getSearchTerm = (searchTerm) => {
+    setSearhTerm(searchTerm);
+  };
+
   return (
     <>
       {' '}
-      <Header />
+      <Header getSearchTerm={getSearchTerm} />
       <div className='debts content'>
         <div
           className={isDarkMode ? 'debts__container dark' : 'debts__container'}
@@ -58,7 +68,7 @@ const Debts = () => {
               <p className='liqTime'>{content.liqTime}</p>
             </div>
             <ul className='items'>
-              {finance?.debts?.map((debt) => (
+              {debts.map((debt) => (
                 <Debt key={debt.id} {...debt} />
               ))}
             </ul>
