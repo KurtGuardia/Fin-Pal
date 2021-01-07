@@ -7,12 +7,13 @@ import spanish from '../../languages/spanish';
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ getSearchTerm }) => {
   const language = useSelector((state) => state.settings.language);
   const auth = useSelector((state) => state.firebase.auth);
   const profile = useSelector((state) => state.firebase.profile);
   const [text, setText] = useState('');
   const [displaySearch, setDisplaySearch] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
   const history = useHistory();
 
   useEffect(() => {
@@ -28,6 +29,10 @@ const Header = () => {
       setDisplaySearch(false);
     }
   }, [history]);
+
+  useEffect(() => {
+    getSearchTerm(searchTerm);
+  }, [searchTerm, getSearchTerm]);
 
   const initials = () => {
     const first = profile?.firstName?.slice(0, 1);
@@ -48,6 +53,7 @@ const Header = () => {
               type='text'
               className='header__input--search'
               placeholder={text}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
             <Search className='header__input--icon' />
           </>

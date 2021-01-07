@@ -7,7 +7,7 @@ const spanish = {
     saveBtn: 'Guardar',
   },
   sidebar: ['Inicio', 'Balance', 'Deudas', 'Stock'],
-  header: 'Buscar',
+  header: 'Buscar (distingue mayúsculas)',
   dashboard: {
     banner: {
       title: 'Bienvenido',

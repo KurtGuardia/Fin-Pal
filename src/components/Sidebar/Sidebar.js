@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { sidebarLinks } from './components/data/data';
 import './Sidebar.scss';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Settings, Arrow } from '../../assets/icons';
 import { FinpalDark, FinpalLight } from '../../assets/images';
 import SidebarLink from './components/SidebarLink/SidebarLink';

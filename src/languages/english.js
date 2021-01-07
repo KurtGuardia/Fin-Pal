@@ -7,7 +7,7 @@ const english = {
     saveBtn: 'Save',
   },
   sidebar: ['Home', 'Balance', 'Debts', 'Stock'],
-  header: 'Search',
+  header: 'Search (case sensitive)',
   dashboard: {
     banner: {
       title: 'Welcome',

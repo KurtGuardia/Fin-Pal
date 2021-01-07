@@ -27,7 +27,7 @@
       margin-left: 1rem;
     }
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 500px) {
       height: 1.5rem;
       margin-left: 0;
     }
@@ -52,7 +52,7 @@
       @media screen and (max-width: 500px) {
         width: 9rem;
         padding: 0 0.75rem;
-        font-size: 12px;
+        font-size: 10px;
       }
 
       &:hover,
@@ -60,17 +60,25 @@
         outline: 0;
         padding: 12px 0;
         border: 2px solid transparent;
-        border-bottom: 2px solid #107360;
+        border-bottom: 1px solid #107360;
         border-radius: 0;
 
         & + svg {
           background-color: transparent;
-          border-bottom: 2px solid #107360;
+          border-bottom: 1px solid #107360;
           border-bottom-right-radius: 0;
           border-top-right-radius: 0;
           stroke: #107360;
           fill: #107360;
-          transform: scale(-1, 1);
+          transform: scale(-1, 1.05);
+
+          @media screen and (max-width: 800px) {
+            transform: scale(-1, 1);
+          }
+
+          @media screen and (max-width: 500px) {
+            transform: scale(-1, 1.2);
+          }
         }
       }
     }

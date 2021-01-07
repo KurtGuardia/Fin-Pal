@@ -17,6 +17,7 @@ const Balance = () => {
   const language = useSelector((state) => state.settings.language);
   const lock = useSelector((state) => state.firebase.profile.isAccountLocked);
   const [content, setContent] = useState({});
+  const [searchTerm, setSearhTerm] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -30,6 +31,10 @@ const Balance = () => {
     }
   }, [language]);
 
+  const getSearchTerm = (searchTerm) => {
+    setSearhTerm(searchTerm);
+  };
+
   let totalIncome = 0;
   for (let i = 0; i < finance.incomes.length; i++) {
     totalIncome += +finance.incomes[i].amount;
@@ -39,10 +44,22 @@ const Balance = () => {
     totalExpense += +finance.expenses[i].amount;
   }
 
+  let searchIncArr = finance?.incomes;
+  let searchExpArr = finance?.expenses;
+
+  if (searchTerm !== '') {
+    searchIncArr = finance?.incomes?.filter((item) =>
+      item.name.includes(searchTerm)
+    );
+    searchExpArr = finance?.expenses?.filter((item) =>
+      item.name.includes(searchTerm)
+    );
+  }
+
   return (
     <>
       {' '}
-      <Header />
+      <Header getSearchTerm={getSearchTerm} />
       <div className='balance content'>
         <div
           className={
@@ -55,7 +72,7 @@ const Balance = () => {
               <small>{formatMoney(totalIncome)}</small>
             </div>
             <ul className='items'>
-              {finance?.incomes?.map((income) => (
+              {searchIncArr.map((income) => (
                 <TransactionItem key={income.id} {...income} />
               ))}
             </ul>
@@ -66,7 +83,7 @@ const Balance = () => {
               <small>{formatMoney(totalExpense)}</small>
             </div>
             <ul className='items'>
-              {finance?.expenses?.map((expense) => (
+              {searchExpArr.map((expense) => (
                 <TransactionItem key={expense.id} {...expense} />
               ))}
             </ul>
