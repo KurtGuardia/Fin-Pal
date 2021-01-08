@@ -1,24 +1,64 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { formatMoney } from '../../../../../shared/utility';
 import { useSelector } from 'react-redux';
+import { english, spanish } from '../../../../../languages';
 
 const RecentMovement = ({ index }) => {
   const profile = useSelector((state) => state.firebase.profile);
   const [isOpen, setIsOpen] = useState(false);
   let date;
   let amount;
+  const language = useSelector((state) => state.settings.language);
+  const [content, setContent] = useState('');
+  let category;
+
+  useEffect(() => {
+    if (language === 'english') {
+      setContent(english.dashboard.recentMovements);
+    } else if (language === 'spanish') {
+      setContent(spanish.dashboard.recentMovements);
+    }
+  }, [language]);
 
   const type = () => {
     if (profile.recentMovements[index].info.type === 'income') {
+      category = content.income;
       return 'recentMoventIncome';
     } else if (profile.recentMovements[index].info.type === 'expense') {
+      category = content.expense;
       return 'recentMoventExpense';
     } else if (profile.recentMovements[index].info.type === 'stock') {
+      category = content.stock;
       return 'recentMoventStock';
     } else if (profile.recentMovements[index].info.type === 'debt') {
+      category = content.debt;
       return 'recentMoventDebt';
     }
   };
+
+  const movementType = () => {
+    if (profile.recentMovements[index].type === 'added') {
+      if (profile.recentMovements[index].info.type === 'debt') {
+        return content.debtAdded;
+      } else {
+        return content.added;
+      }
+    } else if (profile.recentMovements[index].type === 'removed') {
+      if (profile.recentMovements[index].info.type === 'debt') {
+        return content.debtAdded;
+      } else {
+        return content.removed;
+      }
+    } else if (profile.recentMovements[index].type === 'edited') {
+      if (profile.recentMovements[index].info.type === 'debt') {
+        return content.debtAdded;
+      } else {
+        return content.edited;
+      }
+    }
+  };
+
+  console.log(profile.recentMovements[index].type);
 
   const displayDate = () => {
     if (profile.recentMovements[index].info.date) {
@@ -45,10 +85,8 @@ const RecentMovement = ({ index }) => {
     >
       <div className='face'>
         <div className='text'>
-          <span className='name'>
-            {profile.recentMovements[index].info.type}
-          </span>
-          <small className='type'>{profile.recentMovements[index].type}</small>
+          <span className='name'>{category}</span>
+          <small className='type'>{movementType()}</small>
         </div>
         <span className='amount'>{formatMoney(amount)}</span>
       </div>

@@ -20,7 +20,16 @@ const english = {
       expenses: 'Expenses this month',
       debts: 'Debts',
     },
-    recentMovements: 'Recent Movements',
+    recentMovements: {
+      recentMovements: 'Recent Movements',
+      income: 'Income',
+      expense: 'Expense',
+      debt: 'Debt',
+      stock: 'Stock',
+      added: 'added',
+      removed: 'removed',
+      edited: 'edited',
+    },
   },
   balance: {
     incomes: 'incomes',

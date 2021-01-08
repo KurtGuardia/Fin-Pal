@@ -20,7 +20,19 @@ const spanish = {
       expenses: 'Gastos este mes',
       debts: 'Deudas',
     },
-    recentMovements: 'Movimientos Recientes',
+    recentMovements: {
+      recentMovements: 'Movimientos Recientes',
+      income: 'Ingreso',
+      expense: 'Egreso',
+      debt: 'Deuda',
+      stock: 'Inventario',
+      added: 'añadido',
+      removed: 'removido',
+      edited: 'editado',
+      debtAdded: 'añadida',
+      debtRemoved: 'removida',
+      debtEdited: 'editada',
+    },
   },
   balance: {
     incomes: 'Ingresos',
@@ -131,7 +143,6 @@ const spanish = {
     unblock: 'Desbloquear',
     end: 'tu cuenta',
   },
-  recentMovements: 'Movimientos Recientes',
 };
 
 export default spanish;

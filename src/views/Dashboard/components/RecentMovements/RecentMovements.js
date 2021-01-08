@@ -20,7 +20,7 @@ const RecentMovements = () => {
 
   return (
     <div className='recentMovements'>
-      <h2 className='recentMovements__title'>{content}</h2>
+      <h2 className='recentMovements__title'>{content.recentMovements}</h2>
       <ul
         className={
           isDarkMode
