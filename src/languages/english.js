@@ -29,6 +29,9 @@ const english = {
       added: 'added',
       removed: 'removed',
       edited: 'edited',
+      debtAdded: 'added',
+      debtRemoved: 'removed',
+      debtEdited: 'edited',
     },
   },
   balance: {

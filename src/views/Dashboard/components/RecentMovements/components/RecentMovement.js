@@ -58,8 +58,6 @@ const RecentMovement = ({ index }) => {
     }
   };
 
-  console.log(profile.recentMovements[index].type);
-
   const displayDate = () => {
     if (profile.recentMovements[index].info.date) {
       date = profile.recentMovements[index].info.date;
