@@ -9,6 +9,7 @@ import { toggleAddTransactionModal } from '../../store/actions/settingsActions';
 import './Balance.scss';
 import TransactionItem from './components/TransactionItem/TransactionItem';
 import { Revenue } from '../../assets/images';
+import { DatePicker } from '../../components';
 
 const Balance = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -18,6 +19,9 @@ const Balance = () => {
   const lock = useSelector((state) => state.firebase.profile.isAccountLocked);
   const [content, setContent] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [totalIncome, setTotalIncome] = useState([]);
+  const [totalExpense, setTotalExpense] = useState(0);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -31,18 +35,31 @@ const Balance = () => {
     }
   }, [language]);
 
+  function sum(total, num) {
+    return total + num;
+  }
+
+  const getDate = (date) => {
+    setSelectedDate(date);
+  };
+
   const getSearchTerm = (searchTerm) => {
     setSearchTerm(searchTerm);
   };
 
-  let totalIncome = 0;
-  for (let i = 0; i < finance.incomes.length; i++) {
-    totalIncome += +finance.incomes[i].amount;
-  }
-  let totalExpense = 0;
-  for (let i = 0; i < finance.expenses.length; i++) {
-    totalExpense += +finance.expenses[i].amount;
-  }
+  const incomesArr = [];
+  let expensesArr = [];
+  useEffect(() => {
+    setTotalIncome(incomesArr.reduce(sum, 0));
+    setTotalExpense(expensesArr.reduce(sum, 0));
+  });
+  // for (let i = 0; i < finance.incomes.length; i++) {
+  //   totalIncome += +finance.incomes[i].amount;
+  // }
+  //
+  // for (let i = 0; i < finance.expenses.length; i++) {
+  //   totalExpense += +finance.expenses[i].amount;
+  // }
 
   let searchIncArr = finance?.incomes;
   let searchExpArr = finance?.expenses;
@@ -60,6 +77,7 @@ const Balance = () => {
     <>
       {' '}
       <Header getSearchTerm={getSearchTerm} />
+      <DatePicker getDate={getDate} selectedDate={selectedDate} />
       <div className='balance content'>
         <div
           className={
@@ -72,9 +90,23 @@ const Balance = () => {
               <small>{formatMoney(totalIncome)}</small>
             </div>
             <ul className='items'>
-              {searchIncArr.map((income) => (
-                <TransactionItem key={income.id} {...income} />
-              ))}
+              {!selectedDate ||
+              selectedDate === 'Show All' ||
+              selectedDate === 'Mostrar Todo'
+                ? searchIncArr.map((income) => {
+                    incomesArr.push(+income.amount);
+                    return <TransactionItem key={income.id} {...income} />;
+                  })
+                : searchIncArr
+                    ?.filter((income) => {
+                      let transactionDate = income.date.slice(5, 7);
+                      let selectedDateFormated = selectedDate.slice(5, 7);
+                      return transactionDate === selectedDateFormated;
+                    })
+                    .map((income) => {
+                      incomesArr.push(+income.amount);
+                      return <TransactionItem key={income.id} {...income} />;
+                    })}
             </ul>
           </div>
           <div className='balance__container--right'>
@@ -83,9 +115,23 @@ const Balance = () => {
               <small>{formatMoney(totalExpense)}</small>
             </div>
             <ul className='items'>
-              {searchExpArr.map((expense) => (
-                <TransactionItem key={expense.id} {...expense} />
-              ))}
+              {!selectedDate ||
+              selectedDate === 'Show All' ||
+              selectedDate === 'Mostrar Todo'
+                ? searchExpArr.map((expense) => {
+                    expensesArr.push(+expense.amount);
+                    return <TransactionItem key={expense.id} {...expense} />;
+                  })
+                : searchExpArr
+                    ?.filter((inc) => {
+                      let transactionDate = inc.date.slice(5, 7);
+                      let selectedDateFormated = selectedDate.slice(5, 7);
+                      return transactionDate === selectedDateFormated;
+                    })
+                    .map((expense) => {
+                      expensesArr.push(+expense.amount);
+                      return <TransactionItem key={expense.id} {...expense} />;
+                    })}
             </ul>
           </div>
         </div>

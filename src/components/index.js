@@ -9,3 +9,4 @@ export { default as EditDebt } from './EditDebt/EditDebt';
 export { default as AddItem } from './AddItem/AddItem';
 export { default as EditItem } from './EditItem/EditItem';
 export { default as LockAccount } from './LockAccount/LockAccount';
+export { default as DatePicker } from './DatePicker/DatePicker';
