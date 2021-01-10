@@ -88,7 +88,7 @@ const Debt = ({ id, type, name, description, amount, dueDate }) => {
       <div className='debt__extra'>
         <p>{formatMoney(amount)}</p>
         <p>{dueDate}</p>
-        <p>{getLiqTime(dueDate)}</p>
+        <p className='liqTime'>{getLiqTime(dueDate)}</p>
       </div>
       <div className='debt__icons'>
         {!lock && (

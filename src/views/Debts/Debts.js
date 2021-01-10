@@ -9,6 +9,7 @@ import { Btn } from '../../components/UI';
 import { toggleAddDebtModal } from '../../store/actions/settingsActions';
 import { Header } from '../../components';
 import { Business } from '../../assets/images';
+import { DatePicker } from '../../components';
 
 const Debts = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -18,6 +19,8 @@ const Debts = () => {
   const lock = useSelector((state) => state.firebase.profile.isAccountLocked);
   const [content, setContent] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [totalDebts, setTotalDebts] = useState([]);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -31,10 +34,14 @@ const Debts = () => {
     }
   }, [language]);
 
-  let totalDebts = 0;
-  for (let i = 0; i < finance.debts.length; i++) {
-    totalDebts += +finance.debts[i].amount;
+  function sum(total, num) {
+    return total + num;
   }
+
+  const debtsArr = [];
+  useEffect(() => {
+    setTotalDebts(debtsArr.reduce(sum, 0));
+  });
 
   let debts = finance?.debts;
   if (searchTerm !== '') {

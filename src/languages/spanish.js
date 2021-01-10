@@ -16,9 +16,9 @@ const spanish = {
         'FinPal la mejor app para administrar las finanzas de su negocio, controlar sus ingresos, gastos, deudas y stock en un solo lugar. Y poder bloquear la cuenta cuando lo necesite',
     },
     main: {
-      incomes: 'Ingresos este mes',
-      expenses: 'Gastos este mes',
-      debts: 'Deudas',
+      incomes: 'Total Ingresos',
+      expenses: 'Total Gastos',
+      debts: 'Total Deudas',
     },
     recentMovements: {
       recentMovements: 'Movimientos Recientes',

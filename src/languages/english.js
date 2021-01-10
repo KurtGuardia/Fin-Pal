@@ -16,9 +16,9 @@ const english = {
         'FinPal the best app to manage your buisness finances, control your incomes, expenses, debts and stock in one place. And Block your account whenever you need',
     },
     main: {
-      incomes: 'Incomes this month',
-      expenses: 'Expenses this month',
-      debts: 'Debts',
+      incomes: 'Total Incomes',
+      expenses: 'Total Expenses',
+      debts: 'Total Debts',
     },
     recentMovements: {
       recentMovements: 'Recent Movements',

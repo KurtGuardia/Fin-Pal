@@ -21,7 +21,7 @@ const Balance = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
   const [totalIncome, setTotalIncome] = useState([]);
-  const [totalExpense, setTotalExpense] = useState(0);
+  const [totalExpense, setTotalExpense] = useState([]);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -48,18 +48,11 @@ const Balance = () => {
   };
 
   const incomesArr = [];
-  let expensesArr = [];
+  const expensesArr = [];
   useEffect(() => {
     setTotalIncome(incomesArr.reduce(sum, 0));
     setTotalExpense(expensesArr.reduce(sum, 0));
   });
-  // for (let i = 0; i < finance.incomes.length; i++) {
-  //   totalIncome += +finance.incomes[i].amount;
-  // }
-  //
-  // for (let i = 0; i < finance.expenses.length; i++) {
-  //   totalExpense += +finance.expenses[i].amount;
-  // }
 
   let searchIncArr = finance?.incomes;
   let searchExpArr = finance?.expenses;

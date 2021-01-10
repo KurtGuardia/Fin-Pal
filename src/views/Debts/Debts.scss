@@ -17,6 +17,10 @@
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
 
+    @media screen and (max-width: 1300px) {
+      width: 80vw;
+    }
+
     @media screen and (max-width: 1024px) {
       width: 90%;
     }
@@ -41,6 +45,10 @@
 
     & .dueDate {
       margin-right: 1.5rem;
+
+      @media screen and (max-width: 500px) {
+        margin-right: 0;
+      }
     }
 
     & p {
@@ -93,7 +101,7 @@
       }
 
       @media screen and (max-width: 500px) {
-        min-width: 550px;
+        min-width: 580px;
       }
 
       & p {
@@ -130,7 +138,7 @@
       @media screen and (max-width: 500px) {
         max-height: 40vh;
         & .items {
-          min-width: 550px;
+          min-width: 580px;
         }
       }
 
@@ -187,6 +195,22 @@
 
     @media screen and (max-width: 500px) {
       width: 45%;
+    }
+  }
+
+  .liqTime {
+    width: 19rem;
+
+    @media screen and (max-width: 1300px) {
+      width: 16.9rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+      width: 11.8rem;
+    }
+
+    @media screen and (max-width: 800px) {
+      width: 9.8rem;
     }
   }
 }
