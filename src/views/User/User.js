@@ -56,6 +56,7 @@ const User = () => {
         </div>
       </div>
       <p>{content.contact}: kurtguardia@gmail.com</p>
+      <small>{content.copyright}</small>
     </div>
   );
 };

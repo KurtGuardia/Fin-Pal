@@ -52,6 +52,7 @@ const Balance = () => {
   useEffect(() => {
     setTotalIncome(incomesArr.reduce(sum, 0));
     setTotalExpense(expensesArr.reduce(sum, 0));
+    // eslint-disable-next-line
   });
 
   let searchIncArr = finance?.incomes;

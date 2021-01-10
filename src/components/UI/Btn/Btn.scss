@@ -19,12 +19,12 @@
     margin: 0 auto;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 800px) {
     padding: 0.5rem 1.25rem;
   }
 
   @media screen and (max-width: 500px) {
-    margin: 3rem auto 0;
+    margin: 1.5rem auto 0;
   }
 
   &:hover {

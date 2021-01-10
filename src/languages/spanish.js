@@ -81,6 +81,8 @@ const spanish = {
     password: 'Contraseña',
     logOut: 'Salir',
     contact: 'Contacto',
+    copyright:
+      'Esta es una relativamente simple aplicación hecha en ReactJS y Sass. Si bien es functional para organizar cualquier situación financiera, su principal función es servir de aplicación full stack, responsiva hecha en React para mi CV. ©Kurt Guadia',
   },
   debts: {
     debts: 'Deudas',

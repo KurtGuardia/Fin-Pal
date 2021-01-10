@@ -81,6 +81,8 @@ const english = {
     password: 'Password',
     logOut: 'Log Out',
     contact: 'Contact',
+    copyright:
+      'This is a fairly simple app, made on ReactJS and Sass. As it is useful to keep track of any kind of financial situation, its primarily intention is to show a full stack, responsive, React project in my CV. ©Kurt Guadia',
   },
   debts: {
     debts: 'Debts',

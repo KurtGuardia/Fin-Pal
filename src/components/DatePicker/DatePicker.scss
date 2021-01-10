@@ -3,8 +3,9 @@
   display: flex;
   align-items: center;
 
-  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+  @media screen and (max-device-width: 500px) {
     margin-bottom: 0;
+    flex-direction: column;
   }
 
   &.dark {
@@ -15,6 +16,36 @@
         outline: none;
         filter: invert(100%);
       }
+    }
+  }
+
+  .date {
+    margin-right: 0.5rem;
+    background-color: transparent;
+    border: none;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #16a085;
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.2s;
+
+    @media screen and (max-width: 800px) {
+      margin-right: 0.25rem;
+    }
+
+    @media screen and (max-device-width: 500px) {
+      margin-top: 0.7rem;
+      margin-right: 0;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      outline: none;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid #16a085;
     }
   }
 
@@ -29,12 +60,12 @@
     border-radius: 5px;
     transition: all 0.2s;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 800px) {
       margin: 0 0.3rem;
       padding: 0.25rem 1.2rem;
     }
 
-    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    @media screen and (max-device-width: 500px) {
       margin-top: 0.7rem;
     }
 
@@ -50,41 +81,20 @@
     color: #16a085;
     font-size: 2rem;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 800px) {
       font-size: 1.15rem;
+    }
+
+    @media screen and (max-device-width: 500px) {
+      margin-left: 0;
     }
   }
 
   &__selected {
     border-bottom: 2px solid #16a085;
-  }
-}
 
-.date {
-  margin-right: 0.5rem;
-  background-color: transparent;
-  border: none;
-  border: 1px solid transparent;
-  border-bottom: 1px solid #16a085;
-  border-radius: 5px;
-  padding: 0.5rem 0.75rem;
-  transition: all 0.2s;
-
-  @media screen and (max-width: 768px) {
-    margin-right: 0.25rem;
-  }
-
-  @media screen and (orientation: portrait) and (max-device-width: 480px) {
-    margin-top: 0.7rem;
-  }
-
-  &::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    outline: none;
-  }
-
-  &:focus {
-    outline: none;
-    border: 1px solid #16a085;
+    @media screen and (max-device-width: 500px) {
+      margin-top: 0.7rem;
+    }
   }
 }

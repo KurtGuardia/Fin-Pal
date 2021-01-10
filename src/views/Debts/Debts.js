@@ -41,6 +41,7 @@ const Debts = () => {
   const debtsTotalArr = [];
   useEffect(() => {
     setTotalDebts(debtsTotalArr.reduce(sum, 0));
+    // eslint-disable-next-line
   });
 
   let debts = finance?.debts;

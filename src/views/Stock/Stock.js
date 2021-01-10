@@ -41,6 +41,7 @@ const Stock = () => {
   const stockTotalArr = [];
   useEffect(() => {
     setTotalStock(stockTotalArr.reduce(sum, 0));
+    // eslint-disable-next-line
   });
 
   let stock = finance?.stock;
