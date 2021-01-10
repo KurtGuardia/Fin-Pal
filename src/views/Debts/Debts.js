@@ -38,15 +38,19 @@ const Debts = () => {
     return total + num;
   }
 
-  const debtsArr = [];
+  const debtsTotalArr = [];
   useEffect(() => {
-    setTotalDebts(debtsArr.reduce(sum, 0));
+    setTotalDebts(debtsTotalArr.reduce(sum, 0));
   });
 
   let debts = finance?.debts;
   if (searchTerm !== '') {
     debts = finance?.debts?.filter((item) => item.name.includes(searchTerm));
   }
+
+  const getDate = (date) => {
+    setSelectedDate(date);
+  };
 
   const getSearchTerm = (searchTerm) => {
     setSearchTerm(searchTerm);
@@ -55,6 +59,7 @@ const Debts = () => {
   return (
     <>
       <Header getSearchTerm={getSearchTerm} />
+      <DatePicker getDate={getDate} selectedDate={selectedDate} />
       <div className='debts content'>
         <div
           className={isDarkMode ? 'debts__container dark' : 'debts__container'}
@@ -73,9 +78,25 @@ const Debts = () => {
               <p className='liqTime'>{content.liqTime}</p>
             </div>
             <ul className='items'>
-              {debts?.map((debt) => (
-                <Debt key={debt.id} {...debt} />
-              ))}
+              {!selectedDate ||
+              selectedDate === 'Show All' ||
+              selectedDate === 'Mostrar Todo'
+                ? debts?.map((debt) => {
+                    debtsTotalArr.push(+debt.amount);
+                    return <Debt key={debt.id} {...debt} />;
+                  })
+                : debts
+                    ?.filter((debt) => {
+                      let transactionDate = debt.dueDate.slice(5, 7);
+                      let selectedDateFormated = selectedDate.slice(5, 7);
+                      return transactionDate === selectedDateFormated;
+                    })
+                    .map((debt) => {
+                      debtsTotalArr.push(+debt.amount);
+                      return <Debt key={debt.id} {...debt} />;
+                    })}
+
+              {}
             </ul>
           </div>
         </div>
