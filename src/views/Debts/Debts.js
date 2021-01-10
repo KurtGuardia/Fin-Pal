@@ -95,8 +95,6 @@ const Debts = () => {
                       debtsTotalArr.push(+debt.amount);
                       return <Debt key={debt.id} {...debt} />;
                     })}
-
-              {}
             </ul>
           </div>
         </div>

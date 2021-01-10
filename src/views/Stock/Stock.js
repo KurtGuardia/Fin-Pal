@@ -9,6 +9,7 @@ import { english, spanish } from '../../languages';
 import { toggleAddItemModal } from '../../store/actions/settingsActions';
 import { Header } from '../../components';
 import { StockIcon } from '../../assets/images';
+import { DatePicker } from '../../components';
 
 const Stock = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -18,6 +19,8 @@ const Stock = () => {
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [totalStock, setTotalStock] = useState([]);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -31,15 +34,23 @@ const Stock = () => {
     }
   }, [language]);
 
-  let totalStock = 0;
-  for (let i = 0; i < finance?.stock?.length; i++) {
-    totalStock += +finance.stock[i].totalCost;
+  function sum(total, num) {
+    return total + num;
   }
+
+  const stockTotalArr = [];
+  useEffect(() => {
+    setTotalStock(stockTotalArr.reduce(sum, 0));
+  });
 
   let stock = finance?.stock;
   if (searchTerm !== '') {
     stock = finance?.stock?.filter((item) => item.name.includes(searchTerm));
   }
+
+  const getDate = (date) => {
+    setSelectedDate(date);
+  };
 
   const getSearchTerm = (searchTerm) => {
     setSearchTerm(searchTerm);
@@ -48,6 +59,7 @@ const Stock = () => {
   return (
     <>
       <Header getSearchTerm={getSearchTerm} />
+      <DatePicker getDate={getDate} selectedDate={selectedDate} />
       <div className='stock content'>
         <div
           className={isDarkMode ? 'stock__container dark' : 'stock__container'}
@@ -67,9 +79,23 @@ const Stock = () => {
               <p>{content.dueDate}</p>
             </div>
             <ul className='items'>
-              {stock?.map((item) => (
-                <Item {...item} key={item.id} />
-              ))}
+              {!selectedDate ||
+              selectedDate === 'Show All' ||
+              selectedDate === 'Mostrar Todo'
+                ? stock?.map((item) => {
+                    stockTotalArr.push(+item.totalCost);
+                    return <Item {...item} key={item.id} />;
+                  })
+                : stock
+                    ?.filter((item) => {
+                      let transactionDate = item.dueDate.slice(5, 7);
+                      let selectedDateFormated = selectedDate.slice(5, 7);
+                      return transactionDate === selectedDateFormated;
+                    })
+                    .map((item) => {
+                      stockTotalArr.push(+item.totalCost);
+                      return <Item key={item.id} {...item} />;
+                    })}
             </ul>
           </div>
         </div>
