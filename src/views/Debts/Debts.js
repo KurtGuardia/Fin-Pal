@@ -10,6 +10,7 @@ import { toggleAddDebtModal } from '../../store/actions/settingsActions';
 import { Header } from '../../components';
 import { Business } from '../../assets/images';
 import { DatePicker } from '../../components';
+import { motion } from 'framer-motion';
 
 const Debts = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -57,12 +58,44 @@ const Debts = () => {
     setSearchTerm(searchTerm);
   };
 
+  const cointainerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
+  const contentVariants = {
+    hidden: {
+      y: '-100vw',
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        delay: 0.3,
+        damping: 13,
+      },
+    },
+  };
   return (
-    <>
+    <motion.div
+      variants={cointainerVariants}
+      initial='hidden'
+      animate='visible'
+    >
       <Header getSearchTerm={getSearchTerm} />
       <DatePicker getDate={getDate} selectedDate={selectedDate} />
       <div className='debts content'>
-        <div
+        <motion.div
+          variants={contentVariants}
           className={isDarkMode ? 'debts__container dark' : 'debts__container'}
         >
           <div className='debts__container--title'>
@@ -98,7 +131,7 @@ const Debts = () => {
                     })}
             </ul>
           </div>
-        </div>
+        </motion.div>
         {!lock && (
           <Btn
             text={content?.btnText}
@@ -108,7 +141,7 @@ const Debts = () => {
         )}
         <Business className='debts__icon' />
       </div>
-    </>
+    </motion.div>
   );
 };
 

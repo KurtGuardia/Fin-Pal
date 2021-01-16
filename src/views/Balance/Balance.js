@@ -82,12 +82,16 @@ const Balance = () => {
 
   const contentVariants = {
     hidden: {
-      y: -500,
+      y: '-100vw',
+      opacity: 0,
     },
     visible: {
       y: 0,
+      opacity: 1,
       transition: {
-        delay: 0.6,
+        type: 'spring',
+        delay: 0.3,
+        damping: 13,
       },
     },
   };
@@ -101,8 +105,9 @@ const Balance = () => {
       {' '}
       <Header getSearchTerm={getSearchTerm} />
       <DatePicker getDate={getDate} selectedDate={selectedDate} />
-      <motion.div variants={contentVariants} className='balance content'>
-        <div
+      <div className='balance content'>
+        <motion.div
+          variants={contentVariants}
           className={
             isDarkMode ? 'balance__container dark' : 'balance__container'
           }
@@ -157,7 +162,7 @@ const Balance = () => {
                     })}
             </ul>
           </div>
-        </div>
+        </motion.div>
         {!lock && (
           <Btn
             text={content?.btnText}
@@ -165,14 +170,8 @@ const Balance = () => {
             clicked={() => dispatch(toggleAddTransactionModal())}
           />
         )}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-        >
-          <Revenue className='balance__icon' />
-        </motion.div>
-      </motion.div>
+        <Revenue className='balance__icon' />
+      </div>
     </motion.div>
   );
 };
