@@ -10,6 +10,7 @@ import './Balance.scss';
 import TransactionItem from './components/TransactionItem/TransactionItem';
 import { Revenue } from '../../assets/images';
 import { DatePicker } from '../../components';
+import { motion } from 'framer-motion';
 
 const Balance = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -67,12 +68,40 @@ const Balance = () => {
     );
   }
 
+  const cointainerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
+  const contentVariants = {
+    hidden: {
+      y: -500,
+    },
+    visible: {
+      y: 0,
+      transition: {
+        delay: 0.6,
+      },
+    },
+  };
+
   return (
-    <>
+    <motion.div
+      variants={cointainerVariants}
+      initial='hidden'
+      animate='visible'
+    >
       {' '}
       <Header getSearchTerm={getSearchTerm} />
       <DatePicker getDate={getDate} selectedDate={selectedDate} />
-      <div className='balance content'>
+      <motion.div variants={contentVariants} className='balance content'>
         <div
           className={
             isDarkMode ? 'balance__container dark' : 'balance__container'
@@ -135,10 +164,16 @@ const Balance = () => {
             symbol='+'
             clicked={() => dispatch(toggleAddTransactionModal())}
           />
-        )}{' '}
-        <Revenue className='balance__icon' />
-      </div>
-    </>
+        )}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+        >
+          <Revenue className='balance__icon' />
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
