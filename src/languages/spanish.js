@@ -86,6 +86,7 @@ const spanish = {
   },
   debts: {
     debts: 'Deudas',
+    amount: 'Monto',
     concept: 'Concepto',
     dueDate: 'Vencimiento',
     liqTime: 'Tiempo de liquidación',

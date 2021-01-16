@@ -5,6 +5,7 @@ import './Main.scss';
 import { english, spanish } from '../../../../languages';
 import { Debts2, MoneyBag, Expenses } from '../../../../assets/icons';
 import { formatMoney } from '../../../../shared/utility';
+import { motion } from 'framer-motion';
 
 const Main = () => {
   const finance = useSelector((state) => state.finance);
@@ -38,9 +39,26 @@ const Main = () => {
     setTotal(totalBalance);
   }, [finance, totalIncome, totalExpense]);
 
+  const cardVariants = {
+    hidden: {
+      x: '-100vw',
+    },
+    visible: {
+      x: '18vw',
+      transition: {
+        type: 'spring',
+        delay: 0.75,
+        duration: 0.8,
+        stiffness: 50,
+      },
+    },
+  };
+
   return (
     <div className='main'>
-      <FinPalCard amount={total} />
+      <motion.div variants={cardVariants}>
+        <FinPalCard amount={total} />
+      </motion.div>
       <div className='main__summary'>
         <div className='main__summary--item incomes'>
           <div className='main__summary--icon'>

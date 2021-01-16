@@ -36,6 +36,7 @@ import useFirestore from './hooks/useFirestore';
 import { useEffect } from 'react';
 import { syncData } from './store/actions/financeActions';
 import { lockState } from './store/actions/lockActions';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   const uid = useSelector((state) => state.firebase.auth.uid);
@@ -116,15 +117,17 @@ function App() {
         <EditItem item={editItem.item} />
 
         <div className='page'>
-          <Switch>
-            <Route exact path='/' component={Dashboard} />
-            <Route path='/balance' component={Balance} />
-            <Route path='/debts' component={Debts} />
-            <Route path='/stock' component={Stock} />
-            <Route path='/auth' component={Auth} />
-            <Route path='/user' component={User} />
-            <Route component={NotFound} />
-          </Switch>
+          <AnimatePresence exitBeforeEnter>
+            <Switch>
+              <Route exact path='/' component={Dashboard} />
+              <Route path='/balance' component={Balance} />
+              <Route path='/debts' component={Debts} />
+              <Route path='/stock' component={Stock} />
+              <Route path='/auth' component={Auth} />
+              <Route path='/user' component={User} />
+              <Route component={NotFound} />
+            </Switch>
+          </AnimatePresence>
         </div>
       </div>
     </BrowserRouter>

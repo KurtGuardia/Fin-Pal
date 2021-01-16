@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { formatMoney } from '../../../../../shared/utility';
 import { useSelector } from 'react-redux';
 import { english, spanish } from '../../../../../languages';
+import { motion } from 'framer-motion';
 
 const RecentMovement = ({ index }) => {
   const profile = useSelector((state) => state.firebase.profile);
@@ -76,8 +77,20 @@ const RecentMovement = ({ index }) => {
   };
   displayAmount();
 
+  const movementVariants = {
+    hover: {
+      originX: 0,
+      y: -7,
+      x: -9,
+      scale: 1.05,
+      transition: { type: 'spring', stiffness: 100, duration: 0.03 },
+    },
+  };
+
   return (
-    <li
+    <motion.li
+      variants={movementVariants}
+      whileHover='hover'
       className={`recentMovements__content--item ${type()}`}
       onClick={() => setIsOpen(!isOpen)}
     >
@@ -94,7 +107,7 @@ const RecentMovement = ({ index }) => {
           <small className='date'>| {date}</small>
         </div>
       )}
-    </li>
+    </motion.li>
   );
 };
 

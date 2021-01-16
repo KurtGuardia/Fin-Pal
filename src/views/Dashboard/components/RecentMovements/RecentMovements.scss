@@ -1,5 +1,5 @@
 //___________________________________________________________________________________________________//
-//INDIVIDUAL RECENTMOVEMENTITEM STYLES ARE WORKED HERE
+//INDIVIDUAL RECENTMOVEMENT ITEM STYLES ARE WORKED HERE
 //___________________________________________________________________________________________________//
 
 .recentMovements {
@@ -112,11 +112,11 @@
         border-left: 10px solid #e2871e;
       }
 
-      @media (hover: hover) {
-        &:hover {
-          transform: translateY(-0.5rem);
-        }
-      }
+      // @media (hover: hover) {
+      //   &:hover {
+      //     transform: translateY(-0.5rem);
+      //   }
+      // }
     }
   }
 }
