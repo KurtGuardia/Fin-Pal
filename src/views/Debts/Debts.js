@@ -85,6 +85,7 @@ const Debts = () => {
       },
     },
   };
+
   return (
     <motion.div
       variants={cointainerVariants}
@@ -133,11 +134,13 @@ const Debts = () => {
           </div>
         </motion.div>
         {!lock && (
-          <Btn
-            text={content?.btnText}
-            symbol='+'
-            clicked={() => dispatch(toggleAddDebtModal())}
-          />
+          <motion.div variants={contentVariants}>
+            <Btn
+              text={content?.btnText}
+              symbol='+'
+              clicked={() => dispatch(toggleAddDebtModal())}
+            />
+          </motion.div>
         )}
         <Business className='debts__icon' />
       </div>

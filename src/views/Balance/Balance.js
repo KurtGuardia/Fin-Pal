@@ -164,11 +164,13 @@ const Balance = () => {
           </div>
         </motion.div>
         {!lock && (
-          <Btn
-            text={content?.btnText}
-            symbol='+'
-            clicked={() => dispatch(toggleAddTransactionModal())}
-          />
+          <motion.div variants={contentVariants}>
+            <Btn
+              text={content?.btnText}
+              symbol='+'
+              clicked={() => dispatch(toggleAddTransactionModal())}
+            />
+          </motion.div>
         )}
         <Revenue className='balance__icon' />
       </div>

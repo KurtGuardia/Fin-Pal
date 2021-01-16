@@ -10,6 +10,7 @@ import { toggleAddItemModal } from '../../store/actions/settingsActions';
 import { Header } from '../../components';
 import { StockIcon } from '../../assets/images';
 import { DatePicker } from '../../components';
+import { motion } from 'framer-motion';
 
 const Stock = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -57,12 +58,45 @@ const Stock = () => {
     setSearchTerm(searchTerm);
   };
 
+  const cointainerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
+  const contentVariants = {
+    hidden: {
+      y: '-100vw',
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        delay: 0.3,
+        damping: 13,
+      },
+    },
+  };
+
   return (
-    <>
+    <motion.div
+      variants={cointainerVariants}
+      initial='hidden'
+      animate='visible'
+    >
       <Header getSearchTerm={getSearchTerm} />
       <DatePicker getDate={getDate} selectedDate={selectedDate} />
       <div className='stock content'>
-        <div
+        <motion.div
+          variants={contentVariants}
           className={isDarkMode ? 'stock__container dark' : 'stock__container'}
         >
           <div className='stock__container--title'>
@@ -99,17 +133,19 @@ const Stock = () => {
                     })}
             </ul>
           </div>
-        </div>
+        </motion.div>
         {!lock && (
-          <Btn
-            text={content.btnText}
-            symbol='+'
-            clicked={() => dispatch(toggleAddItemModal())}
-          />
+          <motion.div variants={contentVariants}>
+            <Btn
+              text={content.btnText}
+              symbol='+'
+              clicked={() => dispatch(toggleAddItemModal())}
+            />
+          </motion.div>
         )}
         <StockIcon className='stock__icon' />
       </div>
-    </>
+    </motion.div>
   );
 };
 
