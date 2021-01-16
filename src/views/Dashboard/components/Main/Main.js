@@ -54,12 +54,25 @@ const Main = () => {
     },
   };
 
+  const summaryVariants = {
+    hidden: {
+      scaleY: 0,
+    },
+    visible: {
+      scaleY: 1,
+      transition: {
+        delay: 1,
+        duration: 1,
+      },
+    },
+  };
+
   return (
     <div className='main'>
       <motion.div variants={cardVariants}>
         <FinPalCard amount={total} />
       </motion.div>
-      <div className='main__summary'>
+      <motion.div variants={summaryVariants} className='main__summary'>
         <div className='main__summary--item incomes'>
           <div className='main__summary--icon'>
             <MoneyBag />
@@ -81,7 +94,7 @@ const Main = () => {
           <span className='title'>{content.debts}</span>
           <span className='amount'>{formatMoney(totalDebts)}</span>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

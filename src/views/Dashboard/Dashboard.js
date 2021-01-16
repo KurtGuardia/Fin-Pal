@@ -29,33 +29,31 @@ const Dashboard = () => {
         duration: 1,
       },
     },
+    exit: {
+      y: '200vw',
+    },
   };
 
   return (
-    <>
+    <motion.div
+      variants={containerVariants}
+      initial='hidden'
+      animate='visible'
+      exit='exit'
+    >
       <Header getSearchTerm={getSearchTerm} />
       <div
         className={isDarkMode ? 'dashboard content dark' : 'dashboard content'}
       >
-        <motion.div
-          variants={containerVariants}
-          initial='hidden'
-          animate='visible'
-          className='dashboard__left'
-        >
+        <div className='dashboard__left'>
           <Banner />
           <Main />
-        </motion.div>
-        <motion.div
-          variants={containerVariants}
-          initial='hidden'
-          animate='visible'
-          className='dashboard__right'
-        >
+        </div>
+        <div className='dashboard__right'>
           <RecentMovements />
-        </motion.div>
+        </div>
       </div>
-    </>
+    </motion.div>
   );
 };
 

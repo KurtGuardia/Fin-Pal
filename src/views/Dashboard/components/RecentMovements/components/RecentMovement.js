@@ -80,6 +80,7 @@ const RecentMovement = ({ index }) => {
   const movementVariants = {
     hover: {
       originX: 0,
+      // scaleY: 0,
       y: -7,
       x: -9,
       scale: 1.05,
