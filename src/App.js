@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import {
   Dashboard,
   Balance,
@@ -44,6 +44,7 @@ function App() {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
   const { doc } = useFirestore(uid);
+  const location = useLocation();
 
   useEffect(() => {
     if (doc.finance) {
@@ -71,66 +72,64 @@ function App() {
   } = modals;
 
   return (
-    <BrowserRouter>
-      <div className={isDarkMode ? 'app dark' : 'app'}>
-        <Sidebar />
+    <div className={isDarkMode ? 'app dark' : 'app'}>
+      <Sidebar />
 
-        {isSettingsOpen && (
-          <Backdrop clicked={() => dispatch(toggleSettingsModal())} />
-        )}
+      {isSettingsOpen && (
+        <Backdrop clicked={() => dispatch(toggleSettingsModal())} />
+      )}
 
-        {isLockAccountOpen && (
-          <Backdrop clicked={() => dispatch(toggleLockAccountModal())} />
-        )}
+      {isLockAccountOpen && (
+        <Backdrop clicked={() => dispatch(toggleLockAccountModal())} />
+      )}
 
-        {isAddTransactionOpen && (
-          <Backdrop clicked={() => dispatch(toggleAddTransactionModal())} />
-        )}
+      {isAddTransactionOpen && (
+        <Backdrop clicked={() => dispatch(toggleAddTransactionModal())} />
+      )}
 
-        {editTransaction.isOpen && (
-          <Backdrop clicked={() => dispatch(toggleEditTransactionModal())} />
-        )}
+      {editTransaction.isOpen && (
+        <Backdrop clicked={() => dispatch(toggleEditTransactionModal())} />
+      )}
 
-        {isAddDebtOpen && (
-          <Backdrop clicked={() => dispatch(toggleAddDebtModal())} />
-        )}
+      {isAddDebtOpen && (
+        <Backdrop clicked={() => dispatch(toggleAddDebtModal())} />
+      )}
 
-        {editDebt.isOpen && (
-          <Backdrop clicked={() => dispatch(toggleEditDebtModal())} />
-        )}
+      {editDebt.isOpen && (
+        <Backdrop clicked={() => dispatch(toggleEditDebtModal())} />
+      )}
 
-        {isAddItemOpen && (
-          <Backdrop clicked={() => dispatch(toggleAddItemModal())} />
-        )}
+      {isAddItemOpen && (
+        <Backdrop clicked={() => dispatch(toggleAddItemModal())} />
+      )}
 
-        {editItem.isOpen && (
-          <Backdrop clicked={() => dispatch(toggleEditItemModal())} />
-        )}
+      {editItem.isOpen && (
+        <Backdrop clicked={() => dispatch(toggleEditItemModal())} />
+      )}
 
-        <SettingsForm />
-        <LockAccount />
-        <AddTransaction />
-        <EditTransaction item={editTransaction.item} />
-        <AddDebt />
-        <EditDebt item={editDebt.item} />
-        <AddItem />
-        <EditItem item={editItem.item} />
+      <SettingsForm />
+      <LockAccount />
+      <AddTransaction />
+      <EditTransaction item={editTransaction.item} />
+      <AddDebt />
+      <EditDebt item={editDebt.item} />
+      <AddItem />
+      <EditItem item={editItem.item} />
 
-        <div className='page'>
-          <AnimatePresence exitBeforeEnter>
-            <Switch>
-              <Route exact path='/' component={Dashboard} />
-              <Route path='/balance' component={Balance} />
-              <Route path='/debts' component={Debts} />
-              <Route path='/stock' component={Stock} />
-              <Route path='/auth' component={Auth} />
-              <Route path='/user' component={User} />
-              <Route component={NotFound} />
-            </Switch>
-          </AnimatePresence>
-        </div>
+      <div className='page'>
+        <AnimatePresence exitBeforeEnter>
+          <Switch>
+            <Route exact path='/' component={Dashboard} />
+            <Route path='/balance' component={Balance} />
+            <Route path='/debts' component={Debts} />
+            <Route path='/stock' component={Stock} />
+            <Route path='/auth' component={Auth} />
+            <Route path='/user' component={User} />
+            <Route component={NotFound} />
+          </Switch>
+        </AnimatePresence>
       </div>
-    </BrowserRouter>
+    </div>
   );
 }
 

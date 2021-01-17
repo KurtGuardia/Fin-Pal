@@ -17,6 +17,7 @@ import firebase from 'firebase/app';
 import { isLoaded } from 'react-redux-firebase';
 import thunk from 'redux-thunk';
 import { Spinner } from './components/UI';
+import { BrowserRouter } from 'react-router-dom';
 
 // const composeEnhancers =
 //   process.env.NODE_ENV === 'development'
@@ -62,7 +63,9 @@ ReactDOM.render(
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
         <AuthIsLoaded>
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </AuthIsLoaded>
       </ReactReduxFirebaseProvider>
     </Provider>

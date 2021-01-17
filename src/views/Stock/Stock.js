@@ -58,7 +58,7 @@ const Stock = () => {
     setSearchTerm(searchTerm);
   };
 
-  const cointainerVariants = {
+  const iconVariants = {
     hidden: {
       opacity: 0,
     },
@@ -80,23 +80,22 @@ const Stock = () => {
       opacity: 1,
       transition: {
         type: 'spring',
-        delay: 0.3,
+        // delay: 0.3,
         damping: 13,
       },
     },
   };
 
   return (
-    <motion.div
-      variants={cointainerVariants}
-      initial='hidden'
-      animate='visible'
-    >
+    <>
       <Header getSearchTerm={getSearchTerm} />
       <DatePicker getDate={getDate} selectedDate={selectedDate} />
       <div className='stock content'>
         <motion.div
           variants={contentVariants}
+          initial='hidden'
+          animate='visible'
+          exit='hidden' //Even though it is not working. Due tu huge bug while logging in and out.
           className={isDarkMode ? 'stock__container dark' : 'stock__container'}
         >
           <div className='stock__container--title'>
@@ -135,7 +134,12 @@ const Stock = () => {
           </div>
         </motion.div>
         {!lock && (
-          <motion.div variants={contentVariants}>
+          <motion.div
+            variants={contentVariants}
+            initial='hidden'
+            animate='visible'
+            exit='hidden'
+          >
             <Btn
               text={content.btnText}
               symbol='+'
@@ -143,9 +147,16 @@ const Stock = () => {
             />
           </motion.div>
         )}
-        <StockIcon className='stock__icon' />
+        <motion.div
+          variants={iconVariants}
+          initial='hidden'
+          animate='visible'
+          exit='hidden'
+        >
+          <StockIcon className='stock__icon' />
+        </motion.div>
       </div>
-    </motion.div>
+    </>
   );
 };
 
