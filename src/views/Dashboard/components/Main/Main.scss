@@ -2,19 +2,27 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   flex: 1;
   border-radius: 15px;
+
   @media screen and (max-width: 500px) {
     height: 70%;
   }
 
   &__card {
+    height: 16rem;
+    width: 25rem;
+    position: relative;
+    border-radius: 20px;
+    border-bottom-left-radius: 30px;
     align-self: center;
   }
 
   &__summary {
     display: flex;
     justify-content: space-evenly;
+    width: -webkit-fill-available;
 
     @media screen and (max-width: 1024px) {
       margin-bottom: 1rem;

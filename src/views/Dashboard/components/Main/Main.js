@@ -44,7 +44,7 @@ const Main = () => {
       x: '-100vw',
     },
     visible: {
-      x: '18vw',
+      x: 0,
       transition: {
         type: 'spring',
         delay: 0.75,
@@ -69,7 +69,7 @@ const Main = () => {
 
   return (
     <div className='main'>
-      <motion.div variants={cardVariants}>
+      <motion.div variants={cardVariants} style={{ width: 'fit-content' }}>
         <FinPalCard amount={total} />
       </motion.div>
       <motion.div variants={summaryVariants} className='main__summary'>

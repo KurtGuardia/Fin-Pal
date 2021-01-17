@@ -1,5 +1,5 @@
 import './App.scss';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import {
   Dashboard,
   Balance,
@@ -44,7 +44,6 @@ function App() {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
   const { doc } = useFirestore(uid);
-  const location = useLocation();
 
   useEffect(() => {
     if (doc.finance) {

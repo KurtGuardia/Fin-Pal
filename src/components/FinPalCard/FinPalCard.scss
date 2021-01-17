@@ -1,10 +1,11 @@
 .finpalCard {
   background: url(../../assets/images/card.svg);
-  height: 16rem;
-  width: 25rem;
-  position: relative;
-  border-radius: 20px;
-  border-bottom-left-radius: 30px;
+  // height: 16rem;
+  // width: 25rem;
+  // position: relative;
+  // border-radius: 20px;
+  // border-bottom-left-radius: 30px;
+  // align-self: center;
 
   @media screen and (max-width: 1024px) {
     transform: scale(0.8);
